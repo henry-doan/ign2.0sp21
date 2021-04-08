@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AuthConsumer } from '../../providers/AuthProvider';
+
 const FetchUser = ({ authenticated, setUser, children }) => {
   const [loaded, setLoaded] = useState(false)
+
   useEffect( () =>{
     if (authenticated){
       load()
@@ -21,13 +23,17 @@ const FetchUser = ({ authenticated, setUser, children }) => {
       }
     }
   }, [])
+
   const checkLocalToken = () => {
     const token = localStorage.getItem('access-token');
     return token
   }
+
   const load = () => setLoaded(true)
+
   return loaded ? children : null;
 }
+
 const ConnectedFetchUser = (props) => (
   <AuthConsumer>
     { auth =>
@@ -35,4 +41,5 @@ const ConnectedFetchUser = (props) => (
     }
   </AuthConsumer>
 )
+
 export default ConnectedFetchUser;
