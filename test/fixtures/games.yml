@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gamename: MyString
+  studio: MyString
+  description: MyText
+  genre: MyString
+  coop: false
+  multi: false
+  single: false
+  esrb: MyString
+  releasedate: 2021-04-07
+  user: one
+
+two:
+  gamename: MyString
+  studio: MyString
+  description: MyText
+  genre: MyString
+  coop: false
+  multi: false
+  single: false
+  esrb: MyString
+  releasedate: 2021-04-07
+  user: two

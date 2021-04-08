@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+rating_range = (1..5).to_a
+
+  3.times do
+    game = Game.create(
+      
+      gamename: Faker::Games::SuperMario.game,
+      studio: Faker::Games::SonicTheHedgehog.game,
+      description: Faker::Games::StreetFigter.quote,
+      genre: Faker::Games::Witcher.school,
+      coop = true 
+      multi = true 
+      single = true
+      esrb: Faker::Games::SuperMario.character,
+      releasedate: '2014-09-23',
+    )
+  
+    5.times do
+      Review.create(
+        title: Faker::TvShows::MichaelScott.quote,
+        gamereview: Faker::ChuckNorris.fact,
+        rating: rating_range.sample,
+        user_id: user.id
+      )
+    end
+  end
