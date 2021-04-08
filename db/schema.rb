@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_195859) do
+ActiveRecord::Schema.define(version: 2021_04_08_023728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.string "gamename"
+    t.string "studio"
+    t.text "description"
+    t.string "genre"
+    t.boolean "coop"
+    t.boolean "multi"
+    t.boolean "single"
+    t.string "esrb"
+    t.date "releasedate"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "reviews_id", null: false
+    t.index ["reviews_id"], name: "index_games_on_reviews_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.float "rating"
+    t.text "gamereview"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "body"
+    t.string "image"
+    t.string "game_play"
+    t.string "visual"
+    t.string "soundtrack"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -45,4 +78,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_195859) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "games", "reviews", column: "reviews_id"
+  add_foreign_key "games", "users"
+  add_foreign_key "reviews", "users"
 end
