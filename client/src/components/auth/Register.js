@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Button, Form, Segment, Header } from 'semantic-ui-react';
-
 const Register = ({ handleRegister, history }) => {
-  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '' }) 
-  
+  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '' })
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.password === user.passwordConfirmation) {
       handleRegister(user, history);
-     } else {
+    } else {
       alert('Passwords Do Not Match!')
-     }
+    }
   }
-  
   return (
     <Segment basic>
       <Header as='h1' textAlign='center'>Register</Header>
@@ -52,11 +49,9 @@ const Register = ({ handleRegister, history }) => {
     </Segment>
   )
 }
-
 const ConnectedRegister = (props) => (
   <AuthConsumer>
     { auth => <Register { ...props } {...auth} /> }
   </AuthConsumer>
 )
-
 export default ConnectedRegister;
