@@ -24,10 +24,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'rack-cors'
 
 gem 'devise_token_auth'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'pry'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 

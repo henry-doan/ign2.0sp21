@@ -1,6 +1,6 @@
 const Home = () => (
     <>
-      <h1>IGN 2.0</h1>
+      <h1>Eighty Percent Gaming</h1>
     </>
   )
   export default Home;
