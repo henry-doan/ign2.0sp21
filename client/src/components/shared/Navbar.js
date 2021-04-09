@@ -6,8 +6,12 @@ const Navbar = ({ location, user, handleLogout, history }) => {
     if (user) {
       return (
         <Menu.Menu position='right'>
-          <Link to='/'>
-          
+          <Link to='/profile'>
+            <Menu.Item
+              name='profile'
+              id='profile'
+              active={location.pathname === '/profile'}
+            />
           </Link>
           <Menu.Item
             name='logout'
