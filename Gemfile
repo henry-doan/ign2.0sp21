@@ -25,6 +25,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise_token_auth'
 
+
 group :development, :test do
   gem 'pry'
   gem 'faker'
