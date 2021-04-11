@@ -4,6 +4,8 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:id])
     user.name = params[:name] ? params[:name] : user.name
     user.email = params[:email] ? params[:email] : user.email
+    user.nickname = params[:nickname] ? params[:nickname] : user.nickname
+    user.image = params[:image] ? params[:image] : user.image
     file = params[:file]
     if file && file != ''
       begin

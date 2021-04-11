@@ -2,17 +2,22 @@ import { useState, useEffect } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Form, Grid, Image, Button, Header, Container } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
+
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
+
 const Profile = ({ user, updateUser }) => {
   const [editing, setEditing] = useState(false)
-  const [formVals, setFormVals] = useState({ name: '', email: '', file: '' })
+  const [formVals, setFormVals] = useState({ name: '', email: '', file: '', nickname: '', image: '' })
+
   useEffect ( () => {
-    const { name, email, image } = user
-    setFormVals({ name, email, image })
+    const { name, email, image, nickname } = user
+    setFormVals({ name, email, image, nickname })
   }, [])
+
   const onDrop = (files) => {
     setFormVals({ ...formVals, file: files[0]})
   }
+
   const profileView = () => {
     return(
       <>
@@ -20,12 +25,14 @@ const Profile = ({ user, updateUser }) => {
           <Image src={user.image || defaultImage} />
         </Grid.Column>
         <Grid.Column width={12}>
+          <Header>{user.nickname}</Header>
           <Header>{user.name}</Header>
           <Header>{user.email}</Header>
         </Grid.Column>
       </>
     )
   }
+
   const editView = () => {
     return(
       <Form onSubmit={handleSubmit}>
@@ -60,23 +67,25 @@ const Profile = ({ user, updateUser }) => {
             onChange={(e, inputAttr) => setFormVals({ ...formVals, name: inputAttr.value})}
           />
           <Form.Input
-            label="Email"
-            name="email"
-            value={formVals.email}
+            label="Nickname"
+            name="nickname"
+            value={formVals.nickname}
             required
-            onChange={(e, inputAttr) => setFormVals({ ...formVals, email: inputAttr.value})}
+            onChange={(e, inputAttr) => setFormVals({ ...formVals, nickname: inputAttr.value})}
           />
           <Button>Update</Button>
         </Grid.Column>
       </Form>
     )
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUser(user.id, formVals)
     setEditing(false)
     setFormVals({ ...formVals, file: "" })
   }
+
   return (
     <Container>
       <Grid>
@@ -92,6 +101,7 @@ const Profile = ({ user, updateUser }) => {
     </Container>
   )
 }
+
 const styles = {
   dropzone: {
     height: "150px",
@@ -104,6 +114,7 @@ const styles = {
     padding: "10px",
   },
 }
+
 const ConnectedProfile = (props) => (
   <AuthConsumer>
     { auth =>
@@ -111,4 +122,5 @@ const ConnectedProfile = (props) => (
     }
   </AuthConsumer>
 )
+
 export default ConnectedProfile;
