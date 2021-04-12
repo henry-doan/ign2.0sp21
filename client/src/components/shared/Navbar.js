@@ -50,6 +50,13 @@ const Navbar = ({ location, user, handleLogout, history }) => {
             active={location.pathname === '/'}
           />
         </Link>
+        <Link to='/game'>
+          <Menu.Item
+            name='game'
+            id='game'
+            active={location.pathname === '/'}
+          />
+          </Link>
         <Link to='/about'>
           <Menu.Item
             name='about'
