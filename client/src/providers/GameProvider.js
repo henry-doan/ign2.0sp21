@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Games from '../components/games/Games';
 
-export const GameContex = React.createContext();
+export const GameContext = React.createContext();
 
 export const GameConsumer = GameContext.Consumer;
 
-cost GameProvider = ({ children }) => {
-  cont [ games, setGames ] = useState([])
+const GameProvider = ({ children }) => {
+  const [games, setGames] = useState([])
 
   useEffect( () => {
     axios.get('/api/games')
@@ -26,7 +25,7 @@ cost GameProvider = ({ children }) => {
   const updateGame = (id, game) => {
     axios.put(`/api/games/${id}`, { game })
       .then(res => {
-        const updatedGamess = games.map( t => {
+        const updatedGames = games.map( t => {
           if (t.id === id) {
             return res.data
           }
@@ -47,12 +46,12 @@ cost GameProvider = ({ children }) => {
     <GameContext.Provider value={{
       games,
       addGame: addGame,
-      updateGame: updateGame,
+      updatedGame: updateGame,
       deleteGame: deleteGame,
     }}>
       { children }
     </GameContext.Provider>
   )
-}
 
+}
 export default GameProvider;

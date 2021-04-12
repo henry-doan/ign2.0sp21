@@ -6,6 +6,7 @@ import NoMatch from './components/shared/NoMatch';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import FetchUser from './components/auth/FetchUser';
+import Games from './components/games/Games';
 const App = () => (
   <>
     <Navbar />
@@ -14,6 +15,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path='/login' component={Login} />
+          <Route exact path='/games' component={Games} />
           <Route exact path='/register' component={Register} />
           <Route component={NoMatch} />
         </Switch>

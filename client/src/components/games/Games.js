@@ -1,6 +1,6 @@
-import GameFrom from './GameForm'
+import GameForm from './GameForm'
 
-cost Games = () => (
+const Games = () => (
 <>
 <h1>Games</h1>
 <GameForm />
