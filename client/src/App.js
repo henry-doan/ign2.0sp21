@@ -21,7 +21,7 @@ const App = () => (
           <Route exact path='/register' component={Register} />
           <ProtectedRoute exact path='/profile' component={Profile} />
           <Route exact path='/about' component={About}/>
-          <ProtectedRoute exact path='/games' component={Games}/>
+          <Route exact path='/games' component={Games}/>
           <Route component={NoMatch} />
         </Switch>
       </Container>
