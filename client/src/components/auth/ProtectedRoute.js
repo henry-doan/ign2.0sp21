@@ -1,16 +1,15 @@
 import { Route, Redirect } from "react-router-dom";
 import { AuthConsumer } from "../../providers/AuthProvider";
-
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <AuthConsumer>
-    { auth => 
-      <Route 
+    { auth =>
+      <Route
         { ...rest }
         render={ props => (
           auth.authenticated ?
             <Component { ...props } />
           :
-            <Redirect 
+            <Redirect
               to={{
                 pathname: "/login",
                 state: { from: props.location, },
@@ -21,5 +20,4 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
     }
   </AuthConsumer>
 )
-
 export default ProtectedRoute;

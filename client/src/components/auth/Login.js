@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Button, Form, Segment, Header } from 'semantic-ui-react';
-
 const Login = ({ handleLogin, history }) => {
   const [user, setUser] = useState({ email: '', password: '' })
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin(user, history);
   }
-  
   return (
     <Segment basic>
       <Header as='h1' textAlign='center'>Login</Header>
@@ -17,7 +14,7 @@ const Login = ({ handleLogin, history }) => {
         <Form.Input
           label="Email"
           autoFocus
-          required         
+          required
           name='email'
           value={user.email}
           placeholder='Email'
@@ -38,13 +35,10 @@ const Login = ({ handleLogin, history }) => {
       </Form>
     </Segment>
   )
-  
 }
-
 const ConnectedLogin = (props) => (
   <AuthConsumer>
     { auth => <Login {...props} {...auth} />}
   </AuthConsumer>
 )
-
 export default ConnectedLogin;

@@ -34,14 +34,26 @@ const AuthProvider = ({ children }) => {
       .catch( err => console.log(err))
   }
 
+  const updateUser = (id, user) => {
+    let data = new FormData()
+    data.append('file', user.file)
+    data.append('name', user.name)
+    data.append('nickname', user.nickname)
+    data.append('image', user.image)
+    axios.put(`/api/users/${id}`, data)
+      .then( res => setUser(res.data))
+      .catch( err => console.log(err))
+  }
+
   return(
     <AuthContext.Provider value={{
       user,
       handleRegister: handleRegister,
       handleLogin: handleLogin,
-      handleLogout: handleLogout, 
+      handleLogout: handleLogout,
       authenticated: user !== null,
       setUser: (user) => setUser(user),
+      updateUser: updateUser,
     }}>
       { children }
     </AuthContext.Provider>
