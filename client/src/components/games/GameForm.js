@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Form } from 'semantic-ui-react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { GameConsumer } from '../../providers/GameProvider';
-
+import {AuthContext}  from '../../providers/AuthProvider';
 
 
 const GameForm = ({ addGame }) => {
+  const auth = useContext(AuthContext)
   const [game, setGame] = useState({ gamename: "", description: "", studio: "", genre: "", releasedate: "", esrb: "",  coop: (false), multi: (false), single: (false) })
-
+  
+  
   
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import AuthContext  from './AuthProvider';
 
 export const GameContext = React.createContext();
 
@@ -7,7 +8,8 @@ export const GameConsumer = GameContext.Consumer;
 
 const GameProvider = ({ children }) => {
   const [games, setGames] = useState([])
-
+  const auth = useContext(AuthContext)
+  
   useEffect( () => {
     axios.get('/api/games')
       .then( res => setGames(res.data))
@@ -15,7 +17,7 @@ const GameProvider = ({ children }) => {
   }, [])
 
   const addGame = (game) => {
-    axios.post('/api/games', { game })
+    axios.post(`/api/user/${auth.userId}`, { game })
       .then( res => {
         setGames([...games, res.data])
       })
