@@ -9,18 +9,18 @@ rating_range = (1..5).to_a
 
   3.times do
     game = Game.create(
-      
+
       gamename: Faker::Games::SuperMario.game,
       studio: Faker::Games::SonicTheHedgehog.game,
-      description: Faker::Games::StreetFigter.quote,
+      description: Faker::Games::StreetFighter.quote,
       genre: Faker::Games::Witcher.school,
-      coop = true 
-      multi = true 
+      coop = true
+      multi = true
       single = true
       esrb: Faker::Games::SuperMario.character,
       releasedate: '2014-09-23',
     )
-  
+
     5.times do
       Review.create(
         title: Faker::TvShows::MichaelScott.quote,
