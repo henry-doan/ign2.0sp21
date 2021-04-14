@@ -1,10 +1,12 @@
 class Api::GamesController < ApplicationController
-    def index
+  before_action :set_game, only: [:show, :update, :destroy]  
+  def index
         render json: Game.all
       end
 
     def show
-
+     
+      render json: @game
     end
     
       def create 
@@ -32,6 +34,9 @@ class Api::GamesController < ApplicationController
       end
     
       private 
+      def set_game
+        @game = Game.find(params[:id])
+      end
         def game_params
           params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id, reviews_id)
         end
