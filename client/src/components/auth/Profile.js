@@ -2,11 +2,8 @@ import { useState, useEffect } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Form, Grid, Image, Button, Header, Container } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
-import Card from 'react-bootstrap/Card'
-import GameForum from '../games/GameForm'
+import GameForm from '../games/GameForm'
 import Modal from 'react-bootstrap/Modal'
-import ModalHeader from 'react-bootstrap/ModalHeader'
-import ModalBody from 'react-bootstrap/ModalBody'
 
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
