@@ -1,22 +1,15 @@
+import React from 'react';
 import GameForm from './GameForm';
 import Games from  './Games';
+import { Card } from 'semantic-ui-react'
 
-import { Card, List } from 'semantic-ui-react';
 
-const Game = ({ games }) => (
-    <List divided relaxed>
-      { games.map( tweet =>
-    <List.Item key={games.id}>
-     <List.Content>
-        <List.Content>{games.description}</List.Content>
-        <List.Description>
-        </List.Description>
-      </List.Content>
-    </List.Item > 
-
+const Game = ({game}) => {
+ 
+return(
+  <h1>{game.gamename}</h1>
 )
+    
 }
-</List>
-)
-  
-  export default Game;
+  export default Game
+

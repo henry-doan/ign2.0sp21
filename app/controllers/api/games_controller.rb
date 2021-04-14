@@ -1,7 +1,11 @@
 class Api::GamesController < ApplicationController
     def index
-        render json: current_user.games
+        render json: Game.all
       end
+
+    def show
+
+    end
     
       def create 
         @game = current_user.games.new(game_params)
@@ -29,6 +33,6 @@ class Api::GamesController < ApplicationController
     
       private 
         def game_params
-          params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id)
+          params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id, reviews_id)
         end
       end
