@@ -7,13 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import AuthProvider from './providers/AuthProvider';
 import { initMiddleware } from 'devise-axios';
+import GameProvider from './providers/GameProvider';
 initMiddleware();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
+      <GameProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
+      </GameProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
