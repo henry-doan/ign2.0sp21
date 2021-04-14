@@ -11,7 +11,7 @@ const GameProvider = ({ children }) => {
   const auth = useContext (AuthContext)
   
   useEffect( () => {
-    axios.get('/api/users/user_id/games')
+    axios.get('/api/games')
       .then( res => setGames(res.data))
       .catch( err => console.log(err))
   }, [])

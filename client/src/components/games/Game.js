@@ -7,7 +7,7 @@ import { Card } from 'semantic-ui-react'
 const Game = ({game}) => {
  
 return(
-  <h1>{game.gamename}</h1>
+  <h1>{game}</h1>
 )
     
 }
