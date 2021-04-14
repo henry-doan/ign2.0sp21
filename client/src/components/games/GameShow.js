@@ -1,9 +1,11 @@
+
 import React,{useState,useEffect} from 'react'
 
 import axios from 'axios'
 import Game from './Game'
 
 const GameShow = ({match}) => {  
+
 
 const [games,setGames] = useState([])
 
