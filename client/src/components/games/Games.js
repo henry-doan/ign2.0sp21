@@ -1,11 +1,10 @@
 import GameForm from './GameForm'
 import Game from './Game'
-
-const Games = (games) => (
+const Games = () => (
+    
 <>
-<h1>{Game}</h1>
-<div><h1>hello</h1></div>
-<GameForm />
+<h1>Games</h1>
+
 </>
 )
 

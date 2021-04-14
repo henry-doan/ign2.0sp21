@@ -8,16 +8,16 @@ export const GameConsumer = GameContext.Consumer;
 
 const GameProvider = ({ children }) => {
   const [games, setGames] = useState([])
-  const auth = useContext(AuthContext)
+  const auth = useContext (AuthContext)
   
   useEffect( () => {
-    axios.get('/api/games')
+    axios.get('/api/users/user_id/games')
       .then( res => setGames(res.data))
       .catch( err => console.log(err))
   }, [])
 
-  const addGame = (game) => {
-    axios.post(`/api/user/${auth.userId}`, { game })
+  const addGame = (game, auth) => {
+    axios.post(`/api/user/${auth.user.id}`, { game })
       .then( res => {
         setGames([...games, res.data])
       })
@@ -25,7 +25,7 @@ const GameProvider = ({ children }) => {
   }
 
   const updateGame = (id, game) => {
-    axios.put(`/api/games/${id}`, { game })
+    axios.put(`/api/users/${auth.id}/games/${id}`, { game })
       .then(res => {
         const updatedGames = games.map( t => {
           if (t.id === id) {
