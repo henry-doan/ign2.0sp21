@@ -1,3 +1,5 @@
+import axios from 'axios'
+import { useState, useContext, useEffect } from 'react';
 const GameShow = () => {  
 
 const [games,setGames] = useState([])
@@ -15,6 +17,6 @@ const getGames = async() => {
 useEffect(()=>{
   getGames()
 },[])
-
+}
 
 export default GameShow;

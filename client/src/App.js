@@ -11,6 +11,7 @@ import GameShow from './components/games/GameShow';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
 import About from './components/shared/About'
+import GameForum from './components/games/GameForm'
 
 
 const App = () => (
@@ -27,7 +28,7 @@ const App = () => (
           <Route exact path='/about' component={About}/>
           <Route exact path='/games' component={Games}/>
           <Route exact path='/games/:id' component={GameShow}/>
-          {/* <Route exact path='/games/new' component={GameForum}/> */}
+          <Route exact path='/gameforum' component={GameForum}/>
           <Route component={NoMatch} />
         </Switch>
       </Container>

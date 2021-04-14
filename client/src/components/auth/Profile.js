@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Form, Grid, Image, Button, Header, Container } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
+import Card from 'react-bootstrap/Card'
+import GameForum from '../games/GameForm'
+import Modal from 'react-bootstrap/Modal'
+import ModalHeader from 'react-bootstrap/ModalHeader'
+import ModalBody from 'react-bootstrap/ModalBody'
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
@@ -31,6 +36,35 @@ const Profile = ({ user, updateUser }) => {
         </Grid.Column>
       </>
     )
+  }
+  function Example() {
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+    return (
+      <>
+        <Button variant="primary" onClick={handleShow}>
+          Launch demo modal
+        </Button>
+  
+        <Modal show={show} onHide={handleClose} animation={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
   }
 
   const editView = () => {
@@ -74,6 +108,7 @@ const Profile = ({ user, updateUser }) => {
             onChange={(e, inputAttr) => setFormVals({ ...formVals, nickname: inputAttr.value})}
           />
           <Button>Update</Button>
+          <br/>
         </Grid.Column>
       </Form>
     )
@@ -114,6 +149,7 @@ const styles = {
     padding: "10px",
   },
 }
+
 
 const ConnectedProfile = (props) => (
   <AuthConsumer>
