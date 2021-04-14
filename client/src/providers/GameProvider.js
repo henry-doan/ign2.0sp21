@@ -16,16 +16,16 @@ const GameProvider = ({ children }) => {
       .catch( err => console.log(err))
   }, [])
 
-  const addGame = (game, auth) => {
-    axios.post(`/api/user/${auth.user.id}`, { game })
+  const addGame = (game, match) => {
+    axios.post(`/api/games/`, { game })
       .then( res => {
         setGames([...games, res.data])
       })
       .catch( err => console.log(err))
   }
 
-  const updateGame = (id, game) => {
-    axios.put(`/api/users/${auth.id}/games/${id}`, { game })
+  const updateGame = (id, game, match) => {
+    axios.put(`/api/games/${match.params.id}`, { game })
       .then(res => {
         const updatedGames = games.map( t => {
           if (t.id === id) {

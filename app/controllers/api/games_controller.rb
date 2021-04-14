@@ -1,6 +1,8 @@
 class Api::GamesController < ApplicationController
+
   before_action :set_game, only: [:show, :update, :destroy]  
-  def index
+ 
+   def index
         render json: Game.all
       end
 
@@ -10,9 +12,9 @@ class Api::GamesController < ApplicationController
     end
     
       def create 
-        @game = current_user.games.new(game_params)
-        if @game.save
-          render json: @game
+        game = current_user.games.new(game_params)
+        if game.save
+          render json: game
         else
           render json: { errors: @game.errors}, status: :unprocessable_entity
         end
