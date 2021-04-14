@@ -8,6 +8,7 @@ import Modal from 'react-bootstrap/Modal'
 import ModalHeader from 'react-bootstrap/ModalHeader'
 import ModalBody from 'react-bootstrap/ModalBody'
 
+
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
 const Profile = ({ user, updateUser }) => {
@@ -33,6 +34,7 @@ const Profile = ({ user, updateUser }) => {
           <Header>{user.nickname}</Header>
           <Header>{user.name}</Header>
           <Header>{user.email}</Header>
+          <GameForm/>
         </Grid.Column>
       </>
     )
