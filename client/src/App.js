@@ -9,6 +9,8 @@ import FetchUser from './components/auth/FetchUser';
 import Games from './components/games/Games';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
+import About from './components/shared/About'
+import Games from './components/games/Games'
 
 const App = () => (
   <>
@@ -21,6 +23,8 @@ const App = () => (
           <Route exact path='/games' component={Games} />
           <Route exact path='/register' component={Register} />
           <ProtectedRoute exact path='/profile' component={Profile} />
+          <Route exact path='/about' component={About}/>
+          <Route exact path='/games' component={Games}/>
           <Route component={NoMatch} />
         </Switch>
       </Container>
