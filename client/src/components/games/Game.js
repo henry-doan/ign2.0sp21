@@ -1,19 +1,15 @@
-import { Card } from 'semantic-ui-react';
-import Games from  './Games'
+import React from 'react';
+import GameForm from './GameForm';
+import Games from  './Games';
+import { Card } from 'semantic-ui-react'
 
-const Game = ({games}) => (
-  
-    <Card.Group centered>
-      {games.map (h =>
-        <Card>
-          <Games
-              key={h.id}
-          
-            {...h}
-              />
-        </Card>
-        )}
-    </Card.Group>
-  )
-  
+
+const Game = ({game}) => {
+ 
+return(
+  <h1>{game.gamename}</h1>
+)
+    
+}
   export default Game
+

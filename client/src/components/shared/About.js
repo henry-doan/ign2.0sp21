@@ -1,4 +1,4 @@
-import Header from '../styledComponents/Styles'
+
 
 const About = () => (
     <>

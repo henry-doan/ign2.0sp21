@@ -7,10 +7,11 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import FetchUser from './components/auth/FetchUser';
 import Games from './components/games/Games';
+import GameShow from './components/games/GameShow';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
 import About from './components/shared/About'
-import Games from './components/games/Games'
+
 
 const App = () => (
   <>
@@ -25,6 +26,8 @@ const App = () => (
           <ProtectedRoute exact path='/profile' component={Profile} />
           <Route exact path='/about' component={About}/>
           <Route exact path='/games' component={Games}/>
+          <Route exact path='/games/:id' component={GameShow}/>
+          {/* <Route exact path='/games/new' component={GameForum}/> */}
           <Route component={NoMatch} />
         </Switch>
       </Container>
