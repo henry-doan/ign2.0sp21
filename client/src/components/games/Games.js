@@ -5,9 +5,9 @@ import Game from './Game'
 const Games = () => {
   const [games,setGames] = useState([])
 
-  const getGames = async() => {
+  const getGames = async(match) => {
       try{
-        let res = await axios.get('/api/games/')
+        let res = await axios.get(`/api/games/`)
         setGames(res.data)
       }catch(err){
         alert("Error Failed to get games")
@@ -31,7 +31,7 @@ return(
 <>
 <h1>Games</h1>
 {renderGames()}
-{/* <Card.Link href={GameForum}>Add A New Game</Card.Link>  */}
+
 </>
 )
 }

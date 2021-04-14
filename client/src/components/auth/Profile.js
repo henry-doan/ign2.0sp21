@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Form, Grid, Image, Button, Header, Container } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
+import GameForm from '../games/GameForm'
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
@@ -28,6 +29,7 @@ const Profile = ({ user, updateUser }) => {
           <Header>{user.nickname}</Header>
           <Header>{user.name}</Header>
           <Header>{user.email}</Header>
+          <GameForm/>
         </Grid.Column>
       </>
     )
@@ -114,6 +116,7 @@ const styles = {
     padding: "10px",
   },
 }
+
 
 const ConnectedProfile = (props) => (
   <AuthConsumer>

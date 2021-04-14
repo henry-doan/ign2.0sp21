@@ -20,25 +20,20 @@ useEffect(()=>{
   getGames()
 },[])
 
-
-
-
 const renderGames = (games) =>{
-return Game((game)=> <Game key={game.id} game={game}/>)
+
 }
-
-
 return(
 <>
-<h1>Game {games.gamename}</h1>
-<h1>Description {games.description}</h1>
-<h1>Release Date {games.releasedate}</h1>
-<h1>Studio {games.studio}</h1>
-<h1>Genre {games.genre}</h1>
-<h1>Multiplayer {games.multi}</h1>
-<h1>Esrb {games.esrb}</h1>
-<h1>Coop {games.coop}</h1>
-<h1>Single {games.single}</h1>
+<h1>Game: {games.gamename}</h1>
+<h1>Description: {games.description}</h1>
+<h1>Release Date: {games.releasedate}</h1>
+<h1>Studio: {games.studio}</h1>
+<h1>Genre: {games.genre}</h1>
+<h1>Multiplayer: {games.multi}</h1>
+<h1>Esrb: {games.esrb}</h1>
+<h1>Coop: {games.coop}</h1>
+<h1>Single Player: {games.single}</h1>
 
 {renderGames()}
 </>
