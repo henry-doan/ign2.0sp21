@@ -31,7 +31,7 @@ return(
 <>
 <h1>Games</h1>
 {renderGames()}
-<Card.Link href={GameForum}>Add A New Game</Card.Link>
+<Card.Link href={GameForum}>Add A New Game</Card.Link> 
 </>
 )
 }
