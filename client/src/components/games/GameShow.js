@@ -26,6 +26,7 @@ const renderGames = (games) =>{
 return(
 <>
 <h1>Game: {games.gamename}</h1>
+
 <h3>Description: {games.description}</h3>
 <h3>Release Date: {games.releasedate}</h3>
 <h3>Studio: {games.studio}</h3>
@@ -35,6 +36,7 @@ return(
 <h3>Coop: {games.coop}</h3>
 <h3>Single Player: {games.single}</h3>
 <GameForm/>
+
 {renderGames()}
 </>
 )
