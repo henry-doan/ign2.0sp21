@@ -8,14 +8,17 @@ import 'semantic-ui-css/semantic.min.css';
 import AuthProvider from './providers/AuthProvider';
 import { initMiddleware } from 'devise-axios';
 import GameProvider from './providers/GameProvider';
+import ReviewProvider from './providers/ReviewProvider';
 initMiddleware();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <GameProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+       <ReviewProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ReviewProvider>
       </GameProvider>
     </AuthProvider>
   </React.StrictMode>,

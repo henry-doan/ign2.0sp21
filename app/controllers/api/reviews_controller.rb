@@ -1,10 +1,15 @@
 class Api::ReviewsController < ApplicationController
-    def index
-        render json: current_user.reviews
+    before_action :set_game
+    before_action :set_review, only: [:show, :update, :destroy]
+  def index
+        render json: game.reviews
       end
-    
+   
+      def show
+      render json: @review
+    end
       def create 
-        @review = current_user.reviews.new(review_params)
+        @review = games.reviews.new(review_params)
         if @review.save
           render json: @review
         else
@@ -13,7 +18,7 @@ class Api::ReviewsController < ApplicationController
       end
     
       def update 
-        @review = current_user.review.find(params[:id])
+    
         if @review.update(review_params)
           render json: @review
         else
@@ -22,13 +27,22 @@ class Api::ReviewsController < ApplicationController
       end
     
       def destroy 
-        @review = current_user.reviews.find(params[:id])
+
         @review.destroy
         render json: { message: 'Review is gone' }
       end
     
-      private 
+      private
+
+      def set_game
+        @game = Game.find(params[:game_id])
+      end
+  
+      def set_review
+        @review = @game.reviews.find(params[:id])
+      end
+  
         def review_params
-          params.require(:review).permit(:title, :rating:, :gamereview, :user_id, :body, :image, :game_play, :visual, :soundtrack)
+          params.require(:review).permit(:title, :rating, :gamereview, :user_id, :body, :image, :game_play, :visual, :soundtrack)
         end
-    
+      end 
