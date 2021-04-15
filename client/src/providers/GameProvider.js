@@ -48,7 +48,7 @@ const GameProvider = ({ children }) => {
     <GameContext.Provider value={{
       games,
       addGame: addGame,
-      updatedGame: updateGame,
+      updateGame: updateGame,
       deleteGame: deleteGame,
     }}>
       { children }

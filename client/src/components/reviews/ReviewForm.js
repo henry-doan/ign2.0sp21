@@ -1,78 +1,35 @@
 import axios from 'axios';
 import React, {useContext, useState} from 'react';
-import {Form,Button} from 'react-bootstrap';
+import {Form,Button} from 'semantic-ui-react';
 import {AuthContext} from "../../providers/AuthProvider";
+import {ReviewConsumer} from '../../providers/ReviewProvider';
 
-const ReviewForm = ({post,add,reviewProp,afterUpdate}) =>{
+
+
+const ReviewForm = ({ addReview }) => {
     const auth = useContext(AuthContext);
-  const [ review, setReview ] = useState(
-    reviewProp ? 
-    {title: reviewProp.title,
-     rating: reviewProp.rating, 
-     gamereview: reviewProp.gamereview,
-     body: reviewProp.body,
-     image: reviewProp.image,
-     gameplay: reviewProp.gameplay,
-     visual: reviewProp.visual,
-     soundtrack: reviewProp.soundtrack,
-     user_id: auth.user.id,}
-    :
-    {title:"", 
-     rating:"",
-     gamereview:"",
-     image:"",
+  const [ review, setReview ] = useState({title:"", rating:"", gamereview:"", image:"",
      body:"",
      gameplay:"",
      visual:"",
-     soundtrack:"",
-     user_id: auth.user.id,}
-    )
-
-
-    
-    const addReview = async () => {
-      debugger;
-        try{
-            let res = await axios.post(`/api/games/${game}/reviews`, review);
-            add(res.data);
-        }
-          catch(err){
-            alert("Your Review Couldnt Be Submitted")
-        }
-      }
-    
-
-
-    const editReview = async () => {
-      debugger
-      try{
-        let res = await axios.put(`/api/games/${game}/reviews/${reviewProp.id}`, review);
-        if(typeof afterUpdate === "function") afterUpdate(res.data);
-      } 
-        catch (err){
-          alert('Your review ran into some issues')
-      }
-    }
-
-
-    const handleChange = (e) => {
-      setReview({...review, [e.target.name]: e.target.value});
-    }
+     soundtrack:"",})
+  
+  
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      if(reviewProp){
-        editReview();
-      }else{
-        addReview();
-      }
-
-      }
-    
-
-
+      addReview(review)
+    setReview({ title:"", 
+    rating:"",
+    gamereview:"",
+    image:"",
+    body:"",
+    gameplay:"",
+    visual:"",
+    soundtrack:"",
+   }) 
+  }
   return(
-    <>
     <Form onSubmit={handleSubmit}>
       <Form.Group>
       <Form.Label>Title</Form.Label>
@@ -80,7 +37,7 @@ const ReviewForm = ({post,add,reviewProp,afterUpdate}) =>{
       autoFocus
       name="title"
       value={review.title}
-      onChange={handleChange}
+      onChange={(e, {value}) => setReview({...review, title: value})}
       />
       </Form.Group>
       <Form.Select
@@ -97,7 +54,7 @@ const ReviewForm = ({post,add,reviewProp,afterUpdate}) =>{
       placeholder="GameReview"
       name="gamereview"
       value={review.gamereview}
-      onChange={handleChange}
+      onChange={(e, {value}) => setReview({...review, gamereview: value})}
       />
       </Form.Group>
       <Form.Group>
@@ -107,7 +64,7 @@ const ReviewForm = ({post,add,reviewProp,afterUpdate}) =>{
       placeholder="Visual"
       name="visual"
       value={review.visual}
-      onChange={handleChange}
+      onChange={(e, {value}) => setReview({...review, visuals: value})}
       />
       </Form.Group>
       <Form.Group>
@@ -117,16 +74,25 @@ const ReviewForm = ({post,add,reviewProp,afterUpdate}) =>{
       placeholder="SoundTrack"
       name="soundtrack"
       value={review.soundtrack}
-      onChange={handleChange}
+      onChange={(e, {value}) => setReview({...review, soundtrack: value})}
       />
       </Form.Group>
 
       
       <Button varient="success" type="submit" onClick={handleSubmit}>Submit</Button>
     </Form>
-    </>
   )
-}
+  }
+
+
+const ConnectedReviewForm = (props) => (
+  <ReviewConsumer>
+    { value => (
+      <ReviewForm {...props} {...value} />
+    )}
+  </ReviewConsumer>
+)
+
 const ratingOpts = [
     {key: "1", text: "1 Star"},
     {key: "2", text: "2 Star"},
@@ -136,4 +102,4 @@ const ratingOpts = [
   ]
 
 
-export default CommentForm;
+export default ConnectedReviewForm;
