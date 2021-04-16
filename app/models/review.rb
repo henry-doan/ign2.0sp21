@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
   belongs_to :user
-  has_many :games, through: :users
+  belongs_to :game
 end
