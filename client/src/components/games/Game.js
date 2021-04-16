@@ -8,6 +8,7 @@ const Game = ({game}) => {
  
 return(
   <h1>{game.gamename}</h1>
+
  
   )
     

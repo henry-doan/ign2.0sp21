@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import Review from './Review'
+import Games from '../games/Games'
 
 const ReviewShow = ({match}) => {  
 
@@ -8,17 +9,17 @@ const [reviews,setReviews] = useState([])
 
 const getReviews = async() => {
     try{
-      let res = await axios.get(`/api/games/${match.params.id}/reviews/${match.params.id}`)
+      let res = await axios.get(`/api/games/:game_id/reviews`)
       setReviews(res.data)
     }catch(err){
       alert("Error Failed to get Reviews")
     }
 }
-
 useEffect(()=>{
   getReviews()
 },[])
-const [games,setGames] = useState([])
+
+const [games,] = useState([])
 const renderReviews = (reviews, games) =>{
 
 }

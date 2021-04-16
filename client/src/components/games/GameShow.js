@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import Game from './Game'
 import GameForm from './GameForm'
+import ReviewShow from '../reviews/ReviewShow'
 
 const GameShow = ({match}) => {  
 
@@ -35,12 +36,15 @@ return(
 <h3>Multiplayer: {games.multi}</h3>
 <h3>Coop: {games.coop}</h3>
 <h3>Single Player: {games.single}</h3>
-<GameForm/>
+{/* <GameForm/> */}
+<ReviewShow/>
 
 {renderGames()}
+
 </>
 )
-}
 
+
+}
 
 export default GameShow;

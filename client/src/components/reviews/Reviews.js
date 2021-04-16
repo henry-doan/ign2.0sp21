@@ -9,7 +9,7 @@ const Reviews = (match) => {
 
   const getReviews = async(match) => {
       try{
-        let res = await axios.get(`/api/games/${match.params.id}/reviews/${match.params.id}`)
+        let res = await axios.get(`/api/games/:game_id/reviews`)
         setReviews(res.data)
       }catch(err){
         alert("Error Failed to get Review")
