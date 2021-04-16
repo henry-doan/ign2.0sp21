@@ -3,16 +3,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do
-  
-  
-    resources :games do
-      resources :reviews
-  end
-
-    resource :user do
-      resources :games 
-      resources :reviews
+      resources :games do
+        resources :reviews
     end
 
-end
+      resources :users do
+        resources :games do
+          resources :reviews
+        end
+
+      end
+
+  end
 end
