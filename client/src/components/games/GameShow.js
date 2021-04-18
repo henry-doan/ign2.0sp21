@@ -3,6 +3,8 @@ import axios from 'axios'
 import Game from './Game'
 import GameForm from './GameForm'
 import ReviewShow from '../reviews/ReviewShow'
+import Review from '../reviews/Review'
+import ReviewForm from '../reviews/ReviewForm'
 
 const GameShow = ({match}) => {  
 
@@ -26,7 +28,6 @@ const renderGames = (games) =>{
 }
 return(
 <>
-<h1>Game: {games.gamename}</h1>
 
 <h3>Description: {games.description}</h3>
 <h3>Release Date: {games.releasedate}</h3>

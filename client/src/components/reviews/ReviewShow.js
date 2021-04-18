@@ -25,12 +25,12 @@ const renderReviews = (reviews, games) =>{
 }
 return(
  <>
-<h1>Game Name: {games.gamename}</h1>
-<h1>GameReview: {reviews.gamereview}</h1>
-<h3>Title: {reviews.title}</h3>
-<h3>Visuals: {reviews.visuals}</h3>
-<h3>Soundtrack: {reviews.soundtrack}</h3>
-<h3>Rating: {reviews.rating}</h3> 
+  <h1>Game Name: {games.gamename}</h1>
+  <h1>GameReview: {reviews.gamereview}</h1>
+  <h3>Title: {reviews.title}</h3>
+  <h3>Visuals: {reviews.visuals}</h3>
+  <h3>Soundtrack: {reviews.soundtrack}</h3>
+  <h3>Rating: {reviews.rating}</h3> 
 
 {renderReviews()}
 </>

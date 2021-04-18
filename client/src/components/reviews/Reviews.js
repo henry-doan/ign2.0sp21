@@ -3,9 +3,11 @@ import axios from 'axios'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
 import { Link } from 'react-router-dom'
+import Games from '../games/Games'
 
 const Reviews = (match) => {
   const [reviews,setReviews] = useState([])
+  const [games, setGames] = useState([])
 
   const getReviews = async(match) => {
       try{
@@ -25,7 +27,7 @@ const Reviews = (match) => {
 
   
 const renderReviews = () =>{
-  return reviews.map((review)=> <Review key= {review.id} review={review.title} />)
+  return reviews.map((review)=> <Review key= {games.review.id} review={games.review.title} />)
 }
 
 
