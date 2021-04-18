@@ -7,7 +7,7 @@ import {ReviewConsumer} from '../../providers/ReviewProvider';
 
 
 const ReviewForm = ({ addReview }) => {
-    const auth = useContext(AuthContext);
+    const Auth = useContext(AuthContext);
   const [ review, setReview ] = useState({title:"", rating:"", gamereview:"", image:"",
      body:"",
      gameplay:"",

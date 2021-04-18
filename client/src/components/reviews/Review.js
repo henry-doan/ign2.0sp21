@@ -7,7 +7,7 @@ const Review = ({reviews}) => {
  
 return(
   <h1>Reviews</h1>
- 
+    
   )
     
 }
