@@ -5,22 +5,34 @@ import GameForm from './GameForm'
 import ReviewShow from '../reviews/ReviewShow'
 import Review from '../reviews/Review'
 import ReviewForm from '../reviews/ReviewForm'
+import Reviews from '../reviews/Reviews'
 
 const GameShow = ({match}) => {  
 
 const [games,setGames] = useState([])
-
+const [reviews, setReviews] = useState([])
 const getGames = async() => {
     try{
       let res = await axios.get(`/api/games/${match.params.id}`)
       setGames(res.data)
+      console.log('got Games', res.data)
     }catch(err){
       alert("Error Failed to get games")
     }
 }
+const getReviews = async() => {
+  try{
+    let res = await axios.get(`/api/games/${match.params.id}/reviews`)
+    setReviews(res.data)
+    console.log("got reviews", res.data)
+  }catch(err){
+    console.log("Error Failed to get Review")
+  }
+}
 
 useEffect(()=>{
   getGames()
+  getReviews()
 },[])
 
 const renderGames = (games) =>{
@@ -38,9 +50,8 @@ return(
 <h3>Coop: {games.coop}</h3>
 <h3>Single Player: {games.single}</h3>
 {/* <GameForm/> */}
-<ReviewShow/>
+<Reviews reviews={reviews}/>
 
-{renderGames()}
 
 </>
 )

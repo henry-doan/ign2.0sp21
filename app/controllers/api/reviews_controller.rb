@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
     before_action :set_game
     before_action :set_review, only: [:show, :update, :destroy]
   def index
-    render json: game.reviews
+    render json: @game.reviews
   end
    
   def show
