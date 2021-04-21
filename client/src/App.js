@@ -13,7 +13,7 @@ import Profile from './components/auth/Profile';
 import About from './components/shared/About'
 import GameForum from './components/games/GameForm'
 import ReviewShow from './components/reviews/ReviewShow'
-import Reviews from './components/reviews/Review'
+import ReviewForm from './components/reviews/ReviewForm'
 
 const App = () => (
   <>
@@ -28,7 +28,7 @@ const App = () => (
           <ProtectedRoute exact path='/profile' component={Profile} />
           <Route exact path='/about' component={About}/>
           <Route exact path='/games' component={Games}/>
-          <Route exact path='/reviews' component={Reviews}/>
+          <Route exact path='/reviews' component={ReviewForm}/>
           <Route exact path='/games/:id' component={GameShow}/>
           <Route exact path='/reviews/:id' component={ReviewShow}/>
           <Route exact path='/gameforum' component={GameForum}/>

@@ -5,6 +5,7 @@ import Review from './Review'
 import { Link } from 'react-router-dom'
 import Games from '../games/Games'
 
+
 const Reviews = ({match, reviews}) => {
 //   const [reviews,setReviews] = useState([])
 //   const [games, setGames] = useState([])
@@ -35,8 +36,8 @@ const renderReviews = () =>{
 return(
 <>
 
-<h1>Reviews</h1>
-{renderReviews()}
+
+
 
 </>
 )

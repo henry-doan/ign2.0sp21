@@ -1,6 +1,7 @@
 import React from 'react';
 import Reviews from  './Reviews';
 import { Card } from 'semantic-ui-react'
+import ReviewForm from '../reviews/ReviewForm'
 
 
 const Review = ({review}) => {
@@ -12,6 +13,7 @@ return(
     <h3>Visuals: {review.visual}</h3>
     <h3>Soundtrack: {review.soundtrack}</h3>
     <h3>Rating: {review.rating}</h3> 
+   
   </>
     
   )

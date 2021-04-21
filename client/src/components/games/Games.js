@@ -3,6 +3,8 @@ import axios from 'axios'
 import GameForm from './GameForm'
 import Game from './Game'
 import { Link } from 'react-router-dom'
+import { Card, Container, } from 'semantic-ui-react'
+import { CardContainer } from '../styledComponents/appStyles'
 const Games = (match) => {
   const [games,setGames] = useState([])
 
@@ -30,10 +32,16 @@ const renderGames = () =>{
 
 return(
 <>
-
-<h1>Games</h1>
-{renderGames(games)}, 
-
+<div>
+  <CardContainer>
+    <Container>
+      <Card.Group>
+      < h1>Games</h1>  
+          {renderGames(games)}, 
+      </Card.Group>
+    </Container>
+  </CardContainer>
+</div>
 </>
 )
 }

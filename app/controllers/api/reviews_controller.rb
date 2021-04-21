@@ -1,4 +1,6 @@
 class Api::ReviewsController < ApplicationController
+    
+    # before_action :authenticate_user!  
     before_action :set_game
     before_action :set_review, only: [:show, :update, :destroy]
   def index
@@ -9,7 +11,7 @@ class Api::ReviewsController < ApplicationController
     render json: @review
   end
   def create 
-    @review = games.reviews.new(review_params)
+    @review = @game.reviews.new(review_params)
       if @review.save
         render json: @review
       else
@@ -43,6 +45,6 @@ class Api::ReviewsController < ApplicationController
   end
   
   def review_params
-    params.require(:review).permit(:title, :rating, :gamereview, :user_id, :body, :image, :game_play, :visual, :soundtrack)
+    params.require(:review).permit(:title, :rating, :gamereview, :body, :image, :game_play, :visual, :soundtrack)
   end
 end 

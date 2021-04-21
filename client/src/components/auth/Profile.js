@@ -6,6 +6,7 @@ import GameForm from '../games/GameForm'
 import Modal from 'react-bootstrap/Modal'
 
 
+
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
 const Profile = ({ user, updateUser }) => {
@@ -31,7 +32,7 @@ const Profile = ({ user, updateUser }) => {
           <Header>{user.nickname}</Header>
           <Header>{user.name}</Header>
           <Header>{user.email}</Header>
-
+          
         </Grid.Column>
       </>
     )
@@ -110,6 +111,7 @@ const Profile = ({ user, updateUser }) => {
           <br/>
         </Grid.Column>
       </Form>
+      
     )
   }
 
