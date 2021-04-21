@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext  from './AuthProvider';
+import { useHistory } from 'react-router';
 
 export const GameContext = React.createContext();
 
@@ -9,7 +10,8 @@ export const GameConsumer = GameContext.Consumer;
 const GameProvider = ({ children }) => {
   const [games, setGames] = useState([])
   const auth = useContext (AuthContext)
-  
+  let history = useHistory()
+
   useEffect( () => {
     axios.get('/api/games')
       .then( res => setGames(res.data))
@@ -37,10 +39,11 @@ const GameProvider = ({ children }) => {
       })
   }
 
-  const deleteGame = (id) => {
+  const deleteGame = (id, history) => {
     axios.delete(`/api/games/${id}`)
       .then( res => {
         setGames(games.filter(t => t.id !== id))
+        history.push('/')
       })
   }
 
