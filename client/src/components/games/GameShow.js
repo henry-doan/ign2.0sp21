@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 import axios from 'axios'
 import Game from './Game'
 import GameForm from './GameForm'
@@ -6,15 +6,24 @@ import ReviewShow from '../reviews/ReviewShow'
 import Review from '../reviews/Review'
 import ReviewForm from '../reviews/ReviewForm'
 import Reviews from '../reviews/Reviews'
+import { GameContext } from '../../providers/GameProvider'
+import { AuthContext } from '../../providers/AuthProvider'
+import { Button } from 'semantic-ui-react'
+import { useHistory } from 'react-router'
 
-const GameShow = ({match}) => {  
 
-const [games,setGames] = useState([])
+const GameShow = ({match, current_user}) => {
+
+const [game,setGame] = useState([])
 const [reviews, setReviews] = useState([])
-const getGames = async() => {
+const {user} = useContext(AuthContext)
+const {deleteGame} = useContext(GameContext)
+let history = useHistory()
+
+const getGame = async() => {
     try{
       let res = await axios.get(`/api/games/${match.params.id}`)
-      setGames(res.data)
+      setGame(res.data)
       console.log('got Games', res.data)
     }catch(err){
       alert("Error Failed to get games")
@@ -31,24 +40,40 @@ const getReviews = async() => {
 }
 
 useEffect(()=>{
-  getGames()
+  getGame()
   getReviews()
 },[])
 
-const renderGames = (games) =>{
+const deleteView = () => {
+  if (user.id === game.user_id) {
 
+    return (
+      <Button onClick={()=>deleteGame(game.id, history)}>
+      Delete Game
+      </Button>
+      )
+    }
 }
+
+
+
 return(
 <>
+{deleteView()}
 
-<h3>Description: {games.description}</h3>
-<h3>Release Date: {games.releasedate}</h3>
-<h3>Studio: {games.studio}</h3>
-<h3>Genre: {games.genre}</h3>
-<h3>Esrb: {games.esrb}</h3>
-<h3>Multiplayer: {games.multi}</h3>
-<h3>Coop: {games.coop}</h3>
-<h3>Single Player: {games.single}</h3>
+
+<h3>Description: {game.description}</h3>
+<h3>Release Date: {game.releasedate}</h3>
+<h3>Studio: {game.studio}</h3>
+<h3>Genre: {game.genre}</h3>
+<h3>Esrb: {game.esrb}</h3>
+<h3>Multiplayer: {game.multi}</h3>
+<h3>Coop: {game.coop}</h3>
+<h3>Single Player: {game.single}</h3>
+
+
+
+
 {/* <GameForm/> */}
 <Reviews reviews={reviews}/>
 

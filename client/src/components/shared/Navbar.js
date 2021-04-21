@@ -44,7 +44,7 @@ const Navbar = ({ location, user, handleLogout, history }) => {
   }
   return(
     <>
-      <Menu pointing secondary>
+      <Menu secondary>
         <Link to='/'>
           <Menu.Item
             name='home'

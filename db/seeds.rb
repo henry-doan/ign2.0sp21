@@ -57,7 +57,7 @@ require "faker"
           rating: rating.sample,
           user_id: users.sample,
           game_id: games.sample,
-          games_id: 1
+          
       )
       puts "review seeded"
     end
