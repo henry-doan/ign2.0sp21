@@ -1,85 +1,99 @@
 import axios from 'axios';
 import React, {useContext, useState} from 'react';
-import {Form,Button} from 'semantic-ui-react';
+import {Form, Button, Label} from 'semantic-ui-react';
 import {AuthContext} from "../../providers/AuthProvider";
 import {ReviewConsumer} from '../../providers/ReviewProvider';
 
 
 
-const ReviewForm = ({ addReview }) => {
-    const Auth = useContext(AuthContext);
-  const [ review, setReview ] = useState({title:"", rating:"", gamereview:"", image:"",
-     body:"",
-     gameplay:"",
-     visual:"",
-     soundtrack:"",})
+const ReviewForm = ({ addReview, gameId, user_id }) => {
+    const auth = useContext(AuthContext)
+  const [ review, setReview ] = useState({title:"", rating:"", gamereview:"", image:"", body:"", game_play:"",  visual:"", soundtrack:""})
   
   
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      addReview(review)
+      addReview(review, user_id, gameId)
     setReview({ title:"", 
     rating:"",
     gamereview:"",
     image:"",
     body:"",
-    gameplay:"",
+    game_play:"",
     visual:"",
     soundtrack:"",
    }) 
   }
   return(
     <Form onSubmit={handleSubmit}>
-      <Form.Group>
-      <Form.Label>Title</Form.Label>
-      <Form.Control
+      <Form.Input
       autoFocus
+      label="Title"
       name="title"
       value={review.title}
       onChange={(e, {value}) => setReview({...review, title: value})}
       />
-      </Form.Group>
-      <Form.Select
-        label='Genre'
-        name='Genre'
+     <Form.Input
+        label='Rating'
+        name='rating'
         value={review.rating}
         onChange={(e, {value}) => setReview({...review, rating: value})}
         options={ratingOpts}
       />
-      <Form.Group>
-      <Form.Label>Game Review</Form.Label>
-      <Form.Control
+      <Form.Input
       autoFocus
+      label="Gamereview"
       placeholder="GameReview"
       name="gamereview"
       value={review.gamereview}
       onChange={(e, {value}) => setReview({...review, gamereview: value})}
       />
-      </Form.Group>
-      <Form.Group>
-      <Form.Label>Tell us about the Graphics</Form.Label>
-      <Form.Control
+        <Form.Input
       autoFocus
+      label="game_play"
+      placeholder="game_play"
+      name="game_play"
+      value={review.game_play}
+      onChange={(e, {value}) => setReview({...review, game_play: value})}
+      />
+      <Form.Input
+      autoFocus
+      label="visual"
       placeholder="Visual"
       name="visual"
       value={review.visual}
-      onChange={(e, {value}) => setReview({...review, visuals: value})}
+      onChange={(e, {value}) => setReview({...review, visual: value})}
+      options={ratingOpts}
       />
-      </Form.Group>
-      <Form.Group>
-      <Form.Label>Tell us about the Sound Track</Form.Label>
-      <Form.Control
+     <Form.Input
       autoFocus
+      label="Soundtrack"
       placeholder="SoundTrack"
       name="soundtrack"
       value={review.soundtrack}
       onChange={(e, {value}) => setReview({...review, soundtrack: value})}
       />
-      </Form.Group>
+    <Form.Input
+      autoFocus
+      label="body"
+      placeholder="body"
+      name="body"
+      value={review.body}
+      onChange={(e, {value}) => setReview({...review, body: value})}
+      />
+      
+      <Form.Input
+      autoFocus
+      label="image"
+      placeholder="image"
+      name="image"
+      value={review.image}
+      onChange={(e, {value}) => setReview({...review, image: value})}
+      />
 
       
-      <Button varient="success" type="submit" onClick={handleSubmit}>Submit</Button>
+      <Form.Button>Save</Form.Button>
     </Form>
   )
   }

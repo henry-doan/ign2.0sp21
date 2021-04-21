@@ -4,7 +4,6 @@ import Game from './Game'
 import GameForm from './GameForm'
 import ReviewShow from '../reviews/ReviewShow'
 import Review from '../reviews/Review'
-import ReviewForm from '../reviews/ReviewForm'
 import Reviews from '../reviews/Reviews'
 import { GameContext } from '../../providers/GameProvider'
 import { AuthContext } from '../../providers/AuthProvider'
@@ -76,6 +75,8 @@ return(
 
 {/* <GameForm/> */}
 <Reviews reviews={reviews}/>
+<ReviewForm gameId={games.id} user_id={user.id} />
+
 
 
 </>
