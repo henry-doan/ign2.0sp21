@@ -1,6 +1,7 @@
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
+import { SecMenu } from './sharedComponets'
 const Navbar = ({ location, user, handleLogout, history }) => {
   const rightNavItem = () => {
     if (user) {
@@ -24,6 +25,7 @@ const Navbar = ({ location, user, handleLogout, history }) => {
       
     } else {
       return (
+
         <Menu.Menu position='right'>
           <Link to='/login'>
             <Menu.Item
@@ -45,7 +47,7 @@ const Navbar = ({ location, user, handleLogout, history }) => {
   }
   return(
     <>
-      <Menu secondary>
+      <SecMenu>
         <Link to='/'>
           <Menu.Item
             name='home'
@@ -57,7 +59,7 @@ const Navbar = ({ location, user, handleLogout, history }) => {
           <Menu.Item
             name='games'
             id='games'
-            active={location.pathname === '/'}
+            active={location.pathname === '/games'}
           />
           </Link>
           <Link to='/GameForm'>
@@ -71,11 +73,11 @@ const Navbar = ({ location, user, handleLogout, history }) => {
           <Menu.Item
             name='about'
             id='about'
-            active={location.pathname === '/'}
+            active={location.pathname === '/about'}
           />
         </Link>
         { rightNavItem() }
-      </Menu>
+      </SecMenu>
     </>
   )
 }

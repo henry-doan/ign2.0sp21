@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import GameForm from './GameForm'
 import Game from './Game'
+import SearchBar from '../shared/SearchBar'
 import { Link } from 'react-router-dom'
 import { Card, Container, } from 'semantic-ui-react'
 import { CardContainer } from '../styledComponents/appStyles'
@@ -35,6 +36,7 @@ return(
 <div>
 
       < h1>Games</h1>  
+      <SearchBar/>
           {renderGames(games)}, 
   
 </div>
