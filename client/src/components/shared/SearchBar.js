@@ -26,7 +26,7 @@ const SearchBar = () => {
             setVisible(games)
         }
         else if (search.length > 3) {
-            axios.get('/api/search?term=${search}')
+            axios.get('users/:user_id/games/:game_id/search')
             .then( res => setVisible(res.data))
             .catch( err => console.log(err))
         }
@@ -40,9 +40,10 @@ const SearchBar = () => {
                     <Input
                     value={search}
                     onChange={handleChange}
-                    icon={{ name: 'search', circular: true }}
+                    icon={{ name: 'search', circular: true, link: true }}
                     placeholder="search..."
                     />
+                    
                 </Grid.Column>
             </Grid.Row>
         </Grid>
