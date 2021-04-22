@@ -13,7 +13,8 @@ const Navbar = ({ location, user, handleLogout, history }) => {
               active={location.pathname === '/profile'}
             />
           </Link>
-          <Menu.Item
+          
+          <Menu.Item position= 'right'
             name='logout'
             onClick={() => handleLogout(history)}
 
@@ -59,11 +60,11 @@ const Navbar = ({ location, user, handleLogout, history }) => {
             active={location.pathname === '/'}
           />
           </Link>
-          <Link to='/reviews'>
+          <Link to='/GameForm'>
           <Menu.Item
-            name='reviews'
-            id='reviews'
-            active={location.pathname === '/1'}
+            name='Add a New Game'
+            id='GameForm'
+            active={location.pathname === '/GameForm'}
           />
           </Link>
         <Link to='/about'>

@@ -11,7 +11,7 @@ import GameShow from './components/games/GameShow';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
 import About from './components/shared/About'
-import GameForum from './components/games/GameForm'
+import GameForm from './components/games/GameForm'
 import ReviewShow from './components/reviews/ReviewShow'
 import ReviewForm from './components/reviews/ReviewForm'
 
@@ -31,7 +31,7 @@ const App = () => (
           <Route exact path='/reviews' component={ReviewForm}/>
           <Route exact path='/games/:id' component={GameShow}/>
           <Route exact path='/reviews/:id' component={ReviewShow}/>
-          <Route exact path='/gameforum' component={GameForum}/>
+          <Route exact path='/gameform' component={GameForm}/>
           <Route component={NoMatch} />
         </Switch>
       </Container>

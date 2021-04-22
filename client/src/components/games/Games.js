@@ -33,14 +33,10 @@ const renderGames = () =>{
 return(
 <>
 <div>
-  <CardContainer>
-    <Container>
-      <Card.Group>
+
       < h1>Games</h1>  
           {renderGames(games)}, 
-      </Card.Group>
-    </Container>
-  </CardContainer>
+  
 </div>
 </>
 )

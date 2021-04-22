@@ -14,8 +14,9 @@ class Api::GamesController < ApplicationController
       def create 
         game = current_user.games.new(game_params)
         if game.save
-          render json: game
+            render json: game
         else
+          
           render json: { errors: @game.errors}, status: :unprocessable_entity
         end
       end
@@ -40,6 +41,6 @@ class Api::GamesController < ApplicationController
         @game = Game.find(params[:id])
       end
         def game_params
-          params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id, reviews_id)
+          params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id,)
         end
       end
