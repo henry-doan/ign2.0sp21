@@ -50,15 +50,16 @@ const deleteView = () => {
 return(
 <>
 {deleteView()}
-<h3>Description: {game.description}</h3>
-<h3>Release Date: {game.releasedate}</h3>
-<h3>Studio: {game.studio}</h3>
-<h3>Genre: {game.genre}</h3>
-<h3>Esrb: {game.esrb}</h3>
-<h3>Multiplayer: {game.multi}</h3>
-<h3>Coop: {game.coop}</h3>
-<h3>Single Player: {game.single}</h3>
-{/* <GameForm/> */}
+  <h3>Name: {game.gamename}</h3>
+  <h3>Description: {game.description}</h3>
+  <h3>Release Date: {game.releasedate}</h3>
+  <h3>Studio: {game.studio}</h3>
+  <h3>Genre: {game.genre}</h3>
+  <h3>Esrb: {game.esrb}</h3>
+  <h3>Multiplayer: {game.multi}</h3>
+  <h3>Coop: {game.coop}</h3>
+  <h3>Single Player: {game.single}</h3>
+
 <Reviews reviews={reviews}/>
 <ReviewForm gameId={game.id} user_id={user.id} />
 </>

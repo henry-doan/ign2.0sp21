@@ -35,8 +35,7 @@ return(
 <div>
 
       < h1>Games</h1>  
-          {renderGames(games)}, 
-  
+          {renderGames(games)}
 </div>
 </>
 )

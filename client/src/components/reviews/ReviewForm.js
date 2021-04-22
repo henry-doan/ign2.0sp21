@@ -8,7 +8,7 @@ import {ReviewConsumer} from '../../providers/ReviewProvider';
 
 const ReviewForm = ({ addReview, gameId, user_id }) => {
     const user = useContext(AuthContext)
-  const [ review, setReview ] = useState({title:"", rating:(5.0), gamereview:"", image:"", body:"", game_play:"",  visual:"", soundtrack:"", user_id: user_id, game_id: gameId })
+  const [ review, setReview ] = useState({title:"", rating:"", gamereview:"", image:"", body:"", game_play:"",  visual:"", soundtrack:"", user_id: user_id, game_id: gameId })
   
  
 
@@ -107,7 +107,7 @@ const ConnectedReviewForm = (props) => (
 
 const ratingOpts = [
     {key: "1", text: "1 Star", value:1},
-    {key: "2", text: "2 Star", value:2 },
+    {key: "2", text: "2 Star", value:2},
     {key: "3", text: "3 Star", value:3},
     {key: "4", text: "4 Star", value:4},
     {key: "5", text: "5 Star", value:5},
