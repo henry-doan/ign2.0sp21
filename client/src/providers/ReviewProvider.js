@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext  from './AuthProvider';
+import { useHistory } from 'react-router';
 
 export const ReviewContext = React.createContext();
 
@@ -10,8 +11,8 @@ const ReviewProvider = ({ children }) => {
   const [reviews, setReviews] = useState([])
 
   
-  useEffect( (match) => {
-    axios.get(`/api/games/:id/reviews`)
+  useEffect( (match, id) => {
+    axios.get(`/api/games/${id}/reviews`)
       .then( res => setReviews(res.data))
       .catch( err => console.log(err))
   }, [])
@@ -19,7 +20,7 @@ const ReviewProvider = ({ children }) => {
 
 
   const addReview = (review, user_id, id, ) => {
-    axios.post(`/api/users/${user_id}/games/${id}/reviews`, { review })
+    axios.post(`/api/users/${user_id}/games/${id}/reviews/`, { review })
       .then( res => {
         setReviews([...reviews, res.data])
       })

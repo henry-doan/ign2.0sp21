@@ -1,6 +1,4 @@
 class Api::ReviewsController < ApplicationController
-    
-    # before_action :authenticate_user!  
     before_action :set_game
     before_action :set_review, only: [:show, :update, :destroy]
   def index
@@ -45,6 +43,6 @@ class Api::ReviewsController < ApplicationController
   end
   
   def review_params
-    params.require(:review).permit(:title, :rating, :gamereview, :body, :image, :game_play, :visual, :soundtrack)
+    params.require(:review).permit(:title, :rating, :gamereview, :user_id, :body, :image, :game_play, :visual, :soundtrack, :game_id)
   end
 end 

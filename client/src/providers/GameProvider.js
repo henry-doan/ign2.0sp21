@@ -27,7 +27,7 @@ const GameProvider = ({ children }) => {
   }
 
   const updateGame = (id, game, match) => {
-    axios.put(`/api/games/${match.params.id}`, { game })
+    axios.put(`/api/games/${id}`, { game })
       .then(res => {
         const updatedGames = games.map( t => {
           if (t.id === id) {
