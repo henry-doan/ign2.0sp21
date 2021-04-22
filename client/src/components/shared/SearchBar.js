@@ -15,7 +15,7 @@ const SearchBar = () => {
                 setGames(res.data)
             })
             .catch( err => console.log(err))
-    })
+    }, [])
     const handleChange = (e) => {
         setSearch(e.target.value)
         updateVisible()
@@ -32,28 +32,20 @@ const SearchBar = () => {
         }
     }
 
-    const updateGame = () => {
-        setGame(e.target.value)
-    }
-
-    const postGame = () => {
-        if (game) {
-            axios.post('/api/game', { game })
-            .then( res => {
-                setGame('')
-                setGames([...visible, res.data])
-            })
-            .catch( err => console.log(err))
-        }
-    }
-
     return (
         <Grid>
             <Grid.Row>
                 <Grid.Column mobile={16} tablet={16} computer={4}>
-                    
+                    <Header as="h2" textAlign="center">Search Games</Header>
+                    <Input
+                    value={search}
+                    onChange={handleChange}
+                    icon={{ name: 'search', circular: true }}
+                    placeholder="search..."
+                    />
                 </Grid.Column>
             </Grid.Row>
         </Grid>
-    )
+    );
 } 
+export default SearchBar;
