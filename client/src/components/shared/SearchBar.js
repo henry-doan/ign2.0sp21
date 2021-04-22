@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Grid, Input, Header, Button, SearchCategory} from 'semantic-ui-react'
 import axios from 'axios';
 import Games from '../games/Games'
+import {HomeHead, MainHead, Griddy} from './sharedComponets'
 
 const SearchBar = () => {
     const [games, setGames] = useState([])
@@ -9,13 +10,6 @@ const SearchBar = () => {
     const [search, setSearch] = useState('')
     const [game, setGame] = useState('')
 
-    useEffect( () => {
-        axios.get('/api/games')
-            .then( res => {
-                setGames(res.data)
-            })
-            .catch( err => console.log(err))
-    }, [])
     const handleChange = (e) => {
         setSearch(e.target.value)
         updateVisible()
@@ -33,20 +27,20 @@ const SearchBar = () => {
     }
 
     return (
-        <Grid>
+        <Griddy>
             <Grid.Row>
                 <Grid.Column mobile={16} tablet={16} computer={4}>
-                    <Header as="h2" textAlign="center">Search Games</Header>
+                    <MainHead>Search Games</MainHead>
                     <Input
                     value={search}
                     onChange={handleChange}
-                    icon={{ name: 'search', circular: true, link: true }}
+                    icon={{ name: 'search', circular: true, link: true, color: 'pink'}}
                     placeholder="search..."
                     />
                     
                 </Grid.Column>
             </Grid.Row>
-        </Grid>
+        </Griddy>
     );
 } 
 export default SearchBar;
