@@ -9,11 +9,13 @@ const Game = ({game}) => {
  
 return(
   <>
-  <h1>{game.gamename} </h1>
+ 
+
+  <a href={`/games/${game.id}`}>{game.gamename}</a>
   <h3>{game.gamereview}</h3>
   <h3>{game.genre}</h3>
   <h3>{game.description}</h3>
-  <a href={`/games/${game.id}`}>View Game</a>
+
  
  </>
   )

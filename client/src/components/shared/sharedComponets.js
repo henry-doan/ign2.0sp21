@@ -5,7 +5,9 @@ import Image from './images/Percent.png'
 export const HomeHead = styled.h2`
     color: pink;
     align: right;
-    text-align: center;
+    text-align: left;
+    margain-left 30;
+    margain-right 50;
     font-size: 50px;
 
 ` 
