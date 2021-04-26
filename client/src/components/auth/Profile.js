@@ -32,7 +32,7 @@ const Profile = ({ user, updateUser }) => {
           <Header>{user.nickname}</Header>
           <Header>{user.name}</Header>
           <Header>{user.email}</Header>
-          <GameForm />
+          {/* <GameForm /> */}
         </Grid.Column>
       </>
     )

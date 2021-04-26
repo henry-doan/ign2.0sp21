@@ -6,6 +6,10 @@ class Api::GamesController < ApplicationController
         render json: Game.all
       end
 
+    def search 
+      render json: Game.search(params[:query])
+    end
+
     def show
      
       render json: @game

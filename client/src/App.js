@@ -14,6 +14,7 @@ import About from './components/shared/About'
 import GameForm from './components/games/GameForm'
 import ReviewShow from './components/reviews/ReviewShow'
 import ReviewForm from './components/reviews/ReviewForm'
+import SearchResults from './components/shared/SearchResults'
 
 const App = () => (
   <>
@@ -32,6 +33,7 @@ const App = () => (
           <Route exact path='/games/:id' component={GameShow}/>
           <Route exact path='/reviews/:id' component={ReviewShow}/>
           <Route exact path='/gameform' component={GameForm}/>
+          <Route exact path="/results" component={SearchResults}/>
           <Route component={NoMatch} />
         </Switch>
       </Container>

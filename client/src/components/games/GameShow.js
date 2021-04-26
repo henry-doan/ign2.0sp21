@@ -10,6 +10,8 @@ import { AuthContext } from '../../providers/AuthProvider'
 import { Button } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import ReviewForm from '../reviews/ReviewForm'
+import { HomeHead } from '../shared/sharedComponets'
+
 const GameShow = ({match, current_user}) => {
 const [game,setGame] = useState([])
 const [reviews, setReviews] = useState([])
@@ -49,6 +51,8 @@ const deleteView = () => {
 }
 return(
 <>
+<HomeHead>
+
 {deleteView()}
 <h3>Description: {game.description}</h3>
 <h3>Release Date: {game.releasedate}</h3>
@@ -61,6 +65,7 @@ return(
 {/* <GameForm/> */}
 <Reviews reviews={reviews}/>
 <ReviewForm gameId={game.id} user_id={user.id} />
+</HomeHead>
 </>
 )
 }

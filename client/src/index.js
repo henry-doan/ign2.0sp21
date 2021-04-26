@@ -9,10 +9,12 @@ import AuthProvider from './providers/AuthProvider';
 import { initMiddleware } from 'devise-axios';
 import GameProvider from './providers/GameProvider';
 import ReviewProvider from './providers/ReviewProvider';
+import QueryProvider from './components/shared/QueryProvider'
 initMiddleware();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
+      <QueryProvider>
       <GameProvider>
        <ReviewProvider>
           <BrowserRouter>
@@ -20,6 +22,7 @@ ReactDOM.render(
           </BrowserRouter>
         </ReviewProvider>
       </GameProvider>
+      </QueryProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
