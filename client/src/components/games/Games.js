@@ -4,7 +4,7 @@ import GameForm from './GameForm'
 import Game from './Game'
 import SearchBar from '../shared/SearchBar'
 import { Link } from 'react-router-dom'
-import { Card, Container, } from 'semantic-ui-react'
+import { Card, Container, Grid } from 'semantic-ui-react'
 import { CardContainer } from '../styledComponents/appStyles'
 const Games = (match) => {
   const [games,setGames] = useState([])
@@ -34,12 +34,13 @@ const renderGames = () =>{
 return(
 <>
 <div>
-
+<Grid>
       < h1>Games</h1>  
       <SearchBar/>
-          {renderGames(games)}, 
-  
+          {renderGames(games)}<br></br> 
+         </Grid>
 </div>
+
 </>
 )
 }

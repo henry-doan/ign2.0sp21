@@ -4,6 +4,7 @@ import ReviewForm from './ReviewForm'
 import Review from './Review'
 import { Link } from 'react-router-dom'
 import Games from '../games/Games'
+import { Card, Grid } from 'semantic-ui-react'
 
 const Reviews = ({match, reviews}) => {
 //   const [reviews,setReviews] = useState([])

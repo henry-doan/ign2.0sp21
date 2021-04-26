@@ -22,7 +22,7 @@ class Api::GamesController < ApplicationController
       end
     
       def update 
-        @game = current_user.game.find(params[:id])
+        @game = current_user.games.find(params[:id])
         if @game.update(game_params)
           render json: @game
         else

@@ -64,7 +64,7 @@ const Navbar = ({ location, user, handleLogout, history }) => {
           </Link>
           <Link to='/GameForm'>
           <Menu.Item
-            name='Add a New Game'
+            name='Add New Game'
             id='GameForm'
             active={location.pathname === '/GameForm'}
           />
