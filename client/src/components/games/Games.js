@@ -6,6 +6,7 @@ import SearchBar from '../shared/SearchBar'
 import { Link } from 'react-router-dom'
 import { Card, Container, Grid } from 'semantic-ui-react'
 import { CardContainer } from '../styledComponents/appStyles'
+import { HomeHead } from '../shared/sharedComponets'
 const Games = (match) => {
   const [games,setGames] = useState([])
 
@@ -34,11 +35,17 @@ const renderGames = () =>{
 return(
 <>
 <div>
-<Grid>
-      < h1>Games</h1>  
-      <SearchBar/>
-          {renderGames(games)}<br></br> 
-         </Grid>
+    <SearchBar/>
+
+      <CardContainer>
+
+      <HomeHead>
+
+      < h1 style={{ fontSize: '50px', textUnderlinePosition: 'pink'}}>Games</h1>  
+          {renderGames(games)}, 
+      </HomeHead>
+      </CardContainer>
+  
 </div>
 
 </>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :games do
         resources :reviews
     end
+    get 'search', to: 'games#search'
     
     resources :users do
       resources :games do
@@ -13,6 +14,5 @@ Rails.application.routes.draw do
       end
       
     end
-    get 'search', to: 'games#search'
   end
 end
