@@ -1,13 +1,53 @@
-import React from 'react';
+import React,{ useState, useContext, useHistory, useEffect } from 'react';
+import axios from 'axios'
 import Reviews from  './Reviews';
 import { Card, Segment, Grid, Divider } from 'semantic-ui-react'
 import ReviewForm from '../reviews/ReviewForm'
 import { Image } from "semantic-ui-react"
 import Fade from 'react-reveal/Fade'
+import { Image } from "semantic-ui-react"
+import { AuthContext } from '../../providers/AuthProvider'
+import {ReviewContext} from '../../providers/ReviewProvider';
+import { GameContext } from '../../providers/GameProvider';
 
+const Review = ({review, user_id, game_id}) => {    
+  const [game,setGame] = useState([])
+  const [reviews, setReviews] = useState([])
+  const {user} = useContext(AuthContext)
+  const {deleteReview} = useContext(ReviewContext)
+  const {updateReview} = useContext(ReviewContext)
 
-const Review = ({review}) => {
- 
+  const getReviews = async(match) => {
+    try{
+      let res = await axios.get(`/api/games/${match.params.id}/reviews`)
+      setReviews(res.data)
+      console.log("got reviews", res.data)
+    }catch(err){
+      console.log("Error Failed to get Review")
+    }
+  }
+  useEffect(()=>{
+    
+    getReviews(game_id, user_id)
+  },[])
+  const deleteView = (game_id) => {
+    if (user.id === review.user_id) {
+      return (
+        <Button onClick={()=>deleteReview(review.id, game.id)}>
+        Delete Review
+        </Button>
+        )
+      }
+  }
+  const updateView = (user_id, game_id) => {
+    if (user.id === review.user_id) {
+      return (
+        <Button onClick={()=>updateReview(review.id, game.id)}>
+        Update Review
+        </Button>
+        )
+      }
+  }
 return(
     <>
     <Fade left>
@@ -44,6 +84,7 @@ return(
   </>
     
   )
-    
-}
+  
+  }
+
   export default Review
