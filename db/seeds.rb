@@ -40,7 +40,6 @@
           image: "https://images-na.ssl-images-amazon.com/images/I/81bH3%2BDbvNL._SL1500_.jpg",
           esrb: "teen",
           releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
-          image: "https://images.unsplash.com/photo-1602610411365-76e8c2a88e18?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=666&q=80",
           user_id: users.sample,
           )
           3.times do
