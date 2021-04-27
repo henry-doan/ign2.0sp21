@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
-import { Grid, Input, Header, Button, SearchCategory} from 'semantic-ui-react'
+import { Grid, Input, Header, Button, SearchCategory, Icon} from 'semantic-ui-react'
 import axios from 'axios';
 import Games from '../games/Games'
-import {HomeHead, MainHead, ContainerSec} from './sharedComponets'
+import {HomeHead, MainHead, ContainerSec, StyledInput, StyledIcon} from './sharedComponets'
 import { useHistory } from "react-router-dom"
 import { QueryContext } from "./QueryProvider"
 
@@ -42,12 +42,12 @@ const SearchBar = () => {
 
                     <MainHead></MainHead>
                     <form onSubmit={handleSubmit}>
-                    <Input
-                    size='big'
+                    <StyledInput
+                    size='huge'
                     value={query}
                     onChange={(e) => handleChange(e)}
-                    icon={{ name: 'search', circular: true, link: true, color: 'pink'}}
-                    placeholder="search..."
+                    icon={<StyledIcon name='search' circular link onClick={handleSubmit}/>}
+                    placeholder={"search..."}
                     />
                     </form>
             </ContainerSec>

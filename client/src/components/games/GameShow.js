@@ -1,16 +1,14 @@
 import React,{useState,useEffect, useContext} from 'react'
 import axios from 'axios'
-import Game from './Game'
-import GameForm from './GameForm'
-import ReviewShow from '../reviews/ReviewShow'
-import Review from '../reviews/Review'
 import Reviews from '../reviews/Reviews'
 import { GameContext } from '../../providers/GameProvider'
 import { AuthContext } from '../../providers/AuthProvider'
-import { Button, Image, Progress } from 'semantic-ui-react'
+import { Button, Image, Progress, Segment, Grid, Divider } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import ReviewForm from '../reviews/ReviewForm'
-import { HomeHead } from '../shared/sharedComponets'
+import { HomeHead, MainHead, StyledSegment } from '../shared/sharedComponets'
+import { Fade } from 'react-reveal'
+
 
 
 
@@ -140,16 +138,44 @@ return(
 <HomeHead>
 
 {deleteView()}
-<Image src={game.image} />
-<h3>Description: {game.description}</h3>
-<h3>Release Date: {game.releasedate}</h3>
-<h3>Studio: {game.studio}</h3>
-<h3>Genre: {game.genre}</h3>
-<h3>Esrb: {game.esrb}</h3>
-<h3>Multiplayer: {game.multi}</h3>
-<h3>Coop: {game.coop}</h3>
-<h3>Single Player: {game.single}</h3>
+<Segment>
+  <MainHead>{game.gamename}</MainHead>
+  <Divider style={{backgroundColor: '#fc8787'}}/>
+<Grid divided='vertically'>
+    <Grid.Row columns={2}>
+      <Grid.Column>
+      <Image height="auto" width="200px" centered src={game.image} />
+      </Grid.Column>
+      <Grid.Column>
+      <h3>{game.description}</h3>
+      </Grid.Column>
+    </Grid.Row>
+
+      {renderAverageRating()}
+    <Grid.Row columns={5} style={{backgroundColor: '#fc8787'}}>
+      <Grid.Column>
+      </Grid.Column>
+      <Grid.Column>
+        <h3 style={{color: 'white'}}>{game.genre}</h3>
+      </Grid.Column>
+      <Grid.Column>
+        <h3 style={{color: 'white'}}>{game.esrb}</h3>
+      </Grid.Column>
+      <Grid.Column>
+        <h3 style={{color: 'white'}}>{game.releasedate}</h3>
+      </Grid.Column>
+      <Grid.Column>
+        <h3 style={{color: 'white'}}>{game.studio}</h3>
+      </Grid.Column>
+      <Grid.Column>
+        <h3 style={{color: 'white'}}>{game.muliplayer}</h3>
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
+</Segment>
 {/* <GameForm/> */}
+<Segment>
+
 <br />
 {renderAverageRating()}
 <br />
@@ -159,6 +185,7 @@ return(
 {renderAverageSoundtrack()}
 {renderAverageGameplay()}
 <hr />
+</Segment>
 
 
 
@@ -166,9 +193,12 @@ return(
 
 
 
-
-<Reviews reviews={reviews}/>
+<Segment>
+  <Reviews reviews={reviews}/>
+  </Segment>
+<Fade left>
 <ReviewForm gameId={game.id} user_id={user.id} />
+</Fade>
 </HomeHead>
 </>
 )

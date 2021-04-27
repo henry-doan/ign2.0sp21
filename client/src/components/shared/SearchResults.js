@@ -32,11 +32,10 @@ const SearchResults = () => {
               return (
                   <div>
                     
-                      <h1>{r.gamename}</h1>
+                    <a href={`/games/${r.id}`}><h1>{r.gamename}</h1></a>
                       <h2>{r.studio}</h2>
                       <h3>{r.genre}</h3>
                       <p>{r.description}</p>
-                      <a href={`/games/${r.id}`}>View Game</a>
                 
                   </div>
               );
