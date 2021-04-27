@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-
 import Game from './Game'
 import SearchBar from '../shared/SearchBar'
 import { HomeHead } from '../shared/sharedComponets'

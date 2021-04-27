@@ -17,6 +17,7 @@ const [game,setGame] = useState([])
 const [reviews, setReviews] = useState([])
 const {user} = useContext(AuthContext)
 const {deleteGame} = useContext(GameContext)
+const {updateGame} = useContext(GameContext)
 
 let history = useHistory()
 const getGame = async() => {
@@ -46,6 +47,15 @@ const deleteView = () => {
     return (
       <Button onClick={()=>deleteGame(game.id, history)}>
       Delete Game
+      </Button>
+      )
+    }
+}
+const updateView = () => {
+  if (user.id === game.user_id) {
+    return (
+      <Button onClick={()=>updateGame(game.id, history)}>
+      Update Game
       </Button>
       )
     }
@@ -137,7 +147,7 @@ return(
 <>
 <HomeHead>
 
-{deleteView()}
+
 <Segment>
   <MainHead>{game.gamename}</MainHead>
   <Divider style={{backgroundColor: '#fc8787'}}/>
@@ -173,7 +183,8 @@ return(
     </Grid.Row>
   </Grid>
 </Segment>
-{/* <GameForm/> */}
+{deleteView()}
+{updateView()}
 <Segment>
 
 <br />

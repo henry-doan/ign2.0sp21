@@ -8,7 +8,7 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 
 
-const ReviewForm = ({ addReview, gameId, user_id }) => {
+const UpdatingReview = ({ updateReview, gameId, user_id }) => {
   const user = useContext(AuthContext)
   const [ review, setReview ] = useState({title:"", rating:(5.0), gamereview:(5.0), image:"", body:"", game_play:(5.0),  visual:(5.0), soundtrack:(5.0), user_id: user_id, game_id: gameId })
   const [open, setOpen] = React.useState(false)
@@ -16,19 +16,12 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      addReview(review, user_id, gameId)
+      updateReview(review, user_id, gameId)
     setReview({ title:"", rating:(""), gamereview:"", image:"", body:"", game_play:"", visual:"", soundtrack:"", user_id: user_id, game_id: gameId }) 
   }
   return(
 
-    <Modal
-      style={{backgroundColor: '#fc8778'}}
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
-      open={open}
-      trigger={<Button color='black'>New Review</Button>}
-    >
-
+  
   
 <Container>
     <Grid>
@@ -46,7 +39,7 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
         <Form.Input
       
       label="Gamereview"
-      placeholder="Game Review"
+      placeholder={review.gamereview}
       name="gamereview"
       value={review.gamereview}
       onChange={(e, {value}) => setReview({...review, gamereview: value})}
@@ -72,22 +65,22 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
     
         <Form.Dropdown
    
-   label="Game Play"
-   placeholder="Select a Rating"
-   name="game_play"
-   value={review.game_play}
-   onChange={(e, {value}) => setReview({...review, game_play: value})}
-   options={ratingOpts}
-   />
+    label="Game Play"
+    placeholder="Select a Rating"
+    name="game_play"
+    value={review.game_play}
+    onChange={(e, {value}) => setReview({...review, game_play: value})}
+    options={ratingOpts}
+    />
       <Form.Dropdown
 
-label="Visuals"
-placeholder="Select a Rating"
-name="visual"
-value={review.visual}
-onChange={(e, {value}) => setReview({...review, visual: value})}
-options={ratingOpts}
-/>
+    label="Visuals"
+    placeholder="Select a Rating"
+    name="visual"
+    value={review.visual}
+    onChange={(e, {value}) => setReview({...review, visual: value})}
+    options={ratingOpts}
+    />
      <Form.Dropdown
      
      label="Sound Track"
@@ -107,18 +100,12 @@ options={ratingOpts}
      </Grid.Row>
      </Grid>
      </Container>
-  </Modal>
+  
   )
   }
 
 
-const ConnectedReviewForm = (props) => (
-  <ReviewConsumer>
-    { value => (
-      <ReviewForm {...props} {...value} />
-    )}
-  </ReviewConsumer>
-)
+
 
 const ratingOpts = [
     {key: "1", text: "1 Star", value:1},
@@ -129,4 +116,4 @@ const ratingOpts = [
   ]
 
 
-export default ConnectedReviewForm;
+export default UpdatingReview;

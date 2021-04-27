@@ -28,7 +28,7 @@ const ReviewProvider = ({ children }) => {
   }
 
   const updateReview =  (review, match, user_id, id) => {
-    axios.put(`/api/users/${match.params.id}/games/${id}/reviews/`, { review })
+    axios.put(`/api/games/${id}/reviews/`, { review })
       .then(res => {
         const updatedReviews = reviews.map( t => {
           if (t.id === id) {
@@ -40,8 +40,8 @@ const ReviewProvider = ({ children }) => {
       })
   }
 
-  const deleteReview = (review, game_id, id) => {
-    axios.delete(`/api/games/${game_id}/reviews/${id}`)
+  const deleteReview = async(review, gameId, id) => {
+    axios.delete(`/api/games/${gameId}/reviews/:${id}`)
       .then( res => {
         setReviews(reviews.filter(t => t.id !== id))
       })
