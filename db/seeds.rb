@@ -37,31 +37,30 @@
           coop: true,
           multi: true,
           single: true,
+          image: "https://images-na.ssl-images-amazon.com/images/I/81bH3%2BDbvNL._SL1500_.jpg",
           esrb: "teen",
           releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
           image: "https://images.unsplash.com/photo-1602610411365-76e8c2a88e18?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=666&q=80",
           user_id: users.sample,
           )
-  end
-      12.times do
-        users = [1,2,3]
-        games = [1,2,3,4,5,6,7,8,9,10,11,12]
-        rating = [1,2,3,4,5]
-        review = Review.create(
-          title: Faker::Food.fruits,
-          gamereview: Faker::Games::ElderScrolls.city,
-          body: Faker::TvShows::Seinfeld.quote,
-          game_play: Faker::Games::HalfLife.character,
-          visual: Faker::TvShows::SouthPark.quote,
-          soundtrack: Faker::Music::Hiphop.artist,
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
-          rating: rating.sample,
-          user_id: users.sample,
-          game_id: games.sample,
-          
-      )
-      puts "review seeded"
-    end
+          3.times do
+            users = [1,2,3]
+            rating = [1,2,3,4,5]
+            review = Review.create(
+              title: Faker::Food.fruits,
+              gamereview: Faker::Games::ElderScrolls.city,
+              body: Faker::TvShows::Seinfeld.quote,
+              game_play: rating.sample,
+              visual: rating.sample,
+              soundtrack: rating.sample,
+              image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+              rating: rating.sample,
+              user_id: users.sample,
+              game_id: game.id,
+            )
+            puts "review seeded"
+          end
+        end
 
       puts "seeded"
 

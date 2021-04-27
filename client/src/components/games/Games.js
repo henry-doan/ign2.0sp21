@@ -10,6 +10,10 @@ import { HomeHead } from '../shared/sharedComponets'
 const Games = (match) => {
   const [games,setGames] = useState([])
 
+  useEffect(()=>{
+    getGames()
+  },[])
+
   const getGames = async(match) => {
       try{
         let res = await axios.get(`/api/games/`)
@@ -19,14 +23,6 @@ const Games = (match) => {
       }
   }
 
-
-  useEffect(()=>{
-    getGames()
-  },[])
-
-
-
-  
 const renderGames = () =>{
   return games.map((game)=> <Game key= {game.id} game={game} />)
 }
