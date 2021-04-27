@@ -8,7 +8,7 @@ class Api::ReviewsController < ApplicationController
   def show
     render json: @review
   end
-  def create 
+  def create
     @review = @game.reviews.new(review_params)
       if @review.save
         render json: @review
@@ -17,7 +17,7 @@ class Api::ReviewsController < ApplicationController
       end
   end
     
-  def update 
+  def update
     
     if @review.update(review_params)
       render json: @review
@@ -26,7 +26,7 @@ class Api::ReviewsController < ApplicationController
     end
   end
     
-  def destroy 
+  def destroy
 
     @review.destroy
     render json: { message: 'Review is gone' }

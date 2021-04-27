@@ -7,7 +7,7 @@ import imageSrc from './images/Percent.png'
 
 
 const Home = () => (
-    
+
     <>
 
       <Container>

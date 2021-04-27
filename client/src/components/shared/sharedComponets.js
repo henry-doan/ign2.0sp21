@@ -3,21 +3,21 @@ import {Menu, Header, Grid } from 'semantic-ui-react';
 import Image from './images/Percent.png'
 
 export const HomeHead = styled.h2`
-    color: pink;
+    color: #fc8787;
     align: right;
     text-align: left;
     margain-left 30;
     margain-right 50;
     font-size: 50px;
 
-` 
+`
 export const SecMenu = styled(Menu)`
-    background: pink !Important;
+    background: #fc8787 !Important;
     color: white !Important;
 `
 
 export const MainHead = styled.h2`
-    color: pink;
+    color: #fc8787;
     font-size: 25 px;
 
 `

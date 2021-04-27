@@ -11,7 +11,7 @@ const ReviewProvider = ({ children }) => {
   const [reviews, setReviews] = useState([])
 
   
-  useEffect( (match, id) => {
+  useEffect( (id) => {
     axios.get(`/api/games/${id}/reviews`)
       .then( res => setReviews(res.data))
       .catch( err => console.log(err))
@@ -47,12 +47,15 @@ const ReviewProvider = ({ children }) => {
       })
   }
 
+
+
   return(
     <ReviewContext.Provider value={{
       reviews,
       addReview: addReview,
       updateReview: updateReview,
       deleteReview: deleteReview,
+      
     }}>
       { children }
     </ReviewContext.Provider>
