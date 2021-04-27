@@ -7,7 +7,7 @@ import Review from '../reviews/Review'
 import Reviews from '../reviews/Reviews'
 import { GameContext } from '../../providers/GameProvider'
 import { AuthContext } from '../../providers/AuthProvider'
-import { Button } from 'semantic-ui-react'
+import { Button, Image } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import ReviewForm from '../reviews/ReviewForm'
 import { HomeHead } from '../shared/sharedComponets'
@@ -54,6 +54,7 @@ return(
 <HomeHead>
 
 {deleteView()}
+<Image src={game.image} />
 <h3>Description: {game.description}</h3>
 <h3>Release Date: {game.releasedate}</h3>
 <h3>Studio: {game.studio}</h3>

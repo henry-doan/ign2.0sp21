@@ -2,9 +2,10 @@ import { useState, useEffect, useContext } from 'react'
 import { Grid, Input, Header, Button, SearchCategory} from 'semantic-ui-react'
 import axios from 'axios';
 import Games from '../games/Games'
-import {HomeHead, MainHead, Griddy} from './sharedComponets'
+import {HomeHead, MainHead, ContainerSec} from './sharedComponets'
 import { useHistory } from "react-router-dom"
 import { QueryContext } from "./QueryProvider"
+
 
 const SearchBar = () => {
     const [games, setGames] = useState([])
@@ -36,21 +37,21 @@ const SearchBar = () => {
     // }
 
     return (
-        <Griddy>
-            <Grid.Row>
-                <Grid.Column mobile={16} tablet={16} computer={4}>
-                    <MainHead>Search Games</MainHead>
+        <>
+            <ContainerSec>
+
+                    <MainHead></MainHead>
                     <form onSubmit={handleSubmit}>
                     <Input
+                    size='big'
                     value={query}
                     onChange={(e) => handleChange(e)}
                     icon={{ name: 'search', circular: true, link: true, color: 'pink'}}
                     placeholder="search..."
                     />
                     </form>
-                </Grid.Column>
-            </Grid.Row>
-        </Griddy>
+            </ContainerSec>
+        </>
     );
 } 
 export default SearchBar;

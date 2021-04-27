@@ -28,3 +28,15 @@ export const Griddy = styled(Grid)`
 export const Percent = styled(Image)`
     align: center;
 `
+export const Container = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+`
+export const ContainerSec = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+`
