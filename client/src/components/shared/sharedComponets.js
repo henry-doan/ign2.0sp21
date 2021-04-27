@@ -1,15 +1,8 @@
 import styled from 'styled-components';
-import {Menu, Header, Grid } from 'semantic-ui-react';
-import Image from './images/Percent.png'
+import {Menu, Header, Grid, Input, Icon, Button, Segment, Image,} from 'semantic-ui-react';
 
 export const HomeHead = styled.h2`
     color: #fc8787;
-    align: right;
-    text-align: left;
-    margain-left 30;
-    margain-right 50;
-    font-size: 50px;
-
 `
 export const SecMenu = styled(Menu)`
     background: #fc8787 !Important;
@@ -26,7 +19,9 @@ export const Griddy = styled(Grid)`
     width: 100%
 `
 export const Percent = styled(Image)`
+    text-align: cente
     align: center;
+    content-align: center;
 `
 export const Container = styled.div`
 display: flex;
@@ -38,5 +33,28 @@ export const ContainerSec = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
-width: 100%;
+`
+export const StyledInput = styled(Input)`
+width: 550px;
+color: #fc8787;
+`
+export const SecInput = styled(Input)`
+width: 600px;
+input-color: #fc8787;
+`
+
+
+export const StyledIcon = styled(Icon)`
+name: search;
+color: #fc8787;
+`
+export const StyledButton = styled(Button)`
+color: #fc8787;
+`
+export const SecBackground = styled.div`
+backgroundImage: linearGradient()
+position: fixed;
+minWidth: 100%;
+minHeight: 100%;
+background-size: cover;
 `

@@ -1,10 +1,8 @@
-import GameForm from './GameForm';
-import Games from  './Games';
-import { Card } from 'semantic-ui-react'
-import ReviewForm from '../reviews/ReviewForm'
-import { Divider, Segment, Image } from 'semantic-ui-react'
+
+import { Divider, Segment, Image, Grid } from 'semantic-ui-react'
 import axios from 'axios'
 import React,{useState, useEffect} from 'react'
+import Fade from 'react-reveal/Fade'
 
 
 const Game = ({game}) => {
@@ -45,17 +43,35 @@ const Game = ({game}) => {
 
 return(
   <>
-
+  <Fade left>
   <Segment>
+  <a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
+  <Divider style={{backgroundColor: '#fc8787'}}/>
+  <Grid divided='vertically'>
+    <Grid.Row columns={2}>
+      <Grid.Column>
+      <Image height="auto" width="200px" centered src={game.image} />
+      </Grid.Column>
+      <Grid.Column>
+      <h3>{game.description}</h3>
+      </Grid.Column>
+    </Grid.Row>
 
-  <a href={`/games/${game.id}`}><h1>{game.gamename}</h1></a>
-  <Image src={game.image} />
-  {renderAverageRating()}
-  <h3>{game.gamereview}</h3>
-  <h3>{game.genre}</h3>
-  <h3>{game.description}</h3>
+    <Grid.Row columns={3} style={{backgroundColor: '#fc8787'}}>
+      <Grid.Column>
+      <h3 style={{color: 'white'}}>{renderAverageRating()}</h3>
+      </Grid.Column>
+      <Grid.Column>
+        <h3 style={{color: 'white'}}>{game.genre}</h3>
+      </Grid.Column>
+      <Grid.Column>
+        <h3 style={{color: 'white'}}>{game.esrb}</h3>
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
   </Segment>
-  <Divider/>
+  </Fade>
+  <Divider tyle={{backgroundColor: '#fc8787'}} />
 
   </>
   )

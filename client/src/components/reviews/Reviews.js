@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import ReviewForm from './ReviewForm'
+
 import Review from './Review'
-import { Link } from 'react-router-dom'
-import Games from '../games/Games'
+
 
 const Reviews = ({match, reviews}) => {
 //   const [reviews,setReviews] = useState([])

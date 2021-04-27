@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Segment } from 'semantic-ui-react';
 import { AuthConsumer, AuthContext } from '../../providers/AuthProvider';
 import { GameConsumer } from '../../providers/GameProvider';
+import { HomeHead } from '../shared/sharedComponets';
 
 
 const GameForm = ({ addGame }) => {
@@ -17,9 +18,13 @@ const GameForm = ({ addGame }) => {
   }
 
   return(
-    <Form onSubmit={handleSubmit}>
+    <Segment style={{backgroundColor: '#fc8778'}}>
+      <HomeHead>
+
+    <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
       <Form.Input
-        label='Gamename'
+        
+        label={'Name of Game'}
         placeholder="Name of Game"
         name='gamename'
         value={game.gamename}
@@ -85,6 +90,8 @@ const GameForm = ({ addGame }) => {
       />
       <Form.Button>Save</Form.Button>
     </Form>
+      </HomeHead>
+    </Segment>
   )
 }
 
@@ -95,16 +102,17 @@ const ConnectedGameForm = (props) => (
     )}
   </GameConsumer>
 )
+
 const genreOpts = [
-  {key: "1", text: "Action", value:"Action"},
-  {key: "2", text: "Adventure", value:"Adventure"},
-  {key: "3", text: "Fighting", value:"Fighting"},
-  {key: "4", text: "Role-play", value:"Role-play"},
-  {key: "5", text: "Simulation", value:"Simulation"},
-  {key: "6", text: "Strategy", value:"Strategy"},
-  {key: "7", text: "Sports", value:"Sports"},
-  {key: "8", text: "MMO", value:"MMO"},
-  {key: "9", text: "Puzzle/Board", value:"Puzzle"},
+    {key: "1", text: "Action", value:"Action"},
+    {key: "2", text: "Adventure", value:"Adventure"},
+    {key: "3", text: "Fighting", value:"Fighting"},
+    {key: "4", text: "Role-play", value:"Role-play"},
+    {key: "5", text: "Simulation", value:"Simulation"},
+    {key: "6", text: "Strategy", value:"Strategy"},
+    {key: "7", text: "Sports", value:"Sports"},
+    {key: "8", text: "MMO", value:"MMO"},
+    {key: "9", text: "Puzzle/Board", value:"Puzzle"},
 ]
 
 export default ConnectedGameForm;

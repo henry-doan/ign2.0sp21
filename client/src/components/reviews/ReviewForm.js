@@ -3,13 +3,15 @@ import React, {useContext, useState} from 'react';
 import {Form} from 'semantic-ui-react';
 import {AuthContext} from '../../providers/AuthProvider';
 import {ReviewConsumer} from '../../providers/ReviewProvider';
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
+
 
 
 
 const ReviewForm = ({ addReview, gameId, user_id }) => {
-    const user = useContext(AuthContext)
+  const user = useContext(AuthContext)
   const [ review, setReview ] = useState({title:"", rating:(5.0), gamereview:"", image:"", body:"", game_play:"",  visual:"", soundtrack:"", user_id: user_id, game_id: gameId })
-  
+  const [open, setOpen] = React.useState(false)
  
 
     const handleSubmit = (e) => {
@@ -18,14 +20,26 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
     setReview({ title:"", rating:(""), gamereview:"", image:"", body:"", game_play:"", visual:"", soundtrack:"", user_id: user_id, game_id: gameId }) 
   }
   return(
-    <Form onSubmit={handleSubmit}>
+
+    <Modal
+      style={{backgroundColor: '#fc8778'}}
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      trigger={<Button color='black'>New Review</Button>}
+    >
+
+  
+  
+
+    <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
       <Form.Input
      
-      label="Title"
-      name="title"
-      value={review.title}
-      onChange={(e, {value}) => setReview({...review, title: value})}
-      />
+     label="Title"
+     name="title"
+     value={review.title}
+     onChange={(e, {value}) => setReview({...review, title: value})}
+     />
         <Form.Input
       
       label="Gamereview"
@@ -36,21 +50,21 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
       />
       <Form.Input
      
-      label="body"
-      placeholder="body"
-      name="body"
-      value={review.body}
-      onChange={(e, {value}) => setReview({...review, body: value})}
-      />
+     label="body"
+     placeholder="body"
+     name="body"
+     value={review.body}
+     onChange={(e, {value}) => setReview({...review, body: value})}
+     />
       
       <Form.Input
      
-      label="image"
-      placeholder="image"
-      name="image"
-      value={review.image}
-      onChange={(e, {value}) => setReview({...review, image: value})}
-      />
+     label="image"
+     placeholder="image"
+     name="image"
+     value={review.image}
+     onChange={(e, {value}) => setReview({...review, image: value})}
+     />
      <Form.Dropdown
         label='Rating'
         name='rating'
@@ -58,41 +72,42 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
         value={review.rating}
         onChange={(e, {value}) => setReview({...review, rating: value})}
         options={ratingOpts}
-      />
+        />
     
         <Form.Dropdown
    
-      label="game_play"
-      placeholder="game_play"
-      name="game_play"
-      value={review.game_play}
-      onChange={(e, {value}) => setReview({...review, game_play: value})}
-      options={ratingOpts}
-      />
+   label="game_play"
+   placeholder="game_play"
+   name="game_play"
+   value={review.game_play}
+   onChange={(e, {value}) => setReview({...review, game_play: value})}
+   options={ratingOpts}
+   />
       <Form.Dropdown
 
-      label="visual"
-      placeholder="Visual"
-      name="visual"
-      value={review.visual}
-      onChange={(e, {value}) => setReview({...review, visual: value})}
-      options={ratingOpts}
-      />
+label="visual"
+placeholder="Visual"
+name="visual"
+value={review.visual}
+onChange={(e, {value}) => setReview({...review, visual: value})}
+options={ratingOpts}
+/>
      <Form.Dropdown
      
-      label="Soundtrack"
-      placeholder="SoundTrack"
-      name="soundtrack"
-      value={review.soundtrack}
-      onChange={(e, {value}) => setReview({...review, soundtrack: value})}
-      options={ratingOpts}
-      />
+     label="Soundtrack"
+     placeholder="SoundTrack"
+     name="soundtrack"
+     value={review.soundtrack}
+     onChange={(e, {value}) => setReview({...review, soundtrack: value})}
+     options={ratingOpts}
+     />
       
     
 
       
-      <Form.Button>Save</Form.Button>
+      <Button color='black'>Save</Button>
     </Form>
+  </Modal>
   )
   }
 
