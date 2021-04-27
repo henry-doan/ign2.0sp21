@@ -11,7 +11,7 @@ import { Button, Image, Progress } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import ReviewForm from '../reviews/ReviewForm'
 import { HomeHead } from '../shared/sharedComponets'
-import { useHistory } from 'react-router'
+
 
 
 const GameShow = ({match}) => {

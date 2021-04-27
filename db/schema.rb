@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_04_16_024338) do
     t.integer "soundtrack"
     t.bigint "game_id", null: false
     t.index ["game_id"], name: "index_reviews_on_game_id"
-    t.index ["games_id"], name: "index_reviews_on_games_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -82,6 +81,5 @@ ActiveRecord::Schema.define(version: 2021_04_16_024338) do
 
   add_foreign_key "games", "users"
   add_foreign_key "reviews", "games"
-  add_foreign_key "reviews", "games", column: "games_id"
   add_foreign_key "reviews", "users"
 end
