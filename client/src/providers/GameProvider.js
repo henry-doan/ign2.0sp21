@@ -46,7 +46,7 @@ const GameProvider = ({ children }) => {
     axios.delete(`/api/games/${id}`)
       .then( res => {
         setGames(games.filter(t => t.id !== id))
-        history.push('/')
+        history.push('/games')
       })
   }
 

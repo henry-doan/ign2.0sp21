@@ -64,18 +64,18 @@ const updateReview =  (review, gameId, id) => {
     })
 }
 
-// const updateGame =  (gameId, id) => {
-//   axios.put(`/api/games/${game.id}`, { game })
-//     .then(res => {
-//       const updatedGames = game.map( t => {
-//         if (t.id === id) {
-//           return res.data
-//         }
-//         return t
-//       })
-//       setGame(updatedGames)
-//     })
-// }
+const updateGame =  (gameId, id) => {
+  axios.put(`/api/games/${game.id}`, { game })
+    .then(res => {
+      const updatedGames = game.map( t => {
+        if (t.id === id) {
+          return res.data
+        }
+        return t
+      })
+      setGame(updatedGames)
+    })
+}
 const getReviews = async() => {
   try{
     let res = await axios.get(`/api/games/${match.params.id}/reviews`)
@@ -105,7 +105,7 @@ const updateView = () => {
       open={open}
       trigger={<Button>Update Game</Button>}>
         <Form.Input>
-          {/* <UpdatingGame gameData={game} gameId={game.id} updateGame={updateGame} setOpen={setOpen}/> */}
+          <UpdatingGame gameData={game} gameId={game.id} updateGame={updateGame} setOpen={setOpen}/>
         </Form.Input>
         </Modal>
       )

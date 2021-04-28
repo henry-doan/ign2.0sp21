@@ -1,21 +1,26 @@
-import { useState, useContext } from 'react';
-import { Form, Segment } from 'semantic-ui-react';
+import { useState, useContext} from 'react';
+import { Container, Form, Segment } from 'semantic-ui-react';
+import { useHistory } from 'react-router'
 import { AuthConsumer, AuthContext } from '../../providers/AuthProvider';
 import { GameConsumer } from '../../providers/GameProvider';
-import { HomeHead } from '../shared/sharedComponets';
+import { HomeHead, ContainerGame } from '../shared/sharedComponets';
 import Dropzone from 'react-dropzone';
 
 const GameForm = ({ addGame }) => {
   const auth = useContext (AuthContext)
   const [game, setGame] = useState({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "",  coop: (null), multi: (null), single: (null), auth })
-  
+  const [formVals, setFormVals] = useState({ file: '', image: '' })
+  let history = useHistory();
 
   
-  
-  const handleSubmit = (e) => {
+  const onDrop = (files) => {
+    setFormVals({ ...formVals, file: files[0]})
+  }
+  const handleSubmit = (e,) => {
     e.preventDefault();
     addGame(game)
     setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null) })
+    history.push("/games") 
   }
   const handleChangeCoop = (e) => {
     if (e.target.checked){ 
@@ -33,13 +38,14 @@ const GameForm = ({ addGame }) => {
           } 
         }
   return(
-    <Segment style={{backgroundColor: '#fc8778'}}>
+    
+    <Segment style={{backgroundColor: '#fc8778'}} >
       <HomeHead>
-
+      <ContainerGame>
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
 
     <Dropzone
-            // onDrop={onDrop}
+            onDrop={onDrop}
             multiple={false}
           >
             {({ getRootProps, getInputProps, isDragActive }) => {
@@ -59,50 +65,56 @@ const GameForm = ({ addGame }) => {
             }}
           </Dropzone>
 
-      <Form.Input
+      <Form.Input 
         
         label={'Name of Game'}
         placeholder="Name of Game"
         name='gamename'
+        required
         value={game.gamename}
         onChange={(e, {value}) => setGame({...game, gamename: value})}
       />
-      <Form.Input
+        <Form.Input 
         label='Description'
         placeholder="Description of Game"
         name='description'
+        required
         value={game.description}
         onChange={(e, {value}) => setGame({...game, description: value})}
       />
-      <Form.Input
+      <Form.Input 
         label='Studio'
         placeholder="Name of Studio"
         name='studio'
+        required
         value={game.studio}
         onChange={(e, {value}) => setGame({...game, studio: value})}
       />
-      <Form.Select
+      <Form.Select 
         label='Genre'
         name='Genre'
         placeholder="Genre"
+        required
         value={game.genre}
         onChange={(e, {value}) => setGame({...game, genre: value})}
         options={genreOpts}
       />
-      <Form.Select
+      <Form.Select 
         label='ESRB'
         placeholder="ESRB"
+        required
         name='esrb'
         value={game.esrb}
         onChange={(e, {value}) => setGame({...game, esrb: value})}
         options={esrbOpts}
       />
-      <Form.Input
+      {/* <Form.Input
         label='Release Date'
+        required
         name='selecteddate'
         value={game.releasedate}
         onChange={(e, {value}) => setGame({...game, releasedate: value})}
-      />
+      /> */}
      
       <Form.Field label='coop' control='input' type='checkbox' 
         label='Co-op Play'
@@ -126,8 +138,10 @@ const GameForm = ({ addGame }) => {
       
       <Form.Button>Save</Form.Button>
     </Form>
+    </ContainerGame>
       </HomeHead>
     </Segment>
+   
   )
 }
 

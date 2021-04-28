@@ -29,6 +29,13 @@ align-items: center;
 justify-content: center;
 width: 100%;
 `
+export const ContainerGame = styled.div`
+display: auto;
+align-items: center;
+justify-content: flex-start;
+width: 100%;
+`
+
 export const ContainerSec = styled.div`
 display: flex;
 align-items: center;

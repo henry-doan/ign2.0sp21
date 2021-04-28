@@ -46,7 +46,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
         value={game.gamename}
         onChange={(e, {value}) => setGame({...game, gamename: value})}
       />
-      <Form.Input
+      <Form.Field label='An HTML <textarea>' control='textarea' rows='3' 
         label='Description'
         placeholder="Description of Game"
         name='description'
