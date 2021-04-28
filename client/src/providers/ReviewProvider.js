@@ -10,12 +10,12 @@ export const ReviewConsumer = ReviewContext.Consumer;
 const ReviewProvider = ({ children }) => {
   const [reviews, setReviews] = useState([])
 
-  
-  useEffect( (id) => {
-    axios.get(`/api/games/${id}/reviews`)
-      .then( res => setReviews(res.data))
-      .catch( err => console.log(err))
-  }, [])
+
+  // useEffect( (id) => {
+  //   axios.get(`/api/games/${id}/reviews`)
+  //     .then( res => setReviews(res.data))
+  //     .catch( err => console.log(err))
+  // }, [])
 
 
 
@@ -40,12 +40,12 @@ const ReviewProvider = ({ children }) => {
       })
   }
 
-  const deleteReview = async(review, gameId, id) => {
-    axios.delete(`/api/games/${gameId}/reviews/:${id}`)
-      .then( res => {
-        setReviews(reviews.filter(t => t.id !== id))
-      })
-  }
+  // const deleteReview = async(gameId, id) => {
+  //   axios.delete(`/api/games/${gameId}/reviews/${id}`)
+  //     .then( res => {
+  //       setReviews(reviews.filter(t => t.id !== id))
+  //     })
+  // }
 
 
 
@@ -54,8 +54,6 @@ const ReviewProvider = ({ children }) => {
       reviews,
       addReview: addReview,
       updateReview: updateReview,
-      deleteReview: deleteReview,
-      
     }}>
       { children }
     </ReviewContext.Provider>

@@ -11,31 +11,31 @@ import { AuthContext } from '../../providers/AuthProvider'
 import {ReviewContext} from '../../providers/ReviewProvider';
 import { GameContext } from '../../providers/GameProvider';
 
-const Review = ({review, user_id, gameId}) => {    
+const Review = ({review, user_id, gameId, deleteReview, updateReview}) => {    
   const [game,setGame] = useState([])
-  const [reviews, setReviews] = useState([])
+  // const [reviews, setReviews] = useState([])
   const {user} = useContext(AuthContext)
-  const {deleteReview} = useContext(ReviewContext)
-  const {updateReview} = useContext(ReviewContext)
+  // const {updateReview} = useContext(ReviewContext)
   const [open, setOpen] = React.useState(false)
 
-  const getReviews = async(match) => {
-    try{
-      let res = await axios.get(`/api/games/${match.params.id}/reviews`)
-      setReviews(res.data)
-      console.log("got reviews", res.data)
-    }catch(err){
-      console.log("Error Failed to get Review")
-    }
-  }
+  // const getReviews = async(match) => {
+  //   console.log("review game id", gameId)
+  //   try{
+  //     let res = await axios.get(`/api/games/${match.params.id}/reviews`)
+  //     setReviews(res.data)
+  //     console.log("got reviews", res.data)
+  //   }catch(err){
+  //     console.log("Error Failed to get Review")
+  //   }
+  // }
   useEffect(()=>{
     
-    getReviews(gameId, user_id)
+    // getReviews()
   },[])
-  const deleteView = (game_id) => {
+  const deleteView = () => {
     if (user.id === review.user_id) {
       return (
-        <Button onClick={()=>deleteReview(review.id, gameId)}>
+        <Button onClick={()=>deleteReview(gameId, review.id)}>
         Delete Review
         </Button>
         )
@@ -51,7 +51,7 @@ const Review = ({review, user_id, gameId}) => {
       open={open}
       trigger={<Button color='black'>Update Review</Button>}>
         <Form.Input>
-          <UpdatingReview/>
+          <UpdatingReview reviewData={review} updateReview={updateReview} gameId={gameId} reviewId={review.id} setOpen={setOpen}/>
         </Form.Input>
         </Modal>
         )

@@ -4,24 +4,24 @@ import {ReviewContext} from '../../providers/ReviewProvider';
 import { GameContext } from '../../providers/GameProvider';
 import Review from './Review'
 
-const Reviews = ({match, reviews}) => {
-  const {deleteReview} = useContext(ReviewContext)
-  const {updateReview} = useContext(ReviewContext)
-//   const [reviews,setReviews] = useState([])
-//   const [games, setGames] = useState([])
+const Reviews = ({match, reviews, gameId, deleteReview, updateReview}) => {
+  // const {deleteReview} = useContext(ReviewContext)
+  // const {updateReview} = useContext(ReviewContext)
+  // const [reviews,setReviews] = useState([])
+  // const [games, setGames] = useState([])
 
-//   useEffect(()=>{
-//     getReviews()
-//   },[])
-//   const getReviews = async() => {
-//       try{
-//         let res = await axios.get(`/api/games/${match.params.id}/reviews`)
-//         setReviews(res.data)
-//         console.log("got reviews", res.data)
-//       }catch(err){
-//         console.log("Error Failed to get Review")
-//       }
-//   }
+  // useEffect(()=>{
+  //   getReviews()
+  // },[])
+  // const getReviews = async() => {
+  //     try{
+  //       let res = await axios.get(`/api/games/${match.params.id}/reviews`)
+  //       setReviews(res.data)
+  //       console.log("got reviews", res.data)
+  //     }catch(err){
+  //       console.log("Error Failed to get Review")
+  //     }
+  // }
 
 
 
@@ -29,7 +29,7 @@ const Reviews = ({match, reviews}) => {
 
   
 const renderReviews = () =>{
-  return reviews.map((review)=> <Review key= {review.id} review={review} />)
+  return reviews.map((review)=> <Review key= {review.id} review={review} gameId={gameId} deleteReview={deleteReview} updateReview={updateReview}/>)
 }
 
 
