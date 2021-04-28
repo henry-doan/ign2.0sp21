@@ -26,7 +26,7 @@ class Api::GamesController < ApplicationController
       end
     
       def update 
-        @game = current_user.game.find(params[:id])
+        @game = current_user.games.find(params[:id])
         if @game.update(game_params)
           render json: @game
         else
@@ -45,6 +45,6 @@ class Api::GamesController < ApplicationController
         @game = Game.find(params[:id])
       end
         def game_params
-          params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id,)
+          params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id, :id, :created_at, :updated_at, :image)
         end
       end

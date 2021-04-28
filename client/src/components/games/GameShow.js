@@ -3,12 +3,13 @@ import axios from 'axios'
 import Reviews from '../reviews/Reviews'
 import { GameContext } from '../../providers/GameProvider'
 import { AuthContext } from '../../providers/AuthProvider'
-import { Button, Image, Progress, Segment, Grid, Divider, Modal } from 'semantic-ui-react'
+import { Button, Image, Progress, Segment, Grid, Divider, Modal, Form } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import ReviewForm from '../reviews/ReviewForm'
 import { HomeHead, MainHead, StyledSegment } from '../shared/sharedComponets'
 import { Fade } from 'react-reveal'
 import { ReviewContext } from '../../providers/ReviewProvider'
+import UpdatingGame from './UpdatingGame'
 
 
 const GameShow = ({match}) => {
@@ -16,7 +17,7 @@ const [game,setGame] = useState([])
 const [reviews, setReviews] = useState([])
 const {user} = useContext(AuthContext)
 const {deleteGame} = useContext(GameContext)
-// const {updateGame} = useContext(GameContext)
+const [open, setOpen] = React.useState(false)
 
 
 let history = useHistory()
@@ -63,6 +64,18 @@ const updateReview =  (review, gameId, id) => {
     })
 }
 
+// const updateGame =  (gameId, id) => {
+//   axios.put(`/api/games/${game.id}`, { game })
+//     .then(res => {
+//       const updatedGames = game.map( t => {
+//         if (t.id === id) {
+//           return res.data
+//         }
+//         return t
+//       })
+//       setGame(updatedGames)
+//     })
+// }
 const getReviews = async() => {
   try{
     let res = await axios.get(`/api/games/${match.params.id}/reviews`)
@@ -82,22 +95,22 @@ const deleteView = () => {
       )
     }
 }
-// const updateView = () => {
-//   if (user.id === game.user_id) {
-//     return ()
-//       // <Modal
-//       // style={{backgroundColor: '#fc8778'}}
-//       // onClose={() => setOpen(false)}
-//       // onOpen={() => setOpen(true)}
-//       // open={open}
-//       // trigger={<Button color='black'>Update Review</Button>}>
-//       //   <Form.Input>
-//       //     <UpdatingGame reviewData={review} updateReview={updateReview} gameId={gameId} reviewId={review.id} setOpen={setOpen}/>
-//       //   </Form.Input>
-//       //   </Modal>
-// //       )
-// //     }
-// }
+const updateView = () => {
+  if (user.id === game.user_id) {
+    return (
+      <Modal
+      style={{backgroundColor: '#fc8778'}}
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      trigger={<Button color='black'>Update Review</Button>}>
+        <Form.Input>
+          {/* <UpdatingGame gameData={game} gameId={game.id} updateGame={updateGame} setOpen={setOpen}/> */}
+        </Form.Input>
+        </Modal>
+      )
+    }
+}
 
 const renderAverageRating = () => {
   let allRatings = []
@@ -222,7 +235,7 @@ return(
   </Grid>
 </Segment>
 {deleteView()}
-{/* {updateView()} */}
+{updateView()}
 <Segment>
 
 <br />

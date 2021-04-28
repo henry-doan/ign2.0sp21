@@ -29,11 +29,12 @@
 
     12.times do
       users = [1,2,3]
+      genre = ["Action", "Adventure", "Fighting", "Role-play", "Simulation", "Sports", "MMO", "Puzzle" ]
       game = Game.create(
-          gamename: Faker::Games::SuperMario.game,
-          studio: Faker::Games::Minecraft.biome,
-          description: Faker::Restaurant.description,
-          genre: Faker::Games::LeagueOfLegends.champion,
+          gamename: Faker::Game.title,
+          studio: Faker::GreekPhilosophers.name,
+          description: Faker::Superhero.descriptor,
+          genre: genre.sample,
           coop: true,
           multi: true,
           single: true,
@@ -46,8 +47,8 @@
             users = [1,2,3]
             rating = [1,2,3,4,5]
             review = Review.create(
-              title: Faker::Food.fruits,
-              gamereview: Faker::Games::ElderScrolls.city,
+              title: Faker::TvShows::GameOfThrones.house,
+              gamereview: Faker::Restaurant.review,
               body: Faker::TvShows::Seinfeld.quote,
               game_play: rating.sample,
               visual: rating.sample,

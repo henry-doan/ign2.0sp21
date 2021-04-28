@@ -41,7 +41,7 @@ const Review = ({review, user_id, gameId, deleteReview, updateReview}) => {
         )
       }
   }
-  const updateView = (user_id, game_id) => {
+  const updateView = () => {
     if (user.id === review.user_id) {
       return (
         <Modal
