@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   def update
     user = User.find(params[:id])
     user.name = params[:name] ? params[:name] : user.name

@@ -3,23 +3,44 @@ import { AuthConsumer } from '../../providers/AuthProvider';
 import { Form, Grid, Image, Button, Header, Container } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
 import GameForm from '../games/GameForm'
-// import Modal from 'react-bootstrap/Modal'
-
-
+import axios from 'axios';
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
 const Profile = ({ user, updateUser }) => {
   const [editing, setEditing] = useState(false)
   const [formVals, setFormVals] = useState({ name: '', email: '', file: '', nickname: '', image: '' })
+  const [games, setGames] = useState();
 
   useEffect ( () => {
+    getGames();
     const { name, email, image, nickname } = user
     setFormVals({ name, email, image, nickname })
   }, [])
 
   const onDrop = (files) => {
     setFormVals({ ...formVals, file: files[0]})
+  }
+
+  const getGames = async () => {
+    try {
+      let res = await axios.get(`api/users/${user.id}/games`);
+      setGames(res.data);
+      console.log("games", res.data);
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+  const renderGames = () => {
+    return (games.map(game => {
+      return (
+        <div>
+          <h1>{game.gamename}</h1>
+        </div>
+      )
+    }))
   }
 
   const profileView = () => {
@@ -101,7 +122,11 @@ const Profile = ({ user, updateUser }) => {
               { editing ? 'Cancel' : 'Edit Profile'}
             </Button>
           </Grid.Column>
+          
+            {games && renderGames()}
+            
         </Grid.Row>
+      
       </Grid>
     </Container>
   )

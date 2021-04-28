@@ -32,7 +32,7 @@ return(
 
       
       <HomeHead>
-          {renderGames(games)}, 
+          {renderGames(games)} 
       </HomeHead>
     
   
