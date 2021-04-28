@@ -3,8 +3,8 @@ import QueryProvider, {QueryContext} from './QueryProvider'
 import axios from "axios";
 import { Griddy } from "./sharedComponets";
 import styled from 'styled-components'
-import Card from 'semantic-ui-react'
-import Game from '../games/Game'
+import {Grid, Segment, Image, Divider} from 'semantic-ui-react'
+import Fade from 'react-reveal/Fade'
 
 
 
@@ -31,11 +31,23 @@ const SearchResults = () => {
           return results?.map((r) => {
               return (
                   <div>
-                    
-                    <a href={`/games/${r.id}`}><h1>{r.gamename}</h1></a>
-                      <h2>{r.studio}</h2>
-                      <h3>{r.genre}</h3>
-                      <p>{r.description}</p>
+                    <Fade left>
+                    <Segment>
+                    <a href={`/games/${r.id}`} style={{color: '#fc8787'}}><h1>{r.gamename}</h1></a>
+                    <Grid>
+                     <Grid.Column width={4} >
+                        <Image size='small' centered src={r.image} />
+                         </Grid.Column>
+                        <Grid.Column width={9}>
+                        <h3>{r.description}</h3>
+                    </Grid.Column>
+                <Grid.Column width={3}>
+            </Grid.Column>
+        </Grid>
+    </Segment>
+  <Divider style={{backgroundColor: '#fc8787'}} />
+  </Fade>
+
                 
                   </div>
               );

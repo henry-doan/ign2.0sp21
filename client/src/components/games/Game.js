@@ -73,7 +73,7 @@ return(
   <Divider tyle={{backgroundColor: '#fc8787'}} />
   
   </>
-  )
+)
 
 }
   export default Game
