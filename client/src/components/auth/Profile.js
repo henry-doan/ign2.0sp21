@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Form, Grid, Image, Button, Header, Container } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
-import GameForm from '../games/GameForm'
+import Games from '../games/Games'
 // import Modal from 'react-bootstrap/Modal'
 
 
@@ -119,6 +119,7 @@ const styles = {
     padding: "10px",
   },
 }
+
 
 
 const ConnectedProfile = (props) => (

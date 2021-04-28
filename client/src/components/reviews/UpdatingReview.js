@@ -8,15 +8,16 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 
 
-const UpdatingReview = ({ updateReview, gameId, user_id }) => {
+const UpdatingReview = ({ updateReview, user_id, reviewData, gameId, reviewId, setOpen }) => {
   const user = useContext(AuthContext)
-  const [ review, setReview ] = useState({title:"", rating:(5.0), gamereview:(5.0), image:"", body:"", game_play:(5.0),  visual:(5.0), soundtrack:(5.0), user_id: user_id, game_id: gameId })
-  const [open, setOpen] = React.useState(false)
+  const [ review, setReview ] = useState({title: reviewData.title, rating:(5.0), gamereview:(5.0), image:"", body:"", game_play:(5.0),  visual:(5.0), soundtrack:(5.0), user_id: user_id, game_id: gameId })
+  // const [open, setOpen] = React.useState(false)
  
 
     const handleSubmit = (e) => {
+      setOpen(false);
       e.preventDefault();
-      updateReview(review, user_id, gameId)
+      updateReview(review, gameId, reviewId)
     setReview({ title:"", rating:(""), gamereview:"", image:"", body:"", game_play:"", visual:"", soundtrack:"", user_id: user_id, game_id: gameId }) 
   }
   return(
