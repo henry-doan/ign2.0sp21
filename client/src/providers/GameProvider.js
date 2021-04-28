@@ -18,7 +18,7 @@ const GameProvider = ({ children }) => {
       .catch( err => console.log(err))
   }, [])
 
-  
+
 
   const addGame = (game, match) => {
     axios.post(`/api/games/`, { game })
