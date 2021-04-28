@@ -1,6 +1,7 @@
 import React from 'react'
-import {Card, Icon, Image} from 'semantic-ui-react'
+import {Card, Icon, Image, Button} from 'semantic-ui-react'
 import imageSrc from './images/Jared.jpg'
+import imageSrc2 from './images/Jayden.jpg'
 
 
 const About = () => {
@@ -27,12 +28,17 @@ return (
   </Card>
   <Card>
 
-  <Image src='/images/avatar/large/daniel.jpg' wrapped ui={false} />
+  <Image src={imageSrc2} wrapped ui={false} />
     <Card.Content>
       <Card.Header>Jayden</Card.Header>
       <Card.Meta>DevPoint Labs 2021</Card.Meta>
       <Card.Description>
-        
+      <Button color='linkedin' href='https://www.linkedin.com/in/jayden-owens/'>
+      <Icon name='linkedin' /> LinkedIn
+    </Button>
+    <Button color='instagram' href='https://www.instagram.com/code_with_jayden/'>
+      <Icon name='instagram' /> Instagram
+    </Button>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
