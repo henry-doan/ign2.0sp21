@@ -3,11 +3,12 @@ import { Form, Segment } from 'semantic-ui-react';
 import { AuthConsumer, AuthContext } from '../../providers/AuthProvider';
 import { GameConsumer } from '../../providers/GameProvider';
 import { HomeHead } from '../shared/sharedComponets';
+import Dropzone from 'react-dropzone';
 
 const GameForm = ({ addGame }) => {
   const auth = useContext (AuthContext)
   const [game, setGame] = useState({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "",  coop: (null), multi: (null), single: (null), auth })
-  const [selectedDate, setselectedDate] = useState(null);
+  
 
   
   
@@ -36,6 +37,28 @@ const GameForm = ({ addGame }) => {
       <HomeHead>
 
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
+
+    <Dropzone
+            // onDrop={onDrop}
+            multiple={false}
+          >
+            {({ getRootProps, getInputProps, isDragActive }) => {
+              return (
+                <div
+                  {...getRootProps()}
+                  style={styles.dropzone}
+                >
+                  <input {...getInputProps()} />
+                  {
+                    isDragActive ?
+                    <p>File grabbed</p>
+                    : <p>Drop Files here</p>
+                  }
+                </div>
+              )
+            }}
+          </Dropzone>
+
       <Form.Input
         
         label={'Name of Game'}
@@ -141,4 +164,18 @@ const genreOpts = [
 //       // box is unchecked
 //   }
 // }
+
+const styles = {
+  dropzone: {
+    height: "150px",
+    width: "150px",
+    border: "1px dashed black",
+    borderRadius: "5px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px",
+  },
+}
+
 export default ConnectedGameForm;
