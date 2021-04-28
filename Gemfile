@@ -29,7 +29,6 @@ gem 'faker'
 
 group :development, :test do
   gem 'pry'
-  gem 'faker'
   gem 'dotenv-rails'
 end
 
