@@ -19,7 +19,7 @@ const ReviewProvider = ({ children }) => {
 
 
 
-  const addReview = (review, user_id, id, ) => {
+  const addReview = (review, user_id, id ) => {
     axios.post(`/api/users/${user_id}/games/${id}/reviews/`, { review })
       .then( res => {
         setReviews([...reviews, res.data])
@@ -27,8 +27,8 @@ const ReviewProvider = ({ children }) => {
       .catch( err => console.log(err))
   }
 
-  const updateReview =  (review, match, id) => {
-    axios.put(`/api/reviews/${match.params.id}`, { review })
+  const updateReview =  (review, match, user_id, id) => {
+    axios.put(`/api/games/${id}/reviews/`, { review })
       .then(res => {
         const updatedReviews = reviews.map( t => {
           if (t.id === id) {
@@ -40,8 +40,8 @@ const ReviewProvider = ({ children }) => {
       })
   }
 
-  const deleteReview = (id) => {
-    axios.delete(`/api/reviews/${id}`)
+  const deleteReview = async(review, gameId, id) => {
+    axios.delete(`/api/games/${gameId}/reviews/:${id}`)
       .then( res => {
         setReviews(reviews.filter(t => t.id !== id))
       })

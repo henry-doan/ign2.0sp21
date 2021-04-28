@@ -1,10 +1,12 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import axios from 'axios'
-
+import {ReviewContext} from '../../providers/ReviewProvider';
+import { GameContext } from '../../providers/GameProvider';
 import Review from './Review'
 
-
 const Reviews = ({match, reviews}) => {
+  const {deleteReview} = useContext(ReviewContext)
+  const {updateReview} = useContext(ReviewContext)
 //   const [reviews,setReviews] = useState([])
 //   const [games, setGames] = useState([])
 

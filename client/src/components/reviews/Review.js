@@ -1,13 +1,62 @@
-import React from 'react';
+import React,{ useState, useContext, useHistory, useEffect } from 'react';
+import axios from 'axios'
 import Reviews from  './Reviews';
-import { Card, Segment, Grid, Divider } from 'semantic-ui-react'
+import { Card, Segment, Grid, Divider, Button, Modal, Form } from 'semantic-ui-react'
 import ReviewForm from '../reviews/ReviewForm'
 import { Image } from "semantic-ui-react"
 import Fade from 'react-reveal/Fade'
+import UpdatingReview from './UpdatingReview'
 
+import { AuthContext } from '../../providers/AuthProvider'
+import {ReviewContext} from '../../providers/ReviewProvider';
+import { GameContext } from '../../providers/GameProvider';
 
-const Review = ({review}) => {
- 
+const Review = ({review, user_id, gameId}) => {    
+  const [game,setGame] = useState([])
+  const [reviews, setReviews] = useState([])
+  const {user} = useContext(AuthContext)
+  const {deleteReview} = useContext(ReviewContext)
+  const {updateReview} = useContext(ReviewContext)
+  const [open, setOpen] = React.useState(false)
+
+  const getReviews = async(match) => {
+    try{
+      let res = await axios.get(`/api/games/${match.params.id}/reviews`)
+      setReviews(res.data)
+      console.log("got reviews", res.data)
+    }catch(err){
+      console.log("Error Failed to get Review")
+    }
+  }
+  useEffect(()=>{
+    
+    getReviews(gameId, user_id)
+  },[])
+  const deleteView = (game_id) => {
+    if (user.id === review.user_id) {
+      return (
+        <Button onClick={()=>deleteReview(review.id, gameId)}>
+        Delete Review
+        </Button>
+        )
+      }
+  }
+  const updateView = (user_id, game_id) => {
+    if (user.id === review.user_id) {
+      return (
+        <Modal
+      style={{backgroundColor: '#fc8778'}}
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      trigger={<Button color='black'>Update Review</Button>}>
+        <Form.Input>
+          <UpdatingReview/>
+        </Form.Input>
+        </Modal>
+        )
+      }
+  }
 return(
     <>
     <Fade left>
@@ -40,10 +89,13 @@ return(
 
     </Segment>
     </Fade>
-   
+      {deleteView(user_id, gameId)}
+       {updateView()}
+
   </>
     
   )
-    
-}
+  
+  }
+
   export default Review
