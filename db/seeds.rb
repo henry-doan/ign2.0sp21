@@ -29,16 +29,18 @@
 
     12.times do
       users = [1,2,3]
+      genre = ["Action", "Adventure", "Fighting", "Role-play", "Simulation", "Sports", "MMO", "Puzzle" ]
+      esrb = ["Everyone", "Every 10+", "Teen", "Mature", ]
       game = Game.create(
-          gamename: Faker::Games::SuperMario.game,
-          studio: Faker::Games::Minecraft.biome,
-          description: Faker::Restaurant.description,
-          genre: Faker::Games::LeagueOfLegends.champion,
+          gamename: Faker::Game.title,
+          studio: Faker::GreekPhilosophers.name,
+          description: Faker::Lorem.paragraphs(number: 3), 
+          genre: genre.sample,
           coop: true,
           multi: true,
           single: true,
           image: "https://images-na.ssl-images-amazon.com/images/I/81bH3%2BDbvNL._SL1500_.jpg",
-          esrb: "teen",
+          esrb: esrb.sample,
           releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
           user_id: users.sample,
           )
@@ -46,8 +48,8 @@
             users = [1,2,3]
             rating = [1,2,3,4,5]
             review = Review.create(
-              title: Faker::Food.fruits,
-              gamereview: Faker::Games::ElderScrolls.city,
+              title: Faker::TvShows::GameOfThrones.house,
+              gamereview: Faker::Restaurant.review,
               body: Faker::TvShows::Seinfeld.quote,
               game_play: rating.sample,
               visual: rating.sample,

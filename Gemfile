@@ -25,10 +25,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise_token_auth'
 gem 'cloudinary'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'
-  gem 'faker'
   gem 'dotenv-rails'
 end
 

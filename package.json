@@ -6,5 +6,30 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "styled-components": "^5.2.3"
-  }
+  },
+  "name": "ign2.0sp21",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henry-doan/ign2.0sp21.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henry-doan/ign2.0sp21/issues"
+  },
+  "homepage": "https://github.com/henry-doan/ign2.0sp21#readme"
 }

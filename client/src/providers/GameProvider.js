@@ -24,22 +24,23 @@ const GameProvider = ({ children }) => {
     axios.post(`/api/games/`, { game })
       .then( res => {
         setGames([...games, res.data])
+        
       })
       .catch( err => console.log(err))
   }
 
-  const updateGame = (id, game, match) => {
-    axios.put(`/api/games/${id}`, { game })
-      .then(res => {
-        const updatedGames = games.map( t => {
-          if (t.id === id) {
-            return res.data
-          }
-          return t
-        })
-        setGames(updatedGames)
-      })
-  }
+  // const updateGame = (id, game, match) => {
+  //   axios.put(`/api/games/${id}`, { game })
+  //     .then(res => {
+  //       const updatedGames = games.map( t => {
+  //         if (t.id === id) {
+  //           return res.data
+  //         }
+  //         return t
+  //       })
+  //       setGames(updatedGames)
+  //     })
+  // }
 
   const deleteGame = (id, history) => {
     axios.delete(`/api/games/${id}`)
@@ -53,7 +54,7 @@ const GameProvider = ({ children }) => {
     <GameContext.Provider value={{
       games,
       addGame: addGame,
-      updateGame: updateGame,
+      // updateGame: updateGame,
       deleteGame: deleteGame,
     }}>
       { children }

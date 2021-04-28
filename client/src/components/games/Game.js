@@ -1,5 +1,5 @@
 
-import { Divider, Segment, Image, Grid } from 'semantic-ui-react'
+import { Divider, Segment, Image, Grid, Card, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 import React,{useState, useEffect} from 'react'
 import Fade from 'react-reveal/Fade'
@@ -43,36 +43,35 @@ const Game = ({game}) => {
 
 return(
   <>
-  <Fade left>
-  <Segment>
-  <a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
-  <Divider style={{backgroundColor: '#fc8787'}}/>
-  <Grid divided='vertically'>
-    <Grid.Row columns={2}>
-      <Grid.Column>
-      <Image height="auto" width="200px" centered src={game.image} />
-      </Grid.Column>
-      <Grid.Column>
-      <h3>{game.description}</h3>
-      </Grid.Column>
-    </Grid.Row>
-
-    <Grid.Row columns={3} style={{backgroundColor: '#fc8787'}}>
-      <Grid.Column>
-      <h3 style={{color: 'white'}}>{renderAverageRating()}</h3>
-      </Grid.Column>
-      <Grid.Column>
-        <h3 style={{color: 'white'}}>{game.genre}</h3>
-      </Grid.Column>
-      <Grid.Column>
-        <h3 style={{color: 'white'}}>{game.esrb}</h3>
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
-  </Segment>
-  </Fade>
+  
+  <Card.Group>
+  <Card>
+  <Card.Content>
+  <Card.Header><a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a></Card.Header>
+  <Image height="auto" width="200px" centered src={game.image} />
+      
+       <Card.Meta>
+        <span>Joined in 2015</span>
+        </Card.Meta>
+          <Card.Description>
+          <h3>{game.description}</h3>
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+       <h3 style={{color: 'black'}}>{renderAverageRating()}</h3>
+       <h3 style={{color: 'black'}}>Genre: {game.genre}</h3>      
+       <h3 style={{color: 'black'}}>ESRB: {game.esrb}</h3>
+      </Card.Content>
+  
+     
+    
+   
+ 
+   
+ </Card>
+  </Card.Group>
   <Divider tyle={{backgroundColor: '#fc8787'}} />
-
+  
   </>
   )
 

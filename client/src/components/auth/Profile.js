@@ -146,6 +146,7 @@ const styles = {
 }
 
 
+
 const ConnectedProfile = (props) => (
   <AuthConsumer>
     { auth =>
