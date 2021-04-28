@@ -4,6 +4,7 @@ import Game from './Game'
 import SearchBar from '../shared/SearchBar'
 import { HomeHead } from '../shared/sharedComponets'
 import Fade from 'react-reveal/Fade'
+import { Button, Header, Image, Modal, Grid } from 'semantic-ui-react'
 const Games = (match) => {
   const [games,setGames] = useState([])
 
@@ -32,7 +33,14 @@ return(
 
       
       <HomeHead>
+      <Grid columns={3} divided>
+     
+      <Grid.Row>
+       
           {renderGames(games)} 
+          </Grid.Row>
+          
+          </Grid>
       </HomeHead>
     
   

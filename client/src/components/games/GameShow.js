@@ -103,7 +103,7 @@ const updateView = () => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button color='black'>Update Review</Button>}>
+      trigger={<Button>Update Game</Button>}>
         <Form.Input>
           {/* <UpdatingGame gameData={game} gameId={game.id} updateGame={updateGame} setOpen={setOpen}/> */}
         </Form.Input>
@@ -200,7 +200,7 @@ return(
 
 
 <Segment>
-  <MainHead>{game.gamename}</MainHead>
+  <MainHead><h1 style={{color: 'black'}}>{game.gamename}</h1></MainHead>
   <Divider style={{backgroundColor: '#fc8787'}}/>
 <Grid divided='vertically'>
     <Grid.Row columns={2}>
@@ -217,16 +217,16 @@ return(
       <Grid.Column>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>{game.genre}</h3>
+        <h3 style={{color: 'white'}}>Genre: {game.genre}</h3>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>{game.esrb}</h3>
+        <h3 style={{color: 'white'}}>ESRB: {game.esrb}</h3>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>{game.releasedate}</h3>
+        <h3 style={{color: 'white'}}>Released: {game.releasedate}</h3>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>{game.studio}</h3>
+        <h3 style={{color: 'white'}}>Production Studio: {game.studio}</h3>
       </Grid.Column>
       <Grid.Column>
         <h3 style={{color: 'white'}}>{game.muliplayer}</h3>

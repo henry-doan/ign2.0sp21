@@ -43,11 +43,13 @@ const Game = ({game}) => {
 
 return(
   <>
+  
   <Card.Group>
   <Card>
   <Card.Content>
+  <Card.Header><a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a></Card.Header>
   <Image height="auto" width="200px" centered src={game.image} />
-       <Card.Header><a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a></Card.Header>
+      
        <Card.Meta>
         <span>Joined in 2015</span>
         </Card.Meta>
@@ -57,8 +59,8 @@ return(
     </Card.Content>
     <Card.Content extra>
        <h3 style={{color: 'black'}}>{renderAverageRating()}</h3>
-       <h3 style={{color: 'black'}}>{game.genre}</h3>      
-       <h3 style={{color: 'black'}}>{game.esrb}</h3>
+       <h3 style={{color: 'black'}}>Genre: {game.genre}</h3>      
+       <h3 style={{color: 'black'}}>ESRB: {game.esrb}</h3>
       </Card.Content>
   
      
@@ -69,7 +71,7 @@ return(
  </Card>
   </Card.Group>
   <Divider tyle={{backgroundColor: '#fc8787'}} />
-
+  
   </>
   )
 
