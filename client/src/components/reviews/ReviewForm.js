@@ -10,11 +10,12 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 const ReviewForm = ({ addReview, gameId, user_id }) => {
   const user = useContext(AuthContext)
-  const [ review, setReview ] = useState({title:"", rating:(5.0), gamereview:(5.0), image:"", body:"", game_play:(5.0),  visual:(5.0), soundtrack:(5.0), user_id: user_id, game_id: gameId })
+  const [ review, setReview ] = useState({title:"", rating:(4.0), gamereview:(4.0), image:"", body:"", game_play:(5.0),  visual:(5.0), soundtrack:(5.0), user_id: user_id, game_id: gameId })
   const [open, setOpen] = React.useState(false)
  
 
     const handleSubmit = (e) => {
+      setOpen(false);
       e.preventDefault();
       addReview(review, user_id, gameId)
     setReview({ title:"", rating:(""), gamereview:"", image:"", body:"", game_play:"", visual:"", soundtrack:"", user_id: user_id, game_id: gameId }) 
@@ -112,13 +113,13 @@ options={ratingOpts}
   }
 
 
-const ConnectedReviewForm = (props) => (
-  <ReviewConsumer>
-    { value => (
-      <ReviewForm {...props} {...value} />
-    )}
-  </ReviewConsumer>
-)
+// const ConnectedReviewForm = (props) => (
+//   <ReviewConsumer>
+//     { value => (
+//       <ReviewForm {...props} {...value} />
+//     )}
+//   </ReviewConsumer>
+// )
 
 const ratingOpts = [
     {key: "1", text: "1 Star", value:1},
@@ -129,4 +130,4 @@ const ratingOpts = [
   ]
 
 
-export default ConnectedReviewForm;
+export default ReviewForm;

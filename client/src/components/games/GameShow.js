@@ -3,13 +3,12 @@ import axios from 'axios'
 import Reviews from '../reviews/Reviews'
 import { GameContext } from '../../providers/GameProvider'
 import { AuthContext } from '../../providers/AuthProvider'
-import { Button, Image, Progress, Segment, Grid, Divider } from 'semantic-ui-react'
+import { Button, Image, Progress, Segment, Grid, Divider, Modal } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import ReviewForm from '../reviews/ReviewForm'
 import { HomeHead, MainHead, StyledSegment } from '../shared/sharedComponets'
 import { Fade } from 'react-reveal'
-
-
+import { ReviewContext } from '../../providers/ReviewProvider'
 
 
 const GameShow = ({match}) => {
@@ -17,9 +16,16 @@ const [game,setGame] = useState([])
 const [reviews, setReviews] = useState([])
 const {user} = useContext(AuthContext)
 const {deleteGame} = useContext(GameContext)
-const {updateGame} = useContext(GameContext)
+// const {updateGame} = useContext(GameContext)
+
 
 let history = useHistory()
+
+useEffect(()=>{
+  getGame()
+  getReviews()
+},[])
+
 const getGame = async() => {
     try{
       let res = await axios.get(`/api/games/${match.params.id}`)
@@ -29,6 +35,34 @@ const getGame = async() => {
       alert("Error Failed to get games")
     }
 }
+const deleteReview = async(gameId, id) => {
+  axios.delete(`/api/games/${gameId}/reviews/${id}`)
+    .then( res => {
+      setReviews(reviews.filter(t => t.id !== id))
+    })
+}
+
+const addReview = (review, user_id, id ) => {
+  axios.post(`/api/users/${user_id}/games/${id}/reviews/`, { review })
+    .then( res => {
+      setReviews([...reviews, res.data])
+    })
+    .catch( err => console.log(err))
+}
+
+const updateReview =  (review, gameId, id) => {
+  axios.put(`/api/games/${gameId}/reviews/${id}`, { review })
+    .then(res => {
+      const updatedReviews = reviews.map( t => {
+        if (t.id === id) {
+          return res.data
+        }
+        return t
+      })
+      setReviews(updatedReviews)
+    })
+}
+
 const getReviews = async() => {
   try{
     let res = await axios.get(`/api/games/${match.params.id}/reviews`)
@@ -38,10 +72,7 @@ const getReviews = async() => {
     console.log("Error Failed to get Review")
   }
 }
-useEffect(()=>{
-  getGame()
-  getReviews()
-},[])
+
 const deleteView = () => {
   if (user.id === game.user_id) {
     return (
@@ -51,15 +82,22 @@ const deleteView = () => {
       )
     }
 }
-const updateView = () => {
-  if (user.id === game.user_id) {
-    return (
-      <Button onClick={()=>updateGame(game.id, history)}>
-      Update Game
-      </Button>
-      )
-    }
-}
+// const updateView = () => {
+//   if (user.id === game.user_id) {
+//     return ()
+//       // <Modal
+//       // style={{backgroundColor: '#fc8778'}}
+//       // onClose={() => setOpen(false)}
+//       // onOpen={() => setOpen(true)}
+//       // open={open}
+//       // trigger={<Button color='black'>Update Review</Button>}>
+//       //   <Form.Input>
+//       //     <UpdatingGame reviewData={review} updateReview={updateReview} gameId={gameId} reviewId={review.id} setOpen={setOpen}/>
+//       //   </Form.Input>
+//       //   </Modal>
+// //       )
+// //     }
+// }
 
 const renderAverageRating = () => {
   let allRatings = []
@@ -184,7 +222,7 @@ return(
   </Grid>
 </Segment>
 {deleteView()}
-{updateView()}
+{/* {updateView()} */}
 <Segment>
 
 <br />
@@ -199,23 +237,15 @@ return(
 </Segment>
 
 
-
-
-
-
-
 <Segment>
-  <Reviews reviews={reviews}/>
+  <Reviews reviews={reviews} gameId={game.id} deleteReview={deleteReview} updateReview={updateReview}/>
   </Segment>
 <Fade left>
-<ReviewForm gameId={game.id} user_id={user.id} />
+<ReviewForm gameId={game.id} user_id={user.id} addReview={addReview}/>
 </Fade>
 </HomeHead>
 </>
 )
-
-
-
 
 }
 export default GameShow;
