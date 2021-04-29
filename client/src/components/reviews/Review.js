@@ -75,6 +75,9 @@ return(
 
     <h1>Review: {review.gamereview}</h1>
     <Grid.Row columns={4} style={{backgroundColor: '#fc8787'}}>
+    <Grid.Column>
+    <h3 style={{color: 'white'}}>Overall Score: {review.rating}</h3> 
+    </Grid.Column>
       <Grid.Column>
       <h3 style={{color: 'white'}}>Graphics: {review.visual}</h3>
       </Grid.Column>
@@ -82,7 +85,7 @@ return(
       <h3 style={{color: 'white'}}>Soundtrack: {review.soundtrack}</h3>
       </Grid.Column>
       <Grid.Column>
-      <h3 style={{color: 'white'}}>Rating: {review.rating}</h3> 
+      <h3 style={{color:'white'}}>Gameplay: {review.game_play}</h3>
       </Grid.Column>
     </Grid.Row>
   </Grid>

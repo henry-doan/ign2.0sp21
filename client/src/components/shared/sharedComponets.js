@@ -44,6 +44,7 @@ justify-content: center;
 export const StyledInput = styled(Input)`
 width: 550px;
 color: #fc8787;
+box-shadow: 2px 2px 5px grey;
 `
 export const SecInput = styled(Input)`
 width: 600px;
