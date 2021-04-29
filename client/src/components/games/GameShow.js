@@ -10,7 +10,7 @@ import { HomeHead, MainHead, StyledSegment } from '../shared/sharedComponets'
 import { Fade } from 'react-reveal'
 import { ReviewContext } from '../../providers/ReviewProvider'
 import UpdatingGame from './UpdatingGame'
-import '../styledComponents/myStyles.css'
+import styles from '../styledComponents/index.module.css'
 import imageSrc from '../shared/images/hexagonal.png'
 
 
@@ -125,7 +125,7 @@ const renderAverageRating = () => {
   }
   let averageRating = (sum / allRatings.length)
   return (
-    <div>
+    <div className={styles.container}>
       {averageRating.toFixed(1)}
     </div>
   )
@@ -236,20 +236,22 @@ return(
 </Segment>
 {deleteView()}
 {updateView()}
+
 <Segment>
 
-<div className="container">
-  <img src={imageSrc} alt="hexagon" />
-  <div className="centered">{renderAverageRating()}</div>
+<div className={styles.centered}>
+<img className={styles.container}src={imageSrc} alt="hexagon" />
+<div className={styles.centered}>
+{renderAverageRating()}
 </div>
-
-
-
+</div>
+<br /><br /><br /><br /><br /><br />
 {renderAverageVisual()}
 {renderAverageSoundtrack()}
 {renderAverageGameplay()}
-<hr />
+
 </Segment>
+
 
 
 <Segment>
