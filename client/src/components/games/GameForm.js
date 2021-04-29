@@ -1,4 +1,4 @@
-import { useState, useContext} from 'react';
+import { useState, useContext, useEffect} from 'react';
 import { Container, Form, Segment } from 'semantic-ui-react';
 import { useHistory } from 'react-router'
 import { AuthConsumer, AuthContext } from '../../providers/AuthProvider';
@@ -8,11 +8,14 @@ import Dropzone from 'react-dropzone';
 
 const GameForm = ({ addGame }) => {
   const auth = useContext (AuthContext)
-  const [game, setGame] = useState({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", image: '',  coop: (null), multi: (null), single: (null), file:"" })
+  const [game, setGame] = useState({ gamename: '', description: '', studio: '', genre: '', releasedate: (null), esrb: '', file: '', image: '',  coop: (null), multi: (null), single: (null) })
   let history = useHistory();
 
   const defaultImage=""
-    
+  useEffect ( () => {
+    const { gamename, description, studio, genre, releasedate, esrb, image, coop, multi, single } = game
+    setGame({ gamename, description, studio, genre, releasedate, esrb, image, coop, multi, single})
+  }, [])
   const onDrop = (files) => {
     setGame({ ...game, file: files[0]})
   }

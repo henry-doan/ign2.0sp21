@@ -1,21 +1,28 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, Segment } from 'semantic-ui-react';
 import { AuthConsumer, AuthContext } from '../../providers/AuthProvider';
 import { GameConsumer } from '../../providers/GameProvider';
 import { HomeHead } from '../shared/sharedComponets';
+import Dropzone from 'react-dropzone';
 
 const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
   const user = useContext (AuthContext)
   const [game, setGame] = useState({ gamename: gameData.gamename, description: gameData.description, studio: gameData.studio, genre: gameData.genre, releasedate: gameData.releasedate, esrb: gameData.esrb,  coop: gameData.coop, multi: gameData.multi, single: gameData.single, game_id: gameId})
   
-
+  useEffect ( () => {
+    const { gamename, description, studio, genre, releasedate, esrb, image, coop, multi, single } = game
+    setGame({ gamename, description, studio, genre, releasedate, esrb, image, coop, multi, single})
+  }, [])
+  const onDrop = (files) => {
+    setGame({ ...game, file: files[0]})
+  }
   
   
   const handleSubmit = (e) => {
     setOpen(false);
     e.preventDefault();
-    updateGame(game,gameId)
-    setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null) })
+    updateGame(game.id,gameId)
+    setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null), file: '' })
 
   }
 
@@ -39,6 +46,26 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
       <HomeHead>
 
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
+    <Dropzone
+            onDrop={onDrop}
+            multiple={false}
+          >
+            {({ getRootProps, getInputProps, isDragActive }) => {
+              return (
+                <div
+                  {...getRootProps()}
+                  style={styles.dropzone}
+                >
+                  <input {...getInputProps()} />
+                  {
+                    isDragActive ?
+                       <p style={{color: 'white'}}>File grabbed</p>
+                    : <p style={{color: 'white'}}>Drop File Here</p>
+                  }
+                </div>
+              )
+            }}
+          </Dropzone>
       <Form.Input
         
         label={'Name of Game'}
@@ -131,6 +158,19 @@ const genreOpts = [
     {key: "8", text: "MMO", value:"MMO"},
     {key: "9", text: "Puzzle/Board", value:"Puzzle"},
 ]
+const styles = {
+    dropzone: {
+      height: "150px",
+      width: "150px",
+      border: "1px dashed black",
+      borderRadius: "5px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "10px",
+    },
+  }
+  
 // handleChange = e => {
 //   if (document.getElementByClassName("period").checked) {
 //       // box is checked
