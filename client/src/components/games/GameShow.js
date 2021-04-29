@@ -94,6 +94,7 @@ const updateView = () => {
   if (user.id === game.user_id) {
     return (
       <Modal
+      
       style={{backgroundColor: '#fc8778'}}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}

@@ -54,7 +54,6 @@ return(
     <a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
     <p style={{color: 'black'}}>Genre: {game.genre}</p>  
     <h3>{game.description}</h3>
-    <span>Joined in 2015</span>
     <h3 style={{color: 'black'}}>{renderAverageRating()}</h3>
       
     </Grid.Column>

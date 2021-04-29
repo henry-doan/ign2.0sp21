@@ -42,7 +42,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
       <HomeHead>
 
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
-    <Dropzone
+   <div> <Dropzone
             onDrop={onDrop}
             multiple={false}
           >
@@ -62,6 +62,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
               )
             }}
           </Dropzone>
+          </div>
       <Form.Input
         
         label={'Name of Game'}
@@ -70,7 +71,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
         value={game.gamename}
         onChange={(e, {value}) => setGame({...game, gamename: value})}
       />
-      <Form.Field label='An HTML <textarea>' control='textarea' rows='3' 
+      <Form.Input
         label='Description'
         placeholder="Description of Game"
         name='description'

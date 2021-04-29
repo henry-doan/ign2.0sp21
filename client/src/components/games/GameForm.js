@@ -74,7 +74,7 @@ const GameForm = ({ addGame }) => {
         label={'Name of Game'}
         placeholder="Name of Game"
         name='gamename'
-        // required
+        required
         value={game.gamename}
         onChange={(e, {value}) => setGame({...game, gamename: value})}
       />
@@ -82,7 +82,7 @@ const GameForm = ({ addGame }) => {
         label='Description'
         placeholder="Description of Game"
         name='description'
-        // required
+        required
         value={game.description}
         onChange={(e, {value}) => setGame({...game, description: value})}
       />
@@ -90,7 +90,7 @@ const GameForm = ({ addGame }) => {
         label='Studio'
         placeholder="Name of Studio"
         name='studio'
-        // required
+        required
         value={game.studio}
         onChange={(e, {value}) => setGame({...game, studio: value})}
       />
@@ -98,7 +98,7 @@ const GameForm = ({ addGame }) => {
         label='Genre'
         name='Genre'
         placeholder="Genre"
-        // required
+        required
         value={game.genre}
         onChange={(e, {value}) => setGame({...game, genre: value})}
         options={genreOpts}
