@@ -184,20 +184,22 @@ const Profile = ({ user, updateUser, match}) => {
       <Button style={{position: 'absolute', left: '50%', top: '50%' }}color= 'black' onClick={() => setEditing(!editing)}>
         { editing ? 'Cancel' : 'Edit Profile'}
       </Button>
-
-        <Fade right>
-          <br/>
-          <Segment style={{color: '#fc8787', position: 'absolute', left: '5%'}}>
-       <h3>Your Games{games && renderGames()}</h3>
-       </Segment>
+      </Fade>
+      <Grid divided='vertically' style={{color: '#fc8787'}}>
+      <Grid.Row columns={2}>
+       <Grid.Column>
+        <Fade left>
+          <h1>My Games</h1>
+        <h2>{games && renderGames()}</h2>
         </Fade>
-
-      <Fade left>
-      <br/>
-      <Segment style={{color: '#fc8787', position: 'absolute', left: '70%',}}>
-
-      <h3>Your Reviews{reviews && renderReviews()}</h3>
-      </Segment>
+      </Grid.Column>
+      <Grid.Column>
+        <Fade right>
+          <h1>My Reviews</h1>
+        <h3>{reviews && renderReviews()}</h3>
+        </Fade>
+      </Grid.Column>
+    </Grid.Row>
       
       </Fade>
     </>
