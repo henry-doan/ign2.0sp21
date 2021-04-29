@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, Segment } from 'semantic-ui-react';
 import { AuthConsumer, AuthContext } from '../../providers/AuthProvider';
 import { GameConsumer } from '../../providers/GameProvider';
@@ -9,6 +9,10 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
   const user = useContext (AuthContext)
   const [game, setGame] = useState({ gamename: gameData.gamename, description: gameData.description, studio: gameData.studio, genre: gameData.genre, releasedate: gameData.releasedate, esrb: gameData.esrb,  coop: gameData.coop, multi: gameData.multi, single: gameData.single, game_id: gameId})
   
+  useEffect ( () => {
+    const { gamename, description, studio, genre, releasedate, esrb, image, coop, multi, single } = game
+    setGame({ gamename, description, studio, genre, releasedate, esrb, image, coop, multi, single})
+  }, [])
   const onDrop = (files) => {
     setGame({ ...game, file: files[0]})
   }
@@ -17,8 +21,8 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
   const handleSubmit = (e) => {
     setOpen(false);
     e.preventDefault();
-    updateGame(game,gameId)
-    setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null) })
+    updateGame(game.id,gameId)
+    setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null), file: '' })
 
   }
 
@@ -42,7 +46,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
       <HomeHead>
 
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
-   <div> <Dropzone
+    <Dropzone
             onDrop={onDrop}
             multiple={false}
           >
@@ -62,7 +66,6 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
               )
             }}
           </Dropzone>
-          </div>
       <Form.Input
         
         label={'Name of Game'}
@@ -156,18 +159,18 @@ const genreOpts = [
     {key: "9", text: "Puzzle/Board", value:"Puzzle"},
 ]
 const styles = {
-  dropzone: {
-    height: "150px",
-    width: "150px",
-    border: "1px dashed black",
-    borderRadius: "5px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "10px",
-  },
-}
-
+    dropzone: {
+      height: "150px",
+      width: "150px",
+      border: "1px dashed black",
+      borderRadius: "5px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "10px",
+    },
+  }
+  
 // handleChange = e => {
 //   if (document.getElementByClassName("period").checked) {
 //       // box is checked
