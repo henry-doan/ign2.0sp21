@@ -13,6 +13,36 @@
   padding-bottom: 200px;
 }
 
+.intro {
+  text-align: center;
+  width: 80%;
+}
+
+.mainImage {
+  width: 90%;
+  height: auto;
+  box-shadow: 2px 2px 5px grey;
+  border-radius: 1%;
+}
+
+.logoCard {
+  padding-bottom: 3em;
+  transition: transform .5 ease;
+}
+
+.logoCard:hover {
+  transform: scale(1.01);
+  transition: .2s ease-in-out !important;
+}
+
+.gameName:hover {
+  color: Grey !important;
+}
+
+.cardEffect:hover {
+  transform: scale(1.02);
+}
+
 /* .progressColor {
   color: #fc8787;
 } */
