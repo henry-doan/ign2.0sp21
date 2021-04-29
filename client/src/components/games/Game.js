@@ -51,7 +51,7 @@ return(
     <Image height="auto" width="200px" centered src={game.image} />
     </Grid.Column>
     <Grid.Column width={4}>
-    <a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
+    <a href={`/games/${game.id}`} className={styles.gameName} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
     <p style={{color: 'black'}}>Genre: {game.genre}</p>  
     <span>Joined in 2015</span>
     <Image size='small'src={imageSrc} style={{position: 'absolute', left: '50%', top: '55%'}}  />
