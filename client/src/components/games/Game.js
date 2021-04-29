@@ -3,7 +3,7 @@ import { Divider, Segment, Image, Grid, Card, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 import React,{useState, useEffect} from 'react'
 import Fade from 'react-reveal/Fade'
-
+import styles from '../styledComponents/index.module.css'
 
 const Game = ({game}) => {
   const [reviews,setReviews] = useState([])
@@ -46,12 +46,12 @@ return(
   
   <Segment>
 
-  <Grid>
+  <Grid className={styles.cardEffect}>
     <Grid.Column width={3}>
     <Image height="auto" width="200px" centered src={game.image} />
     </Grid.Column>
     <Grid.Column width={9}>
-    <a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
+    <a href={`/games/${game.id}`} className={styles.gameName} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
     <p style={{color: 'black'}}>Genre: {game.genre}</p>  
     <h3>{game.description}</h3>
     <h3 style={{color: 'black'}}>{renderAverageRating()}</h3>

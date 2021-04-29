@@ -2,6 +2,7 @@ import { AuthConsumer } from '../../providers/AuthProvider';
 import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { SecMenu } from './sharedComponets'
+import styles from '../styledComponents/index.module.css'
 const Navbar = ({ location, user, handleLogout, history }) => {
   const rightNavItem = () => {
     if (user) {
