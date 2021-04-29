@@ -1,0 +1,80 @@
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-size: xx-large;
+}
+
+/* .progressColor {
+  color: #fc8787;
+} */
+
+/* .hexagon {
+  width: 100px;
+  height: 57.735px;
+  background: #fc8787;
+  position: relative;
+  margin:4%;
+}
+.hexagon::before {
+  content: "";
+  position: absolute;
+  top: -28.8675px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 28.8675px solid #fc8787;
+}
+.hexagon::after {
+  content: "";
+  position: absolute;
+  bottom: -28.8675px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 28.8675px solid #fc8787;
+} */
+
+
+/* .hexagon {
+  position: relative;
+  width: 300px;
+  height: 173.21px;
+  background-color: #fc8787;
+  margin: 86.60px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 86.60px solid #fc8787;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.60px solid #fc8787;
+} */
+
+/* .white {
+  color: white;
+} */
