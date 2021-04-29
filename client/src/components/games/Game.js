@@ -3,6 +3,7 @@ import axios from 'axios'
 import React,{useState, useEffect} from 'react'
 import Fade from 'react-reveal/Fade'
 import imageSrc from '../shared/images/hexagonal.png'
+import styles from '../styledComponents/index.module.css'
 
 
 const Game = ({game}) => {
@@ -45,7 +46,7 @@ return(
   <>
   
 
-  <Grid>
+  <Grid className={styles.cardEffect}>
     <Grid.Column width={3}>
     <Image height="auto" width="200px" centered src={game.image} />
     </Grid.Column>
