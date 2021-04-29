@@ -142,7 +142,7 @@ const GameForm = ({ addGame }) => {
       
       <Form.Button>Save</Form.Button>
     </Form>
-    </ContainerGame>
+
       </HomeHead>
     </Segment>
    
