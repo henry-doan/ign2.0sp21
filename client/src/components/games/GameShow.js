@@ -199,7 +199,7 @@ return(
 <HomeHead>
 
 
-<Segment>
+
   <MainHead><h1 style={{color: 'black'}}>{game.gamename}</h1></MainHead>
   <Divider style={{backgroundColor: '#fc8787'}}/>
 <Grid divided='vertically'>
@@ -233,7 +233,7 @@ return(
       </Grid.Column>
     </Grid.Row>
   </Grid>
-</Segment>
+  <br/>
 {deleteView()}
 {updateView()}
 
@@ -242,10 +242,11 @@ return(
 <div className={styles.centered}>
 <img className={styles.container}src={imageSrc} alt="hexagon" />
 <div className={styles.centered}>
+  <br/>
 {renderAverageRating()}
 </div>
 </div>
-<br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /> 
 {renderAverageVisual()}
 {renderAverageSoundtrack()}
 {renderAverageGameplay()}
@@ -254,9 +255,8 @@ return(
 
 
 
-<Segment>
+
   <Reviews reviews={reviews} gameId={game.id} deleteReview={deleteReview} updateReview={updateReview}/>
-  </Segment>
 <Fade left>
 <ReviewForm gameId={game.id} user_id={user.id} addReview={addReview}/>
 </Fade>
