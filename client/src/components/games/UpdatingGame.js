@@ -42,7 +42,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
       <HomeHead>
 
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
-    <Dropzone
+   <div> <Dropzone
             onDrop={onDrop}
             multiple={false}
           >
@@ -62,6 +62,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
               )
             }}
           </Dropzone>
+          </div>
       <Form.Input
         
         label={'Name of Game'}
