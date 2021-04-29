@@ -6,7 +6,7 @@ import { HomeHead } from '../shared/sharedComponets';
 
 const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
   const user = useContext (AuthContext)
-  const [game, setGame] = useState({ gamename: gameData.gamename, description: gameData.description, studio: gameData.studio, genre: gameData.genre, releasedate: gameData.releasedate, esrb: gameData.esrb,  coop: gameData.coop, multi: gameData.multi, single: gameData.single})
+  const [game, setGame] = useState({ gamename: gameData.gamename, description: gameData.description, studio: gameData.studio, genre: gameData.genre, releasedate: gameData.releasedate, esrb: gameData.esrb,  coop: gameData.coop, multi: gameData.multi, single: gameData.single, game_id: gameId})
   
 
   
@@ -14,8 +14,9 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
   const handleSubmit = (e) => {
     setOpen(false);
     e.preventDefault();
-    updateGame(game)
+    updateGame(game,gameId)
     setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null) })
+
   }
 
   const handleChangeCoop = (e) => {

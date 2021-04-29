@@ -8,19 +8,21 @@ import Dropzone from 'react-dropzone';
 
 const GameForm = ({ addGame }) => {
   const auth = useContext (AuthContext)
-  const [game, setGame] = useState({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "",  coop: (null), multi: (null), single: (null), auth })
-  const [formVals, setFormVals] = useState({ file: '', image: '' })
+  const [game, setGame] = useState({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", image: '',  coop: (null), multi: (null), single: (null), file:"" })
   let history = useHistory();
 
-  
+  const defaultImage=""
+    
   const onDrop = (files) => {
-    setFormVals({ ...formVals, file: files[0]})
+    setGame({ ...game, file: files[0]})
   }
+    
   const handleSubmit = (e,) => {
     e.preventDefault();
     addGame(game)
-    setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null) })
-    history.push("/games") 
+    setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null), image: "" })
+    
+    history.push("/") 
   }
   const handleChangeCoop = (e) => {
     if (e.target.checked){ 
@@ -57,8 +59,8 @@ const GameForm = ({ addGame }) => {
                   <input {...getInputProps()} />
                   {
                     isDragActive ?
-                    <p>File grabbed</p>
-                    : <p>Drop Files here</p>
+                       <p style={{color: 'white'}}>File grabbed</p>
+                    : <p style={{color: 'white'}}>Drop File Here</p>
                   }
                 </div>
               )
@@ -70,7 +72,7 @@ const GameForm = ({ addGame }) => {
         label={'Name of Game'}
         placeholder="Name of Game"
         name='gamename'
-        required
+        // required
         value={game.gamename}
         onChange={(e, {value}) => setGame({...game, gamename: value})}
       />
@@ -78,7 +80,7 @@ const GameForm = ({ addGame }) => {
         label='Description'
         placeholder="Description of Game"
         name='description'
-        required
+        // required
         value={game.description}
         onChange={(e, {value}) => setGame({...game, description: value})}
       />
@@ -86,7 +88,7 @@ const GameForm = ({ addGame }) => {
         label='Studio'
         placeholder="Name of Studio"
         name='studio'
-        required
+        // required
         value={game.studio}
         onChange={(e, {value}) => setGame({...game, studio: value})}
       />
@@ -94,7 +96,7 @@ const GameForm = ({ addGame }) => {
         label='Genre'
         name='Genre'
         placeholder="Genre"
-        required
+        // required
         value={game.genre}
         onChange={(e, {value}) => setGame({...game, genre: value})}
         options={genreOpts}
@@ -102,7 +104,7 @@ const GameForm = ({ addGame }) => {
       <Form.Select 
         label='ESRB'
         placeholder="ESRB"
-        required
+        // required
         name='esrb'
         value={game.esrb}
         onChange={(e, {value}) => setGame({...game, esrb: value})}
