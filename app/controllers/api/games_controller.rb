@@ -1,5 +1,5 @@
 class Api::GamesController < ApplicationController
-  before_action :set_user
+  before_action :set_user, execpt: [:update]
   before_action :set_game, only: [:show, :destroy]  
  
    def index

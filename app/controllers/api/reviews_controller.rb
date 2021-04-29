@@ -1,7 +1,7 @@
 class Api::ReviewsController < ApplicationController
-    before_action :set_game, only: [:index, :create, :update]
+    before_action :set_game, except: [:user_reviews]
     before_action :set_review, only: [:show, :update, :destroy]
-    before_action :set_user, only: [:user_reviews]
+    before_action :set_user, execpt: [:update]
   def index
     render json: @game.reviews
   end
