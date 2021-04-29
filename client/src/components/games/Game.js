@@ -44,32 +44,22 @@ const Game = ({game}) => {
 return(
   <>
   
-  <Card.Group>
-  <Card>
-  <Card.Content>
-  <Card.Header><a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a></Card.Header>
-  <Image height="auto" width="200px" centered src={game.image} />
+  <Segment>
+
+  <Grid>
+    <Grid.Column width={3}>
+    <Image height="auto" width="200px" centered src={game.image} />
+    </Grid.Column>
+    <Grid.Column width={9}>
+    <a href={`/games/${game.id}`} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
+    <p style={{color: 'black'}}>Genre: {game.genre}</p>  
+    <h3>{game.description}</h3>
+    <span>Joined in 2015</span>
+    <h3 style={{color: 'black'}}>{renderAverageRating()}</h3>
       
-       <Card.Meta>
-        <span>Joined in 2015</span>
-        </Card.Meta>
-          <Card.Description>
-          <h3>{game.description}</h3>
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-       <h3 style={{color: 'black'}}>{renderAverageRating()}</h3>
-       <h3 style={{color: 'black'}}>Genre: {game.genre}</h3>      
-       <h3 style={{color: 'black'}}>ESRB: {game.esrb}</h3>
-      </Card.Content>
-  
-     
-    
-   
- 
-   
- </Card>
-  </Card.Group>
+    </Grid.Column>
+  </Grid>
+  </Segment>
   <Divider tyle={{backgroundColor: '#fc8787'}} />
   
   </>

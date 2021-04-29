@@ -6,8 +6,9 @@ import GameForm from '../games/GameForm'
 import axios from 'axios';
 import {Container} from '../shared/sharedComponets'
 import Fade from 'react-reveal/Fade'
+import imageSrc2 from '../shared/images/Jayden.jpg'
 
-const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
+const defaultImage = {imageSrc2};
 
 const Profile = ({ user, updateUser, match}) => {
   const [editing, setEditing] = useState(false)
@@ -50,15 +51,12 @@ const Profile = ({ user, updateUser, match}) => {
     return (games.map(game => {
       return (
         <div>
-          <Segment>
           <a href={`/games/${game.id}`} style={{color: '#fc8787'}}>
             <h1 align='center'>{game.gamename}</h1></a>
           <Grid divided='vertically' style={{color: '#fc8787'}}>
       <Grid.Row columns={2}>
-       <Grid.Column>
        <Image src={game.image} size= 'tiny' ></Image>
-      </Grid.Column>
-      <Grid.Column>
+       <Grid.Column>
       <p>{game.genre}<br/>
       <br/>
         {game.esrb}
@@ -70,7 +68,7 @@ const Profile = ({ user, updateUser, match}) => {
     </Grid.Row>
       
     </Grid>
-    </Segment>
+    <Divider/>
         </div>
       )
     }))
@@ -80,11 +78,24 @@ const Profile = ({ user, updateUser, match}) => {
     return (reviews.map(review => {
       return(
         <div>
-          <Segment>
-          <h1>{review.title}</h1>
-          <p>{review.rating}</p>
-          <body>{review.body}</body>
-          </Segment>
+            <a href={`games/1`} style={{color: '#fc8787'}}>
+            <h1 align='center'>{review.title}</h1></a>
+          <Grid divided='vertically' style={{color: '#fc8787'}}>
+      <Grid.Row columns={2}>
+       <Grid.Column>
+       <Image src={review.image} size= 'small' ></Image>
+      </Grid.Column>
+      <Grid.Column>
+      <p>Rating:{review.rating}
+      <br/>
+      Visuals:{review.visual}
+      </p>
+      </Grid.Column>
+    </Grid.Row>
+    </Grid>
+    <Divider/>
+      
+    
         </div>
       )
     }))
@@ -94,21 +105,16 @@ const Profile = ({ user, updateUser, match}) => {
     return(
       <>
       <br/>
-      <br/>
-      <br/>
-      <br/>
-      <Container>
-        <Card >
-        <Grid.Column width={4}>
-          <Image src={user.image || defaultImage} />
-        </Grid.Column>
-        <Grid.Column width={4} style={{color: '#fc8787'}}>
-          <Header style={{color: '#fc8787'}}>{user.nickname}</Header>
-          <Header style={{color: '#fc8787'}}>{user.name}</Header>
-          <Header style={{color: '#fc8787'}}>{user.email}</Header>
-        </Grid.Column>
-        </Card>
-      </Container>
+
+
+          <Header style={{color: '#fc8787', position: 'absolute', left: '80%'}}>{user.nickname}</Header>
+          <Segment circular style={{position: 'absolute', left: '50%'}}>
+          <Image  size='mini' src={user.image || defaultImage} />
+          </Segment>
+          <Header  style={{color: '#fc8787', position: 'absolute', left: '60%'}}>{user.name}</Header>
+          <Header style={{color: '#fc8787', position: 'absolute', left: '30%'}}>{user.email}</Header>
+        <br/>
+        <br/>
         <br/>
       </>
     )
@@ -173,27 +179,26 @@ const Profile = ({ user, updateUser, match}) => {
 
 
           { editing ? editView() : profileView() }
-      <Fade left>
-      <Button color= 'black' onClick={() => setEditing(!editing)}>
+     
+      <Button style={{position: 'absolute', left: '50%', top: '50%' }}color= 'black' onClick={() => setEditing(!editing)}>
         { editing ? 'Cancel' : 'Edit Profile'}
       </Button>
-      </Fade>
-      <Grid divided='vertically' style={{color: '#fc8787'}}>
-      <Grid.Row columns={2}>
-       <Grid.Column>
-        <Fade right>
 
-       <h2>{games && renderGames()}</h2>
+        <Fade right>
+          <br/>
+          <Segment style={{color: '#fc8787', position: 'absolute', left: '5%'}}>
+       <h3>Your Games{games && renderGames()}</h3>
+       </Segment>
         </Fade>
-      </Grid.Column>
+
       <Fade left>
-      <Grid.Column>
-      <h3>{reviews && renderReviews()}</h3>
-      </Grid.Column>
-      </Fade>
-    </Grid.Row>
+      <br/>
+      <Segment style={{color: '#fc8787', position: 'absolute', left: '70%',}}>
+
+      <h3>Your Reviews{reviews && renderReviews()}</h3>
+      </Segment>
       
-    </Grid>
+      </Fade>
     </>
   )
 }
