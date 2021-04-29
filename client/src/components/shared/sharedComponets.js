@@ -19,7 +19,7 @@ export const Griddy = styled(Grid)`
     width: 100%
 `
 export const Percent = styled(Image)`
-    text-align: cente
+    text-align: center;
     align: center;
     content-align: center;
 `
