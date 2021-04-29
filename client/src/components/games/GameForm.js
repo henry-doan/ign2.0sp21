@@ -33,10 +33,10 @@ const GameForm = ({ addGame }) => {
           } 
         }
   return(
-    <Segment style={{backgroundColor: '#fc8778'}}>
+    <Segment style={{backgroundColor: '#fc8787'}}>
       <HomeHead>
 
-    <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
+    <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8787'}}>
 
     <Dropzone
             // onDrop={onDrop}

@@ -10,6 +10,8 @@ import { HomeHead, MainHead, StyledSegment } from '../shared/sharedComponets'
 import { Fade } from 'react-reveal'
 import { ReviewContext } from '../../providers/ReviewProvider'
 import UpdatingGame from './UpdatingGame'
+import styles from '../styledComponents/index.module.css'
+import imageSrc from '../shared/images/hexagonal.png'
 
 
 const GameShow = ({match}) => {
@@ -123,10 +125,8 @@ const renderAverageRating = () => {
   }
   let averageRating = (sum / allRatings.length)
   return (
-    <div>
-      <h1>
-        Overall Rating: {averageRating.toFixed(1)}
-      </h1>
+    <div className={styles.container}>
+      {averageRating.toFixed(1)}
     </div>
   )
 }
@@ -146,7 +146,7 @@ const renderAverageVisual = () => {
     <div>
       <h3>
         Visuals: {averageVisual.toFixed(1)}/5
-        <Progress percent={progressVisual} active />
+        <Progress color="blue" percent={progressVisual} active />
       </h3>
     </div>
   )
@@ -167,7 +167,7 @@ const renderAverageSoundtrack = () => {
     <div>
       <h3>
         Soundtrack: {averageSoundtrack.toFixed(1)}/5
-        <Progress percent={progressSoundtrack} active />
+        <Progress color="blue" percent={progressSoundtrack} active />
       </h3>
     </div>
   )
@@ -188,7 +188,7 @@ const renderAverageGameplay = () => {
     <div>
       <h3>
         Gameplay: {averageGameplay.toFixed(1)}/5
-        <Progress percent={progressGameplay} active />
+        <Progress color="blue" percent={progressGameplay} active />
       </h3>
     </div>
   )
@@ -212,7 +212,7 @@ return(
       </Grid.Column>
     </Grid.Row>
 
-      {renderAverageRating()}
+      
     <Grid.Row columns={5} style={{backgroundColor: '#fc8787'}}>
       <Grid.Column>
       </Grid.Column>
@@ -236,18 +236,22 @@ return(
 </Segment>
 {deleteView()}
 {updateView()}
+
 <Segment>
 
-<br />
+<div className={styles.centered}>
+<img className={styles.container}src={imageSrc} alt="hexagon" />
+<div className={styles.centered}>
 {renderAverageRating()}
-<br />
-<br />
-<br />
+</div>
+</div>
+<br /><br /><br /><br /><br /><br />
 {renderAverageVisual()}
 {renderAverageSoundtrack()}
 {renderAverageGameplay()}
-<hr />
+
 </Segment>
+
 
 
 <Segment>
