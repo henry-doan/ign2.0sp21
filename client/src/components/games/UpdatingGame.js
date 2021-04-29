@@ -17,7 +17,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
   const handleSubmit = (e) => {
     setOpen(false);
     e.preventDefault();
-    updateGame(game,gameId)
+    updateGame(game.id ,gameId)
     setGame({ gamename: "", description: "", studio: "", genre: "", releasedate: (null), esrb: "", coop: (null), multi: (null), single:(null) })
 
   }

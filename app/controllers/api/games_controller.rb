@@ -22,6 +22,7 @@ class Api::GamesController < ApplicationController
       def create 
         game = current_user.games.new(game_params)
         if game.save
+           
             render json: game
         else
           
@@ -30,15 +31,19 @@ class Api::GamesController < ApplicationController
       end
     
       def update 
-        @game = current_user.games.find(params[:id])
-       file = params[:file]
-       if file && file != ''
-      begin
-        ext = File.extname(file.tempfile)
-        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
-        @game.image = cloud_image['secure_url']
-      rescue => e
-        render json: { errors: e }, status: 422
+        
+        game = current_user.games.find(params[:id]) 
+        if file && file != ''
+          begin
+            ext = File.extname(file.tempfile)
+            cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
+            game.image = cloud_image['secure_url']
+           
+            if game.save
+              render json: game
+            else
+              render json: { errors: user.errors.full_messages }, status: 422
+            end
         return
       end
     end
