@@ -1,9 +1,13 @@
 class Api::GamesController < ApplicationController
-
+  before_action :set_user, except: [:update]
   before_action :set_game, only: [:show, :update, :destroy]  
  
    def index
         render json: Game.all
+      end
+
+      def user_games
+        render json: @user.games
       end
 
     def search 
@@ -46,5 +50,8 @@ class Api::GamesController < ApplicationController
       end
         def game_params
           params.require(:game).permit(:gamename, :studio, :description, :genre, :coop, :multi, :single, :esrb, :releasedate, :user_id, :id, :created_at, :updated_at, :image)
+        end
+        def set_user
+          @user = current_user
         end
       end

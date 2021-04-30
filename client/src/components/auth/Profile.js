@@ -30,7 +30,7 @@ const Profile = ({ user, updateUser, match}) => {
 
   const getGames = async () => {
     try {
-      let res = await axios.get(`api/users/${user.id}/games`);
+      let res = await axios.get(`api/games/user/${user.id}`);
       setGames(res.data);
       console.log("games", res.data);
     } catch (err) {
@@ -40,7 +40,7 @@ const Profile = ({ user, updateUser, match}) => {
 
   const getReviews = async() => {
     try {
-      let res = await axios.get(`/api/games/1/reviews`)
+      let res = await axios.get(`api/reviews/user/${user.id}`);
       setReviews(res.data);
       console.log("got reviews", res.data);
     }catch(err){
