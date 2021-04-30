@@ -19,7 +19,7 @@ return (
       <Card.Header>Jared</Card.Header>
       <Card.Meta>DevPoint Labs 2021</Card.Meta>
       <Card.Description>
-        Jared is a part-time magician living in Salt Lake. While not practicing magic he can be found donating time at the local foster home for stray cats. Enjoy cold showers and walking on legos in the dark.  Also DIY Dentistry!
+      Dad. Gamer. Wood Worker. If I am not in front of a computer, I am in the shop.
       </Card.Description>
     </Card.Content>
     <Card.Content extra>

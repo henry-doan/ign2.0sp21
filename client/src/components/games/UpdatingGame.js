@@ -34,8 +34,9 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
           } 
         }
   return(
-    <Segment style={{backgroundColor: '#fc8778'}}>
-      <HomeHead>
+    
+    <Segment style={{backgroundColor: '#fc8778', width: "100%"}}>
+    
 
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
       <Form.Input
@@ -105,7 +106,7 @@ const UpdatingGame = ({ updateGame,  gameData, gameId, setOpen}) => {
       
       <Form.Button>Save</Form.Button>
     </Form>
-      </HomeHead>
+     
     </Segment>
   )
 }

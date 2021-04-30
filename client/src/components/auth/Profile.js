@@ -7,6 +7,7 @@ import axios from 'axios';
 import {Container} from '../shared/sharedComponets'
 import Fade from 'react-reveal/Fade'
 import imageSrc2 from '../shared/images/Jayden.jpg'
+// import styles from '../styledComponents/index.module.css'
 
 const defaultImage = {imageSrc2};
 
@@ -52,14 +53,14 @@ const Profile = ({ user, updateUser, match}) => {
       return (
         <div>
           <a href={`/games/${game.id}`} style={{color: '#fc8787'}}>
-            <h1 align='center'>{game.gamename}</h1></a>
-          <Grid divided='vertically' style={{color: '#fc8787'}}>
-      <Grid.Row columns={2}>
+            <h2 align='center'>{game.gamename}</h2></a>
+          <Grid divided='vertically' style={{color: "#c75c7b"}} >
+      <Grid.Row columns={2} style={{paddingLeft: "3em"}}>
        <Image src={game.image} size= 'tiny' ></Image>
        <Grid.Column>
       <p>{game.genre}<br/>
       <br/>
-        {game.esrb}
+        ESRB: {game.esrb}
         <br/>
         <br/>
         {game.releasedate}
@@ -79,16 +80,20 @@ const Profile = ({ user, updateUser, match}) => {
       return(
         <div>
             <a href={`games/1`} style={{color: '#fc8787'}}>
-            <h1 align='center'>{review.title}</h1></a>
-          <Grid divided='vertically' style={{color: '#fc8787'}}>
+            <h2 align='center'>{review.title}</h2></a>
+          <Grid divided='vertically' style={{color: '#c75c7b'}}>
       <Grid.Row columns={2}>
        <Grid.Column>
        <Image src={review.image} size= 'small' ></Image>
       </Grid.Column>
       <Grid.Column>
-      <p>Rating:{review.rating}
+      <p>Overall Rating:{review.rating}
       <br/>
       Visuals:{review.visual}
+      <br/>
+      Soundtrack: {review.soundtrack}
+      <br/>
+      Gameplay: {review.game_play}
       </p>
       </Grid.Column>
     </Grid.Row>
@@ -106,13 +111,33 @@ const Profile = ({ user, updateUser, match}) => {
       <>
       <br/>
 
+        <Grid style={{marginLeft: "250px"}}>
+          <Grid.Row>
+            <div style={{
+              display: "flex",
+              justifyContent: "space-evenly"
 
-          <Header style={{color: '#fc8787', position: 'absolute', left: '80%'}}>{user.nickname}</Header>
-          <Segment circular style={{position: 'absolute', left: '50%'}}>
-          <Image  size='mini' src={user.image || defaultImage} />
-          </Segment>
-          <Header  style={{color: '#fc8787', position: 'absolute', left: '60%'}}>{user.name}</Header>
-          <Header style={{color: '#fc8787', position: 'absolute', left: '30%'}}>{user.email}</Header>
+            }}>
+              <Header style={{color: '#fc8787', margin: "20px"}}>Nickname:{user.nickname}</Header>
+              {/* <Segment circular style={{margin: "20px"}}> */}
+              <Image  size='small' src={user.image || defaultImage} style={{
+                
+                objectFit: "cover",
+                borderRadius: "50%",
+                height: "200px",
+                width: "200px"
+
+              }}/>
+
+
+          
+              {/* </Segment> */}
+              <Header  style={{color: '#fc8787', margin: "20px"}}>{user.name}</Header>
+              <Header style={{color: '#fc8787', margin: "20px"}}>{user.email}</Header>
+            </div>
+
+            </Grid.Row>
+          </Grid>
         <br/>
         <br/>
         <br/>
@@ -176,29 +201,47 @@ const Profile = ({ user, updateUser, match}) => {
 
   return (
 <>
+    <div style={{
+      zIndex: "-1",
+      backgroundColor: "#eee",
+      width: "1100px",
+      height: "100%",
+     
+     
+
+    }}>
 
 
           { editing ? editView() : profileView() }
      
-      <Button style={{position: 'absolute', left: '50%', top: '50%' }}color= 'black' onClick={() => setEditing(!editing)}>
+      <Button style={{marginLeft: "26em" }}color= 'black' onClick={() => setEditing(!editing)}>
         { editing ? 'Cancel' : 'Edit Profile'}
       </Button>
+      <Grid divided='vertically' style={{
+        paddingTop: "40px"
+      }}>
+        <Grid.Row>
 
+          <Grid.Column width={8}>
         <Fade right>
           <br/>
-          <Segment style={{color: '#fc8787', position: 'absolute', left: '5%'}}>
-       <h3>Your Games{games && renderGames()}</h3>
-       </Segment>
+       <div><h1 style={{color: "#c75c7b", fontSize: "42px", paddingLeft: "1em"}}>Your Games</h1>{games && renderGames()}</div>
+       <Divider/>
         </Fade>
+        </Grid.Column>
 
+      <Grid.Column width={8}>
       <Fade left>
       <br/>
-      <Segment style={{color: '#fc8787', position: 'absolute', left: '70%',}}>
 
-      <h3>Your Reviews{reviews && renderReviews()}</h3>
-      </Segment>
+
+      <div><h1 style={{color: "#c75c7b", fontSize: "42px"}}>Your Reviews</h1>{reviews && renderReviews()}</div>
       
       </Fade>
+      </Grid.Column>
+      </Grid.Row>
+      </Grid>
+  </div>
     </>
   )
 }

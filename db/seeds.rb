@@ -4,39 +4,39 @@ require "faker"
 
 
     @u1 = User.create(
-      email: "test321@test.com",
-      name: "Test1",
-      nickname: "testy",
-      image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FHyrevue-High-End-Retail-Official%2Fdp%2FB07YRYJZD2&psig=AOvVaw3eAAAD09UpVLHFATyL_O6O&ust=1618623611736000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIDGhf3QgfACFQAAAAAdAAAAABAI",
+      email: "devpoint@test.com",
+      name: "Simon",
+      nickname: "Simon Sez",
+      image: "https://media-exp1.licdn.com/dms/image/C4E03AQHvaNesNx6Fyg/profile-displayphoto-shrink_200_200/0/1609702182817?e=1623283200&v=beta&t=8E0bvHxPKg932BhrKQ8D_Tp8Aow78W7Dcyo72twC4NM",
       password: "password",
       )
 
     @u2 = User.create(
-      email: "test432@test.com",
-      name: "jeffrey",
-      nickname: "jeffers",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYPA4GEBxjk9iD7_1nEwlpagBDAwLynzLBEQ&usqp=CAU",
+      email: "devpoint2@test.com",
+      name: "Henry",
+      nickname: "Papa Wolf",
+      image: "https://avatars.githubusercontent.com/u/12537202?v=4",
       password: "password",
     )
 
     @u3 = User.create(
-      email: "test567@test.com",
-      name: "amber",
-      nickname: "ams",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRix2u5gLmsVg9r_2KR29O_D4gMRHOufDQexQ&usqp=CAU",
+      email: "devpoint3@test.com",
+      name: "Taylor",
+      nickname: "Tay Tay",
+      image: "https://res.cloudinary.com/henry-devpoint-labs/image/upload/v1612498265/DevPoint%20Launch%20Winter20/TaylorCollins_w167ix.jpg",
       password: "password"
     )
 
 
 1.times do game = Game.create(
-  gamename: "Super Smash Bros",
-  studio: "Nintendo",
-  description: "Super Smash Bros. Ultimate is a fighting game for up to eight players in which characters from Nintendo games and other third-party franchises must try to knock each other out of an arena. Each player has a percentage meter, which raises when they take damage, making them easier to launch in the air and out of the arena. Standard battles use one of three victory conditions: Timed, where players aim to win the most points by defeating opponents within a time limit; Stock, where players have a set number of lives and must aim to be the last player standing; and Stamina, where players must simply reduce their opponent's health down to zero to defeat them. Players can adjust the rules to their liking and save them as presets for future matches.",
+  gamename: "Rivals of Aether",
+  studio: "Aether Studios",
+  description: "Rivals of Aether is the spiritual sequel to Super Smash Land, a fan-made remake of Super Smash Bros., and therefore its gameplay mechanics are heavily based on the latter game. Each character must try to knock the others out of a two-dimensional arena. In addition to fighting game-style moves, characters can also use elemental-based attacks or passive abilities that also affect the stage. This creates a meta game of not only attacking other players but also affecting the arena itself.",
   genre: "Fighting",
   coop: true,
   multi: true,
   single: true,
-  image: "https://images-na.ssl-images-amazon.com/images/I/81bH3%2BDbvNL._SL1500_.jpg",
+  image: "https://www.mobygames.com/images/covers/l/462426-rivals-of-aether-xbox-one-front-cover.png",
   esrb: "Everyone",
   releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
   user_id: 1,
@@ -44,6 +44,7 @@ require "faker"
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -51,7 +52,7 @@ require "faker"
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -60,14 +61,14 @@ end
 end
 
 1.times do game = Game.create(
-  gamename: "Monster Hunter Rise",
-  studio: "Capcom",
-  description: "As with previous Monster Hunter titles, Monster Hunter Rise has the player take the role of a Hunter, tasked with slaying or capturing large monsters using a variety of weapons, tools, and environmental features to damage and weaken them while surviving their attacks. Successful completion of the offered quests provides loot, typically in the form of various monster parts from the monster, which are used to forge new armor and weapons that can be used to take on more powerful monsters, forming the series' notable core loop. Several of the series' monsters return along with a host of new monsters developed for Rise.",
-  genre: "Action, Role-playing",
-  coop: false,
-  multi: true,
+  gamename: "The Binding of Isaac",
+  studio: "Edmund McMillen",
+  description: "The Binding of Isaac is an indie roguelike video game designed by Edmund McMillen and Florian Himsl, initially released in 2011 for Microsoft Windows; the game was later ported for OS X, and Linux operating systems. The game's title and plot are inspired by the Biblical story of the Binding of Isaac. In the game, Isaac's mother receives a message from God demanding the life of her son as proof of her faith, and Isaac, fearing for his life, flees into the monster-filled basement of their home where he must fight to survive.",
+  genre: "Rogue-like",
+  coop: true,
+  multi: false,
   single: true,
-  image: "https://media.gamestop.com/i/gamestop/11108989/Monster-Hunter-Rise-Deluxe-Edition",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHtZKKjxprJ-cPpS2-Chp03dfT1o51TYdzxw&usqp=CAU",
   esrb: "Teen",
   releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
   user_id: 2,
@@ -75,6 +76,7 @@ end
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -82,7 +84,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -106,6 +108,7 @@ end
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -113,7 +116,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -137,6 +140,7 @@ end
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -144,7 +148,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -153,21 +157,22 @@ end
 end
 
 1.times do game = Game.create(
-  gamename: "South Park: The Fractured But Whole",
-  studio: "Ubisoft",
-  description: "South Park: The Fractured but Whole is a role-playing video game that is viewed from a 2.5D, third-person perspective. The player controls the New Kid as they explore the fictional Colorado town of South Park, around which the player-character can be freely moved. A fast-travel system allows the character to be moved between unlocked travel points.",
-  genre: "Role-Playing",
-  coop: true,
+  gamename: "Ori and the Will of the Wisps",
+  studio: "Moon Studios",
+  description: "Ori and the Will of the Wisps is a 2D Metroidvania; a platform game with an emphasis on exploration, collecting items and upgrades, and backtracking to previously inaccessible areas. The player controls the titular Ori, a white guardian spirit. As Ori, players must jump, climb, glide, and swim between various platforms to solve intricate puzzles. Gameplay unfolds in the form of a Metroidvania, with new abilities and upgrades allowing players to unlock previously inaccessible areas of the map. ",
+  genre: "Platform-adventure",
+  coop: false,
   multi: false,
   single: true,
-  image: "https://images-na.ssl-images-amazon.com/images/I/71GuWTKKDcL._SL1321_.jpg",
-  esrb: "Mature",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvaw4vih5ep0tCYV-ol2PCebidWk1a17YnbA&usqp=CAU",
+  esrb: "Everyone",
   releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
   user_id: 2,
   )
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -175,7 +180,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -199,6 +204,7 @@ end
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -206,7 +212,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -230,6 +236,7 @@ end
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -237,7 +244,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -246,21 +253,22 @@ end
 end
 
 1.times do game = Game.create(
-  gamename: "Halo 3",
-  studio: "Bungie",
-  description: "Halo 3 is a shooter game where players primarily experience gameplay from a first-person perspective. Much of the gameplay takes place on foot, but also includes segments focused on vehicular combat. The balance of weapons and objects in the game was adjusted to better adhere to the Golden Triangle of Halo: these are weapons, grenades, and melee attacks, which are available to a player in most situations. Players may dual-wield some weapons, forgoing the use of grenades and melee attacks in favor of the combined firepower of two weapons.",
-  genre: "First-person Shooter",
+  gamename: "Gris",
+  studio: "Nomada Studio",
+  description: "The game follows a girl named Gris, who wakes up in the palm of a crumbling statue of a woman. She attempts to sing out, but quickly becomes choked up and the statue's hands crumble, dropping her to the colourless earth below. After landing, the girl continues walking forward and discovers a number of strange structures that seem to be powered by mysterious points of light resembling stars. The girl can collect these lights to gain new abilities, such as turning into a block of stone, and creating new pathways made of constellations.",
+  genre: "Platform-adventure",
   coop: false,
   multi: false,
   single: true,
-  image: "https://images-na.ssl-images-amazon.com/images/I/813gXz6Vi0L._SL1500_.jpg",
-  esrb: "Mature",
+  image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTtwYAQu2KnLqarzI2QEkL1pipC5SXNnl3baTdV50moyJvAo02nJWqb2kIS58PJdBAiRnZEwZHXt4ya84e5g6y0W1lmE-Zx_w&usqp=CAE",
+  esrb: "Everyone",
   releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
   user_id: 2,
   )
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -268,7 +276,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -277,21 +285,22 @@ end
 end
 
 1.times do game = Game.create(
-  gamename: "Diablo 3",
-  studio: "Blizzard Entertainment",
-  description: "Much like in Diablo and Diablo II, the quality and attributes of equipment are randomized. In addition to base stats (such as damage and attack speed for weapon or armor points on armor) higher-quality items have additional properties such as extra damage, attribute bonuses, bonuses to critical hit chance, or sockets, which allow items to be upgraded and customized by adding gems for various stat bonuses.",
-  genre: "Action, Role-playing",
-  coop: false,
+  gamename: "Cuphead",
+  studio: "Studio MDHR",
+  description: "Cuphead's gameplay is centered around continual boss fights, interspersed with run-and-gun levels. All worlds but the final one include a mausoleum where the player has to parry ghosts before they touch an urn, which rewards them with a Super move for completing the challenge. Each of these boss fights and run-and-gun levels is housed in one of four different worlds, with the fourth world containing the final fight against the Devil himself. Each boss fight includes a simple, normal, and expert difficulty mode (with the exception of the final two bosses, which lack a simple mode). ",
+  genre: "Run and gun",
+  coop: true,
   multi: false,
   single: true,
-  image: "https://media.gamestop.com/i/gamestop/10163515/Diablo-III-Eternal-Collection",
-  esrb: "Mature",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpY1TpfN5Kx_276lLMZ1X6b0_GnDujAvfj_g&usqp=CAU",
+  esrb: "Everyone",
   releasedate: Faker::Date.between(from: 365.days.ago, to: Date.today),
   user_id: 3,
   )
   3.times do
   users = [1,2,3]
   rating = [1,2,3,4,5]
+  image = ["https://store-images.s-microsoft.com/image/global.50863.acentoprodimg.f9ef396f-be99-4dc1-88e2-15405a3d51b5.57fa1d64-398b-47dc-845f-608fdf700d56?mode=crop&q=90&h=195&w=348", "https://images.unsplash.com/photo-1567027757540-7b572280fa22?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", "https://st.depositphotos.com/1013230/2210/i/950/depositphotos_22104925-stock-photo-game-controller-and-blue-light.jpg", "https://media.wired.com/photos/60303d8eb1e4e27662365aa3/master/pass/Game-Cracking.jpg", "https://media.gamestop.com/i/gamestop/Nav_Switch_2.jpeg", "https://g.foolcdn.com/editorial/images/499797/group-of-men-and-women-playing-video-games.jpg", "https://www.uae.campusfrance.org/sites/pays/files/uae/styles/mobile_visuel_principal_page/public/Sans%20titre.png?itok=JDmQeA2O", "https://cdn.vox-cdn.com/thumbor/BJnbAzdEjThAoTFptofYwMFtpBU=/0x0:3840x2160/1200x800/filters:focal(1563x518:2177x1132)/cdn.vox-cdn.com/uploads/chorus_image/image/69204054/Returnal_20210424011831.0.jpg"]
   review = Review.create(
     title: Faker::TvShows::GameOfThrones.house,
     gamereview: Faker::Restaurant.review,
@@ -299,7 +308,7 @@ end
     game_play: rating.sample,
     visual: rating.sample,
     soundtrack: rating.sample,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtJOFxyMT9f5miPY8yndnzwutvjKbD8ahhw&usqp=CAU",
+    image: image.sample,
     rating: rating.sample,
     user_id: users.sample,
     game_id: game.id,
@@ -307,4 +316,4 @@ end
 end
 end
 
-puts "seeded"
+puts "data seeded"

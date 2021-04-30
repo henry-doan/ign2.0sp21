@@ -1,6 +1,6 @@
 .centered {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -39,8 +39,16 @@
   color: Grey !important;
 }
 
+.gameName {
+  text-decoration: underline;
+}
+
 .cardEffect:hover {
   transform: scale(1.02);
+}
+
+.formShadow {
+  box-shadow: 2px 2px 5px grey !important;
 }
 
 /* .progressColor {
