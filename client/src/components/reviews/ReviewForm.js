@@ -10,7 +10,7 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 const ReviewForm = ({ addReview, gameId, user_id }) => {
   const user = useContext(AuthContext)
-  const [ review, setReview ] = useState({title:"", rating:(4.0), gamereview:(4.0), image:"", body:"", game_play:(5.0),  visual:(5.0), soundtrack:(5.0), user_id: user_id, game_id: gameId })
+  const [ review, setReview ] = useState({title:"", rating:(4.0), gamereview:"", image:"", body:"", game_play:(5.0),  visual:(5.0), soundtrack:(5.0), user_id: user_id, game_id: gameId })
   const [open, setOpen] = React.useState(false)
  
 
@@ -23,7 +23,7 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
   return(
 
     <Modal
-      style={{backgroundColor: '#fc8778'}}
+      style={{backgroundColor: '#fc8778', width: "350px !important;"}}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
@@ -31,10 +31,10 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
     >
 
   
-<Container>
-    <Grid>
+<Container style={{width: "300px !important;"}}>
+    <Grid >
         <Grid.Row centered>
-            <Grid.Column width={6}>
+            <Grid.Column width={13}>
                 <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8778'}}>
       <Form.Input
      
@@ -46,7 +46,7 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
      />
         <Form.Input
       
-      label="Gamereview"
+      label="Game Review"
       placeholder="Game Review"
       name="gamereview"
       value={review.gamereview}
@@ -54,14 +54,14 @@ const ReviewForm = ({ addReview, gameId, user_id }) => {
       />
     
       
-      {/* <Form.Input
+      <Form.Input
      
      label="image"
      placeholder="image"
      name="image"
      value={review.image}
      onChange={(e, {value}) => setReview({...review, image: value})}
-     /> */}
+     />
      <Form.Dropdown
         label='Rating'
         name='rating'

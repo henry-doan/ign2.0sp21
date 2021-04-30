@@ -18,7 +18,8 @@ const Navbar = ({ location, user, handleLogout, history }) => {
           
           <Menu.Item position= 'right'
             name='logout'
-            onClick={() => handleLogout(history)}
+            onClick={() => handleLogout(history.push)}
+            
 
           />
         </Menu.Menu>

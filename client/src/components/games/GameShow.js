@@ -66,18 +66,18 @@ const updateReview =  (review, gameId, id) => {
     })
 }
 
-// const updateGame =  (gameId, id) => {
-//   axios.put(`/api/games/${game.id}`, { game })
-//     .then(res => {
-//       const updatedGames = game.map( t => {
-//         if (t.id === id) {
-//           return res.data
-//         }
-//         return t
-//       })
-//       setGame(updatedGames)
-//     })
-// }
+const updateGame =  (gameId, id) => {
+  axios.put(`/api/games/${game.id}`, { game })
+    .then(res => {
+      const updatedGames = game.map( t => {
+        if (t.id === id) {
+          return res.data
+        }
+        return t
+      })
+      setGame(updatedGames)
+    })
+}
 const getReviews = async() => {
   try{
     let res = await axios.get(`/api/games/${match.params.id}/reviews`)
@@ -89,29 +89,37 @@ const getReviews = async() => {
 }
 
 const deleteView = () => {
-  if (user.id === game.user_id) {
-    return (
-      <Button onClick={()=>deleteGame(game.id, history)}>
-      Delete Game
-      </Button>
-      )
-    }
+  if (user){
+
+    if (user.id === game.user_id) {
+      return (
+        <Button onClick={()=>deleteGame(game.id, history)}>
+        Delete Game
+        </Button>
+        )
+      } else {
+        <span></span>
+      }
+  }
 }
 const updateView = () => {
-  if (user.id === game.user_id) {
-    return (
-      <Modal
-      style={{backgroundColor: '#fc8778'}}
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
-      open={open}
-      trigger={<Button>Update Game</Button>}>
-        <Form.Input>
-          {/* <UpdatingGame gameData={game} gameId={game.id} updateGame={updateGame} setOpen={setOpen}/> */}
-        </Form.Input>
-        </Modal>
-      )
-    }
+  if (user) {
+
+    if (user.id === game.user_id) {
+      return (
+        <Modal
+        style={{backgroundColor: '#fc8778'}}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        open={open}
+        trigger={<Button>Update Game</Button>}>
+          {/* <Form.Input> */}
+            <UpdatingGame gameData={game} gameId={game.id} updateGame={updateGame} setOpen={setOpen}/>
+          {/* </Form.Input> */}
+          </Modal>
+        )
+      }
+  }
 }
 
 const renderAverageRating = () => {
@@ -194,6 +202,16 @@ const renderAverageGameplay = () => {
   )
 }
 
+  const renderReviewForm = () =>{
+    if (user){
+      return (
+        <ReviewForm gameId={game.id} user_id={user.id} addReview={addReview}/>
+      )
+    }else{
+      return(<span></span>)
+    }
+  }
+
 return(
 <>
 <HomeHead>
@@ -208,34 +226,32 @@ return(
       <Image height="auto" width="200px" centered src={game.image} />
       </Grid.Column>
       <Grid.Column>
-      <h3>{game.description}</h3>
+      <h3 style={{color: 'black'}}>{game.description}</h3>
       </Grid.Column>
     </Grid.Row>
 
       
-    <Grid.Row columns={5} style={{backgroundColor: '#fc8787'}}>
+    <Grid.Row columns={5}>
       <Grid.Column>
+        <h3 style={{color: 'black'}}>Genre: {game.genre}</h3>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>Genre: {game.genre}</h3>
+        <h3 style={{color: 'black'}}>ESRB: {game.esrb}</h3>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>ESRB: {game.esrb}</h3>
+        <h3 style={{color: 'black'}}>Released: {game.releasedate}</h3>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>Released: {game.releasedate}</h3>
+        <h3 style={{color: 'black'}}>Production Studio: {game.studio}</h3>
       </Grid.Column>
       <Grid.Column>
-        <h3 style={{color: 'white'}}>Production Studio: {game.studio}</h3>
-      </Grid.Column>
-      <Grid.Column>
-        <h3 style={{color: 'white'}}>{game.muliplayer}</h3>
+        <h3 style={{color: 'black'}}>{game.muliplayer}</h3>
       </Grid.Column>
     </Grid.Row>
+{updateView()}
   </Grid>
   <br/>
 {deleteView()}
-{updateView()}
 
 <Segment>
 
@@ -250,6 +266,7 @@ return(
 {renderAverageVisual()}
 {renderAverageSoundtrack()}
 {renderAverageGameplay()}
+{renderReviewForm()}
 
 </Segment>
 
@@ -258,7 +275,8 @@ return(
 
   <Reviews reviews={reviews} gameId={game.id} deleteReview={deleteReview} updateReview={updateReview}/>
 <Fade left>
-<ReviewForm gameId={game.id} user_id={user.id} addReview={addReview}/>
+<br/>
+
 </Fade>
 </HomeHead>
 </>

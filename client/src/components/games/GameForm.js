@@ -4,6 +4,7 @@ import { AuthConsumer, AuthContext } from '../../providers/AuthProvider';
 import { GameConsumer } from '../../providers/GameProvider';
 import { HomeHead } from '../shared/sharedComponets';
 import Dropzone from 'react-dropzone';
+import styling from '../styledComponents/index.module.css'
 
 const GameForm = ({ addGame }) => {
   const auth = useContext (AuthContext)
@@ -33,7 +34,7 @@ const GameForm = ({ addGame }) => {
           } 
         }
   return(
-    <Segment style={{backgroundColor: '#fc8787'}}>
+    <Segment className={styling.formShadow} style={{backgroundColor: '#fc8787'}}>
       <HomeHead>
 
     <Form onSubmit={handleSubmit} style={{backgroundColor: '#fc8787'}}>
@@ -64,6 +65,7 @@ const GameForm = ({ addGame }) => {
         label={'Name of Game'}
         placeholder="Name of Game"
         name='gamename'
+        required
         value={game.gamename}
         onChange={(e, {value}) => setGame({...game, gamename: value})}
       />
@@ -71,6 +73,7 @@ const GameForm = ({ addGame }) => {
         label='Description'
         placeholder="Description of Game"
         name='description'
+        required
         value={game.description}
         onChange={(e, {value}) => setGame({...game, description: value})}
       />
@@ -78,12 +81,14 @@ const GameForm = ({ addGame }) => {
         label='Studio'
         placeholder="Name of Studio"
         name='studio'
+        required
         value={game.studio}
         onChange={(e, {value}) => setGame({...game, studio: value})}
       />
       <Form.Select
         label='Genre'
         name='Genre'
+        required
         placeholder="Genre"
         value={game.genre}
         onChange={(e, {value}) => setGame({...game, genre: value})}
@@ -98,10 +103,10 @@ const GameForm = ({ addGame }) => {
         options={esrbOpts}
       />
       <Form.Input
-        label='Release Date'
-        name='selecteddate'
-        value={game.releasedate}
-        onChange={(e, {value}) => setGame({...game, releasedate: value})}
+        label='image'
+        name='image'
+        value={game.image}
+        onChange={(e, {value}) => setGame({...game, image: value})}
       />
      
       <Form.Field label='coop' control='input' type='checkbox' 

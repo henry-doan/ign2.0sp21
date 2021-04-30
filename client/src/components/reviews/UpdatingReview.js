@@ -47,14 +47,14 @@ const UpdatingReview = ({ updateReview, user_id, reviewData, gameId, reviewId, s
       />
     
       
-      {/* <Form.Input
+      <Form.Input
      
      label="image"
      placeholder="image"
      name="image"
      value={review.image}
      onChange={(e, {value}) => setReview({...review, image: value})}
-     /> */}
+     />
      <Form.Dropdown
         label='Rating'
         name='rating'
