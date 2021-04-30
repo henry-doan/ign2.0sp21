@@ -9,10 +9,9 @@ const Login = ({ handleLogin, history }) => {
   }
   return (
     <Segment basic>
-      <Header as='h1' textAlign='center' style={{color: '#c75c7b'}}>Login</Header>
+      <Header as='h1' textAlign='center'>Login</Header>
       <Form onSubmit={handleSubmit}>
         <Form.Input
-          style={{color: '#c75c7b'}}
           label="Email"
           autoFocus
           required
@@ -22,7 +21,6 @@ const Login = ({ handleLogin, history }) => {
           onChange={(e, { value }) => setUser({ ...user, email: value })}
         />
         <Form.Input
-          style={{color: '#c75c7b'}}
           label="Password"
           required
           name='password'

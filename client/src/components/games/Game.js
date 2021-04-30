@@ -53,9 +53,9 @@ return(
     <Grid.Column width={4}>
     <a href={`/games/${game.id}`} className={styles.gameName} style={{color: '#fc8787'}}><h1>{game.gamename}</h1></a>
     <p style={{color: '#c75c7b'}}>Genre: {game.genre}</p>  
-    <Image size='small'src={imageSrc} style={{position: 'absolute', left: '50%', top: '55%'}}  />
-    <h3 style={{fontSize:'7rem', color: 'white', position: 'absolute', left: '58%', top: '60%'}}>{renderAverageRating()}</h3>
-    <h2 style={{fontSize:'1rem', color: 'white', position: 'absolute', left: '60%', top: '55%'}}>Overall Rating</h2>
+    <Image size='small'src={imageSrc} style={{position: 'absolute', left: '50%', top: '45%'}}  />
+    <h3 style={{fontSize:'7rem', color: 'white', position: 'absolute', left: '58%', top: '55%'}}>{renderAverageRating()}</h3>
+    <h2 style={{fontSize:'1rem', color: 'white', position: 'absolute', left: '60%', top: '50%'}}>Overall Rating</h2>
       
     </Grid.Column>
     <Grid.Column width={9}>
