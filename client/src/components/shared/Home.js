@@ -33,7 +33,6 @@ const Home = () => (
         </h4>
       </Container>
 
-      <a href='/games' style={{color: 'black', position: 'absolute', top: '70%',  left: '80%'}}>View All Games</a>
     </SecBackground>
   </Fade>
 
