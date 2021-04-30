@@ -37,7 +37,7 @@ return(
      
       <Grid.Row>
        
-          {renderGames(games)} 
+          {games && renderGames(games)} 
           </Grid.Row>
           
           </Grid>

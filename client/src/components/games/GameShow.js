@@ -68,15 +68,8 @@ const updateReview =  (review, gameId, id) => {
 
 const updateGame =  (gameId, id) => {
   axios.put(`/api/games/${game.id}`, { game })
-    .then(res => {
-      const updatedGames = game.map( t => {
-        if (t.id === id) {
-          return res.data
-        }
-        return t
-      })
-      setGame(updatedGames)
-    })
+    .then(getGame()
+    )
 }
 const getReviews = async() => {
   try{
