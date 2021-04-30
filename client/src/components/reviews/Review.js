@@ -6,10 +6,11 @@ import ReviewForm from '../reviews/ReviewForm'
 import { Image } from "semantic-ui-react"
 import Fade from 'react-reveal/Fade'
 import UpdatingReview from './UpdatingReview'
-
+import imageSrc from '../shared/images/hexagonal.png'
 import { AuthContext } from '../../providers/AuthProvider'
 import {ReviewContext} from '../../providers/ReviewProvider';
 import { GameContext } from '../../providers/GameProvider';
+import styles from '../styledComponents/index.module.css'
 
 const Review = ({review, user_id, gameId, deleteReview, updateReview}) => {    
   const [game,setGame] = useState([])
@@ -60,45 +61,34 @@ const Review = ({review, user_id, gameId, deleteReview, updateReview}) => {
 return(
     <>
     <Fade left>
-    <Segment>
-    <h1>{review.title}</h1>
     <Divider/>
     <Grid divided='vertically'>
     <Grid.Row columns={2}>
       <Grid.Column>
+    <h1>{review.title}</h1>
       <Image height="auto" width="200px" centered src={review.image} />
       </Grid.Column>
       <Grid.Column>
       <p>{review.body}</p>
+      <Image size='small'src={imageSrc} style={{position: 'absolute', left: '3%', top: '33%'}}  /><Image size='tiny'src={imageSrc} style={{position: 'absolute', left: '55%', top: '34%'}}  />
+      <Image size='tiny'src={imageSrc} style={{position: 'absolute', left: '35%', top: '34%'}}  />
+      <h3 style={{fontSize:'7rem', color: 'white', position: 'absolute', left: '10%', top: '30%'}}>{review.rating}</h3> 
+      <h3 style={{fontSize:'3rem', color: 'white', position: 'absolute', left: '39.5%', top: '29%'}}>{review.visual}</h3>
+      <h3 style={{fontSize:'3rem', color: 'white', position: 'absolute', left: '59.5%', top: '29%'}}>{review.game_play}</h3>
+      <p style={{fontSize:'1rem', color: 'white', position: 'absolute', left: '12%', top: '39%'}}>Rating</p>
+      <p style={{fontSize:'.5rem', color: 'white', position: 'absolute', left: '58.5%', top: '39%'}}>Game Play</p>
+      <p style={{fontSize:'.5rem', color: 'white', position: 'absolute', left: '39.5%', top: '39%'}}>Graphics</p>
       </Grid.Column>
     </Grid.Row>
-
     <h1>Review: {review.gamereview}</h1>
-    <Grid.Row columns={4} style={{backgroundColor: '#fc8787'}}>
-    <Grid.Column>
-    <h3 style={{color: 'white'}}>Overall Score: {review.rating}</h3> 
-    </Grid.Column>
-      <Grid.Column>
-      <h3 style={{color: 'white'}}>Graphics: {review.visual}</h3>
-      </Grid.Column>
-      <Grid.Column>
-      <h3 style={{color: 'white'}}>Soundtrack: {review.soundtrack}</h3>
-      </Grid.Column>
-      <Grid.Column>
-      <h3 style={{color:'white'}}>Gameplay: {review.game_play}</h3>
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
 
-    </Segment>
-    </Fade>
       {deleteView(user_id, gameId)}
        {updateView()}
-
+</Grid>
+</Fade>
   </>
     
   )
   
   }
-
   export default Review
