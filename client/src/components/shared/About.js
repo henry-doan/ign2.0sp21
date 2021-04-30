@@ -87,6 +87,27 @@ return (
     </Card.Content>
   </Card>
 </Segment>
+<Segment floated='right'>
+
+  <Card>
+
+    <Card.Content>
+      <Card.Header>Taylor Collins</Card.Header>
+      <Card.Meta>DevPoint Labs T/A</Card.Meta>
+      <Card.Description>
+        <p>
+          fresh from hawaii
+        </p>
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <a>
+        <Icon name='user' />
+        So Many Friends
+      </a>
+    </Card.Content>
+  </Card>
+</Segment>
     </>
 )
 }
